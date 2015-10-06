@@ -17,8 +17,8 @@ describe( 'debtCalc...', function() {
     privateLoan: 10000
   }
 
-  it( '...probably breaks', function() {
-    expect( debtCalc( financials ) ).to.equal( '$5' );
+  it( '...calculates loans!', function() {
+    expect( debtCalc( financials ) ).to.equal( 49480 );
   });
 
 });
