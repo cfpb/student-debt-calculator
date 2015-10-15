@@ -68,6 +68,8 @@ function studentDebtCalculator( financials ) {
         staffUnsubsidizedIndepMax: 0,
         staffUnsubsidizedDepMax: 0,
         staffUnsubsidizedWithFee: 0,
+        //
+        repaymentTerm: 10,
         // ???
         yrben: 0,
         subsidizedCapYearOne: 3500,
@@ -497,7 +499,7 @@ function studentDebtCalculator( financials ) {
   data.staffUnsubsidizedWithFee = data.staffUnsubsidized * data.DLOriginationFee;
 
   // Unsubsidized debt at graduation
-  data.staffUnsubsidizedTotal = (data.staffUnsubsidizedWithFee  * data.unsubsidizedRate / 12 * ((data.programLength * (data.programLength + 1) / 2 * 12 + data.programLength * data.deferPeriod)) + (data.staffUnsubsidizedWithFee  * data.programLength));
+  data.staffUnsubsidizedTotal = data.staffUnsubsidizedWithFee  * data.unsubsidizedRate / 12 * ((data.programLength * (data.programLength + 1) / 2 * 12 + data.programLength * data.deferPeriod)) + (data.staffUnsubsidizedWithFee  * data.programLength);
 
   // Grad Plus with origination
   data.gradplusWithFee = data.gradplus * data.plusOriginationFee;
@@ -525,17 +527,6 @@ function studentDebtCalculator( financials ) {
 
   // Total debt at graduation
   data.totalDebt = data.perkinsTotal + data.staffSubsidizedTotal + data.staffUnsubsidizedTotal + data.gradplusTotal + data.parentplusTotal + data.privateLoanTotal + data.institutionalLoanTotal + data.homeEquityTotal;
-
-  // repayment term
-  if ( data.repaymentTerminput == "10 years") { 
-    data.repaymentTerm = 10;
-  } 
-  else if ( data.repaymentTerminput == "20 years") {
-    data.repaymentTerm =  20; 
-  }
-  else {
-    data.repaymentTerm = 10;
-  }
   
   // loanMonthly - "Monthly Payments"
   data.loanMonthly =
@@ -552,27 +543,10 @@ function studentDebtCalculator( financials ) {
   // loanMonthlyparent
   data.loanMonthlyparent = (data.parentplus * (data.parentplusrate / 12) / (Math.pow(1 - (1 + data.parentplusrate / 12), (-data.repaymentTerm * 12)))) + (data.homeEquity * (data.homeEquityLoanRate / 12) / (Math.pow(1 - (1 + data.homeEquityLoanRate / 12), (-data.repaymentTerm * 12))));
   
-  // loanlifetime
-  data.loanlifetime = data.loanMonthly * data.repaymentTerm  * 12;
+  // loanLifetime
+  data.loanLifetime = data.loanMonthly * data.repaymentTerm  * 12;
 
-  // // salaryneeded
-  // data.salaryneeded = data.loanMonthly * 12 / 0.14;
-
-  // // Expected salary and Annual salary (educ lvl)
-  // if ( data.program == "aa" ) {
-  //   data.salaryexpected25yrs = data.salaryaa * 52.1775;
-  // }
-  // else if ( data.program == "ba" ) {
-  //   data.salaryexpected25yrs =  data.salaryba * 52.1775
-  // }
-  // else {
-  //   data.salaryexpected25yrs = data.salarygrad * 52.1775;
-  // }
-  // data.salarymonthly = data.salary / 12;
-
-  console.log( data );
-
-  return data.totalDebt;
+  return data;
 
 }
 module.exports = studentDebtCalculator;
