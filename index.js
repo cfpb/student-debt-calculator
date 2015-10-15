@@ -13,7 +13,8 @@
 'use strict';
 
 function studentDebtCalculator( financials ) {
-  var extend = require('./node_modules/extend/index.js'),
+  var extend = require( './node_modules/extend/index.js' ),
+      enforceRange = require( './lib/enforce-range.js' ),
       data = {},
       defaults = {
         // Values expected from 'financials'
@@ -63,6 +64,9 @@ function studentDebtCalculator( financials ) {
         // placeholders
         yearOneCosts: 0,
         yearInCollege: 1,
+        // Perkins loan settings
+        perkinsUnderCap: 5500,
+        perkinsGradCap: 8000, 
         // Stafford loans settings
         staffSubsidizedMax: 0,
         staffUnsubsidizedIndepMax: 0,
@@ -125,17 +129,12 @@ function studentDebtCalculator( financials ) {
   if ( data.undergrad == true ) {
     data.pellMax = data.pellCap;
   }
-  if ( data.pellMax > data.yearOneCosts ) {
-    data.pellMax = data.yearOneCosts;
-  }
-  if ( data.pellMax < 0 ) {
-    data.pellMax = 0;
-  }
-  if (data.pell > data.pellMax){
-    data.pell = data.pellMax;
-  }
+  // enforce limits on Pell grants
+  data.pellMax = enforceRange( data.pellMax, 0, data.yearOneCosts );
+  data.pell = enforceRange( data.pell, 0, data.pellMax );
 
   // Military Tuition Assistance
+
   if ( data.tuitionAssistCap < data.tuitionFees ) {
     data.tuitionAssistMax = data.tuitionAssistCap;
   }
@@ -236,22 +235,22 @@ function studentDebtCalculator( financials ) {
   // FEDERAL LOANS //
   // Perkins Loan
 
-  data.perkins_max = data.yearOneCosts - data.pell;
-  if ( data.perkins_max < 0 ) {
-    data.perkins_max = 0;
+  data.perkinsMax = data.yearOneCosts - data.pell;
+  if ( data.perkinsMax < 0 ) {
+    data.perkinsMax = 0;
   }
   if ( data.undergrad == true ) {
-    if ( data.perkins_max > data.perkinscapunder ) {
-      data.perkins_max = data.perkinscapunder;
+    if ( data.perkinsMax > data.perkinsUnderCap ) {
+      data.perkinsMax = data.perkinsUnderCap;
     }
   }
   else {
-    if ( data.perkins_max > data.perkinscapgrad ) {
-      data.perkins_max = data.perkinscapgrad;
+    if ( data.perkinsMax > data.perkinsGradCap ) {
+      data.perkinsMax = data.perkinsGradCap;
     }   
   }
-  if (data.perkins > data.perkins_max) {
-    data.perkins = data.perkins_max;
+  if (data.perkins > data.perkinsMax) {
+    data.perkins = data.perkinsMax;
   }
     
   // Subsidized Stafford Loan
@@ -261,30 +260,18 @@ function studentDebtCalculator( financials ) {
   else {
     if ((data.program == "aa") || (data.yearInCollege == 1)) {
       data.staffSubsidizedMax = data.yearOneCosts - data.pell - data.perkins;
-      if ( data.staffSubsidizedMax > data.subsidizedCapYearOne ) {
-        data.staffSubsidizedMax = data.subsidizedCapYearOne;
-      }
-      if ( data.staffSubsidizedMax < 0 ) {
-        data.staffSubsidizedMax = 0;
-      }
+      data.staffSubsidizedMax = enforceRange(
+        data.staffSubsidizedMax, 0, data.subsidizedCapYearOne );
     }
     else if (data.yearInCollege == 2) {
       data.staffSubsidizedMax = data.yearOneCosts - data.perkins - data.pell;
-      if ( data.staffSubsidizedMax > ( data.subsidizedCapYearTwo - data.staffSubsidized ) ) {
-        data.staffSubsidizedMax = data.subsidizedCapYearTwo - data.staffSubsidized ;
-      }
-      if ( data.staffSubsidizedMax < 0 ) {
-        data.staffSubsidizedMax = 0;
-      }
+      data.staffSubsidizedMax = enforceRange(
+        data.staffSubsidizedMax, 0, data.subsidizedCapYearTwo - data.staffSubsidized );
     }
     else if (data.yearInCollege == 3) {
       data.staffSubsidizedMax = data.yearOneCosts - data.perkins - data.pell;
-      if ( data.staffSubsidizedMax > ( data.subsidizedCapYearThree - data.staffSubsidized ) ) {
-        data.staffSubsidizedMax = data.subsidizedCapYearThree - data.staffSubsidized ;
-      }
-      if ( data.staffSubsidizedMax < 0 ) {
-        data.staffSubsidizedMax = 0;
-      }
+      data.staffSubsidizedMax = enforceRange(
+        data.staffSubsidizedMax, 0, data.subsidizedCapYearThree - data.staffSubsidized );
     }
   }
   if (data.staffSubsidizedMax < 0){
