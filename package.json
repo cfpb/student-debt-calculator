@@ -1,0 +1,29 @@
+{
+  "name": "student-debt-calc",
+  "version": "0.0.3",
+  "description": "Student debt calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cfpb/student-debt-calc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cfpb/student-debt-calc/issues"
+  },
+  "homepage": "https://github.com/cfpb/student-debt-calc#readme",
+  "dependencies": {
+    "extend": "^3.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "grunt": "^0.4.5",
+    "gruntify-eslint": "^1.0.0",
+    "grunt-cli": "^0.1.13",
+    "chai": "^3.2.0"
+  }
+}
