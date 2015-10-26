@@ -1,6 +1,6 @@
 {
   "name": "student-debt-calc",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Student debt calculator",
   "main": "index.js",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mistergone/student-debt-calc.git"
+    "url": "git+https://github.com/cfpb/student-debt-calc.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mistergone/student-debt-calc/issues"
+    "url": "https://github.com/cfpb/student-debt-calc/issues"
   },
-  "homepage": "https://github.com/mistergone/student-debt-calc#readme",
+  "homepage": "https://github.com/cfpb/student-debt-calc#readme",
   "dependencies": {
     "extend": "^3.0.0"
   },
