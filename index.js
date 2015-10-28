@@ -45,21 +45,6 @@ function studentDebtCalculator( financials ) {
         // Pell grant settings
         pellMax: 0,
         pellCap: 5730,
-        // Military tuition assistance settings
-        tuitionAssistCap: 4500,
-        tuitionAssist: 0,
-        tuitionAssistMax: 0,
-        // GI Bill settings
-        TFInState: 0,
-        GIBillInStateTuition: 0,
-        GIBillTF: 0,
-        GIBillLA: 0,
-        BIBillCh1606: 362,
-        tier: 100,
-        // veteran status
-        vet: false,
-        // School is in-state for student
-        inState: false,
         // Program is undergrad
         undergrad: true,
         // placeholders
@@ -134,94 +119,8 @@ function studentDebtCalculator( financials ) {
   data.pellMax = enforceRange( data.pellMax, 0, data.yearOneCosts );
   data.pell = enforceRange( data.pell, 0, data.pellMax );
 
-  // Military Tuition Assistance
-  if ( data.tuitionAssistCap < data.tuitionFees ) {
-    data.tuitionAssistMax = data.tuitionAssistCap;
-  }
-  else {
-    data.tuitionAssistMax = data.tuition;
-  }
-  if (data.tuitionAssist > data.tuitionAssistMax) {
-    data.tuitionAssist = data.tuitionAssistMax;
-  }
-
-  // GI Bill
-  // Set schoolData.TFInState
-  if ( data.inState == false ) {
-    data.TFInState = data.GIBillInStateTuition; 
-  }
-  else {
-    data.TFInState = data.tuition;
-  }
-
-  // Tuition & Fees benefits:
-  if (data.vet == false) {
-    data.GIBillTF = 0; 
-  }
-  else {
-     
-    // Calculate veteran benefits:    
-    if ( ( data.control == "Public" ) && ( data.inState == true ) ) {
-      data.GIBillTF = ( data.tuitionFees - data.scholarships - data.tuitionAssist ) * data.tier;
-      if ( data.GIBillTF < 0 ) {
-        data.GIBillTF = 0;
-      }
-    }
-    else if ( ( data.control == "Public" ) && ( data.inState == false ) ) {
-      data.GIBillTF = ( data.TFInState + (data.yrben * 2) - data.scholarships - data.tuitionAssist ) * data.tier;
-      if ( data.GIBillTF < 0 ) {
-        data.GIBillTF = 0;
-      }
-      if ( data.GIBillTF > ( ( data.tuitionFees - data.scholarships - data.tuitionAssist) * data.tier ) ) {
-        data.GIBillTF = data.tuitionFees * data.tier;
-      }
-    }
-    else { // School is not public
-      data.GIBillTF = ( data.tfcap + (data.yrben * 2) - data.scholarships - data.tuitionAssist ) * data.tier;
-      if ( data.GIBillTF < 0 ) {
-        data.GIBillTF = 0;
-      }
-      if ( data.GIBillTF > ( ( data.tuitionFees - data.scholarships - data.tuitionAssist) * data.tier ) ) {
-        data.GIBillTF = data.tuitionFees * data.tier;
-      }
-    }
-  }
-
-  // GI living allowance benefits:
-  if (data.vet === false) {
-    data.GIBillLA = 0;
-  }
-  else { 
-    if (data.serving == "ad") { 
-      data.GIBillLA = 0;
-    }
-    else if ( ( data.tier == 0 ) && ( data.serving == "ng" ) ) {
-      data.GIBillLA = data.GIBillch1606 * 9;
-    }
-    else {
-      if (data.online == "Yes" ) {
-        data.GIBillLA = ( ( ( data.avgbah / 2 * data.tier ) + data.kicker ) * data.rop) * 9;
-      }
-      else {
-        data.GIBillLA = data.bah * data.tier * 9 * data.rop;
-      }
-    }
-  }
-
-
-  // GI Bill Book Stipend
-  if (data.vet === false) {
-    data.GIBillBS = 0;
-  }
-  else {
-    data.GIBillBS = data.bscap * data.tier * data.rop;
-  }
-
-  // Total GI Bill
-  data.GIBill = data.GIBillTF + data.GIBillLA + data.GIBillBS;
-
   // Total Grants
-  data.grantsTotal = data.pell + data.scholarships + data.GIBill + data.tuitionAssist;
+  data.grantsTotal = data.pell + data.scholarships;
 
   // First Year Net Cost
   data.firstYearNetCost = data.yearOneCosts - data.grantsTotal;
@@ -477,7 +376,7 @@ function studentDebtCalculator( financials ) {
   // Institutional Loan debt at graduation
   data.institutionalLoanTotal = calcDebt( data.institutionalLoan,
     data.institutionalLoanRate, data.programLength, data.deferPeriod );
-      
+
   // Home Equity Loans at graduation
   data.homeEquityTotal = (data.homeEquity * .079 / 12 * ((data.programLength * (data.programLength + 1) / 2 * 12)));
 
