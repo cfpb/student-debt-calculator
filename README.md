@@ -49,38 +49,68 @@ These values are all added together to get the cost of attendance. They are take
 
 | Property | Type | Description | Default value |
 |-----|-----|-----|-----|
-|`financials.tuitionFees` | number | The value of tuition and fees. | 0 |
-|`financials.roomBoard` | number | The cost of room and board. | 0 |
-|`financials.books` | number | The cost of books. | 0 |
-|`financials.otherExpenses` | number | The cost of miscellaneous expenses. | 0 |
-|`financials.transportation` | number | The costs of transporation. | 0 |
+|`financials.tuitionFees` | number | The value of tuition and fees | 0 |
+|`financials.roomBoard` | number | The cost of room and board | 0 |
+|`financials.books` | number | The cost of books | 0 |
+|`financials.otherExpenses` | number | The cost of miscellaneous expenses | 0 |
+|`financials.transportation` | number | The costs of transporation | 0 |
 
 #### Grants and Scholarships
 These values are deducted from cost of attendance.
 
 | Property | Type | Description | Default value |
 |-----|-----|-----|-----|
-|`financials.scholarships` | number | Total value of scholarships. | 0 |
-|`financials.pell` | number | Total value of Pell grants. | 0 |
+|`financials.scholarships` | number | Total value of scholarships | 0 |
+|`financials.pell` | number | Total value of Pell grants | 0 |
 
 #### Contributions
 
 | Property | Type | Description | Default value |
 |-----|-----|-----|-----|
-|`financials.workstudy` | number | Value of work-study. | 0 |
-|`financials.savings` | number | Total personal savings to be spent to reduce annual cost of attendance. | 0 |
-|`financials.family` | number | Total family contributions to be spent to reduce annual cost of attendance. | 0 |
+|`financials.workstudy` | number | Value of work-study | 0 |
+|`financials.savings` | number | Total personal savings to be spent to reduce annual cost of attendance | 0 |
+|`financials.family` | number | Total family contributions to be spent to reduce annual cost of attendance | 0 |
 
 #### Federal Loans
 
 | Property | Type | Description | Default value |
 |-----|-----|-----|-----|
-|`financials.perkins` | number | Value of federal Perkins loan. | 0 |
-|`financials.staffSubsidized` | number | Value of federal Stafford subsidized loan. | 0 |
-|`financials.staffUnsubsidized` | number | Value of federal Stafford unsubsidized loan. | 0 |
-|`financials.gradplus` | number | Value of GradPlus loan. | 0 |
+|`financials.perkins` | number | Amount of federal Perkins loan | 0 |
+|`financials.staffSubsidized` | number | Amount of federal Stafford subsidized loan | 0 |
+|`financials.staffUnsubsidized` | number | Amount of federal Stafford unsubsidized loan | 0 |
+|`financials.gradplus` | number | Amount of GradPlus loan | 0 |
 
 #### Private Loans
+
+| Property | Type | Description | Default value |
+|-----|-----|-----|-----|
+|`financials.institutionalLoanRate` | number | Loan rate on institutional loan, expressed as a decimal | 0.079 |
+|`financials.privateLoan` | number | Amount of private loan | 0 |
+|`financials.homeEquity` | number | Amount of home equity loan | 0 |
+
+#### Loan rates
+
+| Property | Type | Description | Default value |
+|-----|-----|-----|-----|
+|`financials.institutionalLoanRate` | number | Loan rate for institutional loan, expressed as a decimal | 0.079 |
+|`financials.privateLoanRate` | number | Loan rate for private loan, expressed as a decimal | 0.079 |
+|`financials.perkinsRate` | number | Loan rate for federal Perkins loans | 0.05
+|`financials.subsidizedRate` | number | Loan rate for Stafford subsidized loans | 0.0466
+|`financials.unsubsidizedRateUndergrad` | number | Loan rate for Stafford unsubsidized undergratuate loans | 0.0466
+|`financials.unsubsidizedRateGrad` | number | Loan rate for Stafford unsubsidized gratuate loans| 0.0621 
+|`financials.DLOriginationFee` | number | Origination fee for Stafford loans | 1.01073
+|`financials.gradplusRate` | number | Loan rate for Gradplus loan | 0.0721 
+|`financials.parentplusrate` | number | Loan rate for Parentplus loan | 0.0721
+|`financials.plusOriginationFee` | number | Origination fee for Plus loans | 1.04292
+|`financials.homeEquityLoanRate` | number | Loan rate for home equity loan | 0.079
+
+#### Maximums and Caps
+These properties give the calculator caps and maximums on certain values.
+
+| Property | Type | Description | Default value |
+|-----|-----|-----|-----|
+|`financials.perkinsUnderCap` | number | Cap on undergratuate Perkins loans | 5500 |
+|`financials.perkinsGradCap` | number | Cap on graduate Perkins loans | 8000 |
 
 ## How to test the software
 
