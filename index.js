@@ -12,6 +12,10 @@
 
 'use strict';
 
+var defaultsThatChange = {
+
+}
+
 function studentDebtCalculator( financials ) {
   var extend = require( './node_modules/extend/index.js' ),
       enforceRange = require( './lib/enforce-range.js' ),
@@ -40,8 +44,8 @@ function studentDebtCalculator( financials ) {
         homeEquity: 0,
         programLength: 4,
         // Loan rate defaults
-        institutionalLoanRateDefault: 0.079,
-        privateLoanRateDefault: 0.079,
+        institutionalLoanRate: 0.079,
+        privateLoanRate: 0.079,
         // Pell grant settings
         pellMax: 0,
         pellCap: 5730,
@@ -289,11 +293,6 @@ function studentDebtCalculator( financials ) {
   // enforce institutional loan limits
   data.institutionalLoan = enforceRange( data.institutionalLoan, 0, data.institutionalLoanMax );
 
-  // Institutional Loan Rate
-  if ( data.institutionalLoanRate === undefined || data.institutionalLoanRate === 0) {
-    data.institutionalLoanRate = data.institutionalLoanRateDefault;
-  }
-
   // Other Loans
   data.privateLoanMax = data.firstYearNetCost - data.perkins - data.staffSubsidized - data.staffUnsubsidized - data.institutionalLoan - data.gradplus;
 
@@ -302,11 +301,6 @@ function studentDebtCalculator( financials ) {
 
   // enforce "other private" loan limits
   data.privateLoan = enforceRange( data.privateLoan, 0, data.privateLoanMax );
-
-  // Private Loan Rate
-  if ( data.privateLoanRate === undefined || data.privateLoanRate === 0 ) {
-    data.privateLoanRate = data.privateLoanRateDefault;
-  }
 
   // Private Loan Total
   data.privateTotal = data.privateLoan + data.institutionalLoan;

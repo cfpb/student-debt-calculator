@@ -73,6 +73,13 @@ These values are deducted from cost of attendance.
 
 #### Federal Loans
 
+| Property | Type | Description | Default value |
+|-----|-----|-----|-----|
+|`financials.perkins` | number | Value of federal Perkins loan. | 0 |
+|`financials.staffSubsidized` | number | Value of federal Stafford subsidized loan. | 0 |
+|`financials.staffUnsubsidized` | number | Value of federal Stafford unsubsidized loan. | 0 |
+|`financials.gradplus` | number | Value of GradPlus loan. | 0 |
+
 #### Private Loans
 
 ## How to test the software
