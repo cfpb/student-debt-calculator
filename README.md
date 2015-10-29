@@ -46,21 +46,30 @@ The object passed to `studentDebtCalculator` is used to set up the calculations.
 
 #### Costs of Attendance
 These values are all added together to get the cost of attendance. They are taken as separate values to match with the [Financial Aid Shopping Sheet](http://www2.ed.gov/policy/highered/guid/aid-offer/index.html).
-* `financials.tuitionFees` (number): The value of tuition and fees. [default: 0]
-* `financials.roomBoard` (number): The cost of room and board. [default: 0]
-* `financials.books` (number): The cost of books. [default: 0]
-* `financials.otherExpenses` (number): The cost of miscellaneous expenses. [default: 0]
-* `financials.transportation` (number): The costs of transporation. [default: 0]
+
+| Property | Type | Description | Default value |
+|-----|-----|-----|-----|
+|`financials.tuitionFees` | number | The value of tuition and fees. | 0 |
+|`financials.roomBoard` | number | The cost of room and board. | 0 |
+|`financials.books` | number | The cost of books. | 0 |
+|`financials.otherExpenses` | number | The cost of miscellaneous expenses. | 0 |
+|`financials.transportation` | number | The costs of transporation. | 0 |
 
 #### Grants and Scholarships
 These values are deducted from cost of attendance.
-* `financials.scholarships` (number): Total value of scholarships. [default: 0]
-* `financials.pell` (number): Total value of Pell grants. [default: 0]
+
+| Property | Type | Description | Default value |
+|-----|-----|-----|-----|
+|`financials.scholarships` | number | Total value of scholarships. | 0 |
+|`financials.pell` | number | Total value of Pell grants. | 0 |
 
 #### Contributions
-* `financials.workstudy` (number): Value of work-study. [default: 0]
-* `financials.savings` (number): Total personal savings to be spent to reduce annual cost of attendance. [default: 0]
-* `financials.family` (number): Total family contributions to be spent to reduce annual cost of attendance. [default: 0]
+
+| Property | Type | Description | Default value |
+|-----|-----|-----|-----|
+|`financials.workstudy` | number | Value of work-study. | 0 |
+|`financials.savings` | number | Total personal savings to be spent to reduce annual cost of attendance. | 0 |
+|`financials.family` | number | Total family contributions to be spent to reduce annual cost of attendance. | 0 |
 
 #### Federal Loans
 
