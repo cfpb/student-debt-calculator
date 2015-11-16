@@ -17,7 +17,7 @@ var defaultsThatChange = {
 }
 
 function studentDebtCalculator( financials ) {
-  var extend = require( './node_modules/extend/index.js' ),
+  var extend = require( 'extend' ),
       enforceRange = require( './lib/enforce-range.js' ),
       calcDebt = require( './lib/calc-debt.js' ),
       data = {},
