@@ -372,7 +372,7 @@ function studentDebtCalculator( financials ) {
     data.institutionalLoanRate, data.programLength, data.deferPeriod );
 
   // Home Equity Loans at graduation
-  data.homeEquityTotal = (data.homeEquity * .079 / 12 * ((data.programLength * (data.programLength + 1) / 2 * 12)));
+  data.homeEquityTotal = (data.homeEquity * data.homeEquityLoanRate / 12 * ((data.programLength * (data.programLength + 1) / 2 * 12)));
 
   // Debt after 1 yr
   data.loanDebtYearOne = data.perkins + data.staffSubsidized + data.staffUnsubsidized + data.gradplus + data.privateLoan + data.institutionalLoan + data.parentplus + data.homeEquity;
