@@ -175,40 +175,38 @@ function studentDebtCalculator( financials ) {
     if ( data.staffUnsubsidizedIndepMax < 0 ) {
       data.staffUnsubsidizedIndepMax = 0;
     }
-  } else {
-    if ( ( data.program === 'aa' ) || ( data.yearInCollege === 1 ) ) {
-      data.staffUnsubsidizedIndepMax = data.yearOneCosts - data.pell - data.perkins - data.staffSubsidized;
-      if ( data.staffUnsubsidizedIndepMax > ( data.unsubsidizedCapIndepYearOne - data.staffSubsidized ) ) {
-        data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearOne;
-      }
-      if (data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearOne - data.staffSubsidized) {
-        data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearOne - data.staffSubsidized;
-      }
-      if ( data.staffUnsubsidizedIndepMax < 0 ) {
-        data.staffUnsubsidizedIndepMax = 0;
-      }
-    } else if ( data.yearInCollege === 2) {
-      data.staffUnsubsidizedIndepMax = data.yearOneCosts - data.pell - data.perkins - data.staffSubsidized;
-      if ( data.staffUnsubsidizedIndepMax > ( data.unsubsidizedCapIndepYearTwo - data.staffSubsidized ) ) {
-        data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearTwo;
-      }
-      if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearTwo - data.staffSubsidized ) {
-        data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearTwo - data.staffSubsidized;
-      }
-      if ( data.staffUnsubsidizedIndepMax < 0 ) {
-        data.staffUnsubsidizedIndepMax = 0;
-      }
-    } else if ( data.yearInCollege === 3) {
-      data.staffUnsubsidizedIndepMax = data.yearOneCosts - data.pell - data.perkins - data.staffSubsidized;
-      if ( data.staffUnsubsidizedIndepMax > ( data.unsubsidizedCapIndepYearThree - data.staffSubsidized ) ) {
-        data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearThree;
-      }
-      if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearThree - data.staffSubsidized ) {
-        data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearThree - data.staffSubsidized;
-      }
-      if ( data.staffUnsubsidizedIndepMax < 0 ) {
-        data.staffUnsubsidizedIndepMax = 0;
-      }
+  } else if ( ( data.program === 'aa' ) || ( data.yearInCollege === 1 ) ) {
+    data.staffUnsubsidizedIndepMax = data.yearOneCosts - data.pell - data.perkins - data.staffSubsidized;
+    if ( data.staffUnsubsidizedIndepMax > ( data.unsubsidizedCapIndepYearOne - data.staffSubsidized ) ) {
+      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearOne;
+    }
+    if (data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearOne - data.staffSubsidized) {
+      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearOne - data.staffSubsidized;
+    }
+    if ( data.staffUnsubsidizedIndepMax < 0 ) {
+      data.staffUnsubsidizedIndepMax = 0;
+    }
+  } else if ( data.yearInCollege === 2) {
+    data.staffUnsubsidizedIndepMax = data.yearOneCosts - data.pell - data.perkins - data.staffSubsidized;
+    if ( data.staffUnsubsidizedIndepMax > ( data.unsubsidizedCapIndepYearTwo - data.staffSubsidized ) ) {
+      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearTwo;
+    }
+    if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearTwo - data.staffSubsidized ) {
+      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearTwo - data.staffSubsidized;
+    }
+    if ( data.staffUnsubsidizedIndepMax < 0 ) {
+      data.staffUnsubsidizedIndepMax = 0;
+    }
+  } else if ( data.yearInCollege === 3) {
+    data.staffUnsubsidizedIndepMax = data.yearOneCosts - data.pell - data.perkins - data.staffSubsidized;
+    if ( data.staffUnsubsidizedIndepMax > ( data.unsubsidizedCapIndepYearThree - data.staffSubsidized ) ) {
+      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearThree;
+    }
+    if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearThree - data.staffSubsidized ) {
+      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearThree - data.staffSubsidized;
+    }
+    if ( data.staffUnsubsidizedIndepMax < 0 ) {
+      data.staffUnsubsidizedIndepMax = 0;
     }
   }
   // unsubsidized loan max for dependent students
