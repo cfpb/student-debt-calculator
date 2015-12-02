@@ -6,15 +6,9 @@ var enforceRange = require( './lib/enforce-range.js' );
 var calcDebt = require( './lib/calc-debt.js' );
 
 /**
- * @param { object } data
- * @returns {string}
- */
-
- /*
-  incomingData:
-    tuitionFees
-  }
-
+ * calculate student debt
+ * @param { object } financials - an object containing unique loan values
+ * @returns { object } an with the overall cost of the loan
  */
 function studentDebtCalculator( financials ) {
 
