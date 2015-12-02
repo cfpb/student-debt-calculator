@@ -4,7 +4,7 @@
   "description": "Student debt calculator",
   "main": "index.js",
   "scripts": {
-    "test": "eslint index.js lib/*.js && mocha test"
+    "test": "eslint src/**.js && mocha test"
   },
   "repository": {
     "type": "git",

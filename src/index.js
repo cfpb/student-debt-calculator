@@ -2,8 +2,8 @@
 
 var extend = require( 'extend' );
 
-var enforceRange = require( './lib/enforce-range.js' );
-var calcDebt = require( './lib/calc-debt.js' );
+var enforceRange = require( './utils/enforce-range.js' );
+var calcDebt = require( './calc-debt.js' );
 
 /**
  * calculate student debt
@@ -464,7 +464,7 @@ function studentDebtCalculator( financials ) {
 
   // Home Equity Loans at graduation
   data.homeEquityTotal = data.homeEquity * data.homeEquityLoanRate / 12 *
-  (( data.programLength * ( data.programLength + 1 ) / 2 * 12 ) );
+  ( ( data.programLength * ( data.programLength + 1 ) / 2 * 12 ) );
 
   // Debt after 1 yr
   data.loanDebtYearOne = data.perkins +

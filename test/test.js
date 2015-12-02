@@ -1,4 +1,4 @@
-var debtCalc = require('../index.js');
+var debtCalc = require('../src/index.js');
 
 var chai = require('chai');
 var expect = chai.expect;
@@ -26,12 +26,12 @@ describe( 'debtCalc...', function() {
     pellCap: 5730,
     perkinsRate: 0.05,
     perkinsUnderCap: 5500,
-    perkinsGradCap: 8000, 
+    perkinsGradCap: 8000,
     subsidizedRate: 0.0466,
     unsubsidizedRateUndergrad: 0.0466,
-    unsubsidizedRateGrad: 0.0621, 
+    unsubsidizedRateGrad: 0.0621,
     DLOriginationFee: 1.01073,
-    gradplusrate: 0.0721, 
+    gradplusrate: 0.0721,
     parentplusrate: 0.0721,
     plusOriginationFee: 1.04292,
     homeEquityLoanRate: 0.079,
