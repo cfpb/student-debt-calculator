@@ -1,6 +1,8 @@
 
 # Student Debt Calculator
 
+[![Build Status](https://travis-ci.org/cfpb/student-debt-calculator.svg?branch=master)](https://travis-ci.org/cfpb/student-debt-calculator)
+
 > A JavaScript package which calculates student debt at graduation based on a wide array of possible inputs.
 
 This calculator does not simply calculate debt based on loans - given inputs of costs, grants, scholarships, personal savings, and loans, it can calculate how much of the annual cost of attendance is left to pay, total debt at graduation, and monthly payment at graduation, based on combined loans and given loan rates.
@@ -97,9 +99,9 @@ These values are deducted from cost of attendance.
 |`financials.perkinsRate` | number | Loan rate for federal Perkins loans | 0.05
 |`financials.subsidizedRate` | number | Loan rate for Stafford subsidized loans | 0.0466
 |`financials.unsubsidizedRateUndergrad` | number | Loan rate for Stafford unsubsidized undergratuate loans | 0.0466
-|`financials.unsubsidizedRateGrad` | number | Loan rate for Stafford unsubsidized gratuate loans| 0.0621 
+|`financials.unsubsidizedRateGrad` | number | Loan rate for Stafford unsubsidized gratuate loans| 0.0621
 |`financials.DLOriginationFee` | number | Origination fee for Stafford loans | 1.01073
-|`financials.gradplusRate` | number | Loan rate for Gradplus loan | 0.0721 
+|`financials.gradplusRate` | number | Loan rate for Gradplus loan | 0.0721
 |`financials.parentplusrate` | number | Loan rate for Parentplus loan | 0.0721
 |`financials.plusOriginationFee` | number | Origination fee for Plus loans | 1.04292
 |`financials.homeEquityLoanRate` | number | Loan rate for home equity loan | 0.079
