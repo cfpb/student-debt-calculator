@@ -1,17 +1,28 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
-
-## x.y.z - YYYY-MM-DD
+## 0.5.0 2015-12-01
 
 ### Added
-- Lorem ipsum dolor sit amet
-
-### Deprecated
-- Nothing.
+- add ESLint
+- add Travis integration
 
 ### Removed
-- Nothing.
+- extraneous open source files (checklist, unused grunt file, screenshot)
 
 ### Fixed
-- Nothing.
+- Began refactor by fixing ESLint errors and most warnings
+
+
+## 2015-12-01
+
+### Added
+- Documentation in README
+- begin move of functions to ./lib
+- add initial tests
+
+
+## 0.4.0 2015-10-26
+
+### Added
+- @mistergone's initial student-debt-calc code as-is from CFPB's paying-for-college tool
