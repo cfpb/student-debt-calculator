@@ -4,7 +4,7 @@
   "description": "Student debt calculator",
   "main": "src/index.js",
   "scripts": {
-    "test": "eslint src/**.js && mocha test"
+    "test": "eslint src/**.js && nyc mocha test"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "chai": "^3.2.0",
     "eslint": "^1.10.2",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "nyc": "^4.0.1"
   }
 }
