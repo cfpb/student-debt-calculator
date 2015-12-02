@@ -9,7 +9,7 @@ We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 - add initial tests
 
 
-## 2015-10-26
+## 0.4.0 2015-10-26
 
 ### Added
 - @mistergone's initial student-debt-calc code as-is from CFPB's paying-for-college tool
