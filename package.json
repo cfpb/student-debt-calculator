@@ -1,6 +1,6 @@
 {
   "name": "student-debt-calc",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Student debt calculator",
   "main": "index.js",
   "scripts": {
