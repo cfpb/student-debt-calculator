@@ -3,7 +3,7 @@ var debtCalc = require('../src/index.js');
 var chai = require('chai');
 var expect = chai.expect;
 
-describe( 'debtCalc...', function() {
+describe( 'overall debt calculations', function() {
   var financials = {
     tuitionFees: 10000,
     roomBoard: 2000,

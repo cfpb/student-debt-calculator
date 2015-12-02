@@ -1,0 +1,73 @@
+'use strict';
+
+/**
+ * default value object
+ * this houses all of the default values that could be supplied
+ */
+module.exports = {
+  tuitionFees: 0,
+  roomBoard: 0,
+  books: 0,
+  otherExpenses: 0,
+  transportation: 0,
+  scholarships: 0,
+  pell: 0,
+  perkins: 0,
+  savings: 0,
+  family: 0,
+  staffSubsidized: 0,
+  staffUnsubsidized: 0,
+  privateLoan: 0,
+  institutionalLoan: 0,
+  parentplus: 0,
+  gradplus: 0,
+  state529plan: 0,
+  workstudy: 0,
+  homeEquity: 0,
+  programLength: 4,
+  // Loan rate defaults
+  institutionalLoanRate: 0.079,
+  privateLoanRate: 0.079,
+  // Pell grant settings
+  pellMax: 0,
+  pellCap: 5730,
+  // Program is undergrad
+  undergrad: true,
+  // placeholders
+  yearOneCosts: 0,
+  yearInCollege: 1,
+  // Perkins loan settings
+  perkinsUnderCap: 5500,
+  perkinsGradCap: 8000,
+  // Stafford loans settings
+  staffSubsidizedMax: 0,
+  staffUnsubsidizedIndepMax: 0,
+  staffUnsubsidizedDepMax: 0,
+  staffUnsubsidizedWithFee: 0,
+  //
+  repaymentTerm: 10,
+  // ???
+  yrben: 0,
+  subsidizedCapYearOne: 3500,
+  subsidizedCapYearTwo: 4500,
+  subsidizedCapYearThree: 5500,
+  unsubsidizedCapYearOne: 5500,
+  unsubsidizedCapYearTwo: 6500,
+  unsubsidizedCapYearThree: 7500,
+  unsubsidizedCapIndepYearOne: 9500,
+  unsubsidizedCapIndepYearTwo: 10500,
+  unsubsidizedCapIndepYearThree: 12500,
+  unsubsidizedCapGrad: 20500,
+  perkinsRate: 0.05,
+  subsidizedRate: 0.0466,
+  unsubsidizedRate: 0,
+  unsubsidizedRateUndergrad: 0.0466,
+  unsubsidizedRateGrad: 0.0621,
+  DLOriginationFee: 1.01073,
+  gradplusRate: 0.0721,
+  parentplusrate: 0.0721,
+  plusOriginationFee: 1.04292,
+  homeEquityLoanRate: 0.079,
+  deferPeriod: 6,
+  loanMonthly: 0
+};
