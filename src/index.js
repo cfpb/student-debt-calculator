@@ -5,6 +5,8 @@ var enforceRange = require( './utils/enforce-range.js' );
 var defaults = require( './default-values' );
 var rates = require( './rates' );
 var scholarship = require( './scholarship' );
+var perkins = require( './loans/perkins' );
+var subStafford = require( './loans/subsidized-stafford' );
 var calcDebt = require( './calc-debt.js' );
 
 /**
@@ -36,43 +38,11 @@ function studentDebtCalculator( financials ) {
 
 
   // FEDERAL LOANS //
-  // Perkins Loan
 
-  data.perkinsMax = data.yearOneCosts - data.pell;
-  data.perkinsMax = enforceRange( data.perkinsMax, 0, data.perkinsUnderCap );
-  if ( data.undergrad !== true ) {
-    data.perkinsMax = enforceRange( data.perkinsMax, 0, data.perkinsGradCap );
-  }
-  data.perkins = enforceRange( data.perkins, 0, data.perkinsMax );
-
+  // calculate the perkins loan
+  perkins( data );
   // Subsidized Stafford Loan
-  if ( data.undergrad === false ) {
-    data.staffSubsidizedMax = 0;
-  } else if ( data.program === 'aa' || data.yearInCollege === 1 ) {
-    data.staffSubsidizedMax = data.yearOneCosts - data.pell - data.perkins;
-    data.staffSubsidizedMax = enforceRange(
-      data.staffSubsidizedMax, 0, data.subsidizedCapYearOne );
-  } else if ( data.yearInCollege === 2 ) {
-    data.staffSubsidizedMax = data.yearOneCosts - data.perkins - data.pell;
-    data.staffSubsidizedMax = enforceRange(
-      data.staffSubsidizedMax,
-      0,
-      data.subsidizedCapYearTwo - data.staffSubsidized
-    );
-  } else if ( data.yearInCollege === 3 ) {
-    data.staffSubsidizedMax = data.yearOneCosts - data.perkins - data.pell;
-    data.staffSubsidizedMax = enforceRange(
-      data.staffSubsidizedMax,
-      0,
-      data.subsidizedCapYearThree - data.staffSubsidized
-    );
-  }
-
-  data.staffSubsidized = enforceRange(
-    data.staffSubsidized,
-    0,
-    data.staffSubsidizedMax
-  );
+  subStafford( data );
 
   // unsubsidized loan max for independent students
   if ( data.undergrad === false ) {
