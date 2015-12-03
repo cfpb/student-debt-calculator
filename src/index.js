@@ -1,9 +1,13 @@
 'use strict';
 
-var extend = require( 'extend' );
-
-var enforceRange = require( './lib/enforce-range.js' );
-var calcDebt = require( './lib/calc-debt.js' );
+var merge = require( './utils/merge' );
+var enforceRange = require( './utils/enforce-range.js' );
+var defaults = require( './default-values' );
+var rates = require( './rates' );
+var scholarship = require( './scholarship' );
+var perkins = require( './loans/perkins' );
+var subStafford = require( './loans/subsidized-stafford' );
+var calcDebt = require( './calc-debt.js' );
 
 /**
  * calculate student debt
@@ -14,92 +18,12 @@ function studentDebtCalculator( financials ) {
 
   var data = {};
 
-  // Values expected from 'financials'
-  var defaults = {
-    tuitionFees: 0,
-    roomBoard: 0,
-    books: 0,
-    otherExpenses: 0,
-    transportation: 0,
-    scholarships: 0,
-    pell: 0,
-    perkins: 0,
-    savings: 0,
-    family: 0,
-    staffSubsidized: 0,
-    staffUnsubsidized: 0,
-    privateLoan: 0,
-    institutionalLoan: 0,
-    parentplus: 0,
-    gradplus: 0,
-    state529plan: 0,
-    workstudy: 0,
-    homeEquity: 0,
-    programLength: 4,
-    // Loan rate defaults
-    institutionalLoanRate: 0.079,
-    privateLoanRate: 0.079,
-    // Pell grant settings
-    pellMax: 0,
-    pellCap: 5730,
-    // Program is undergrad
-    undergrad: true,
-    // placeholders
-    yearOneCosts: 0,
-    yearInCollege: 1,
-    // Perkins loan settings
-    perkinsUnderCap: 5500,
-    perkinsGradCap: 8000,
-    // Stafford loans settings
-    staffSubsidizedMax: 0,
-    staffUnsubsidizedIndepMax: 0,
-    staffUnsubsidizedDepMax: 0,
-    staffUnsubsidizedWithFee: 0,
-    //
-    repaymentTerm: 10,
-    // ???
-    yrben: 0,
-    subsidizedCapYearOne: 3500,
-    subsidizedCapYearTwo: 4500,
-    subsidizedCapYearThree: 5500,
-    unsubsidizedCapYearOne: 5500,
-    unsubsidizedCapYearTwo: 6500,
-    unsubsidizedCapYearThree: 7500,
-    unsubsidizedCapIndepYearOne: 9500,
-    unsubsidizedCapIndepYearTwo: 10500,
-    unsubsidizedCapIndepYearThree: 12500,
-    unsubsidizedCapGrad: 20500,
-    perkinsRate: 0.05,
-    subsidizedRate: 0.0466,
-    unsubsidizedRate: 0,
-    unsubsidizedRateUndergrad: 0.0466,
-    unsubsidizedRateGrad: 0.0621,
-    DLOriginationFee: 1.01073,
-    gradplusRate: 0.0721,
-    parentplusrate: 0.0721,
-    plusOriginationFee: 1.04292,
-    homeEquityLoanRate: 0.079,
-    deferPeriod: 6,
-    loanMonthly: 0
-  };
-
   // merge financials into defaults to create data
-  data = extend( defaults, financials );
+  data = merge( defaults, financials );
 
-  // tf in-state rate prepopulate (schoolData.tfinsprep)
-  if ( data.control === 'public' && data.program === 'grad' ) {
-    data.TFInState = data.tuitiongradins;
-  } else {
-    data.TFInState = data.tuitionUndergradInState;
-  }
-
-  // Set unsubsidized rate
-  // (there is a difference between grad and undergrad direct loan rates)
-  if ( data.undergrad === true ) {
-    data.unsubsidizedRate = data.unsubsidizedRateUndergrad;
-  } else {
-    data.unsubsidizedRate = data.unsubsidizedRateGrad;
-  }
+  // set rate values
+  rates.inState( data );
+  rates.unsubsidized( data );
 
   // Start calculations
   // Cost of First Year (schoolData.yearOneCosts)
@@ -109,69 +33,16 @@ function studentDebtCalculator( financials ) {
                       data.otherExpenses +
                       data.transportation;
 
-  // SCHOLARSHIPS & GRANTS //
-  // Pell Grants
-  data.pellMax = 0;
-  if ( data.undergrad === true ) {
-    data.pellMax = data.pellCap;
-  }
-  // enforce limits on Pell grants
-  data.pellMax = enforceRange( data.pellMax, 0, data.yearOneCosts );
-  data.pell = enforceRange( data.pell, 0, data.pellMax );
+  // calculate scholarships and grants
+  scholarship( data );
 
-  // Total Grants
-  data.grantsTotal = data.pell + data.scholarships;
-
-  // First Year Net Cost
-  data.firstYearNetCost = data.yearOneCosts - data.grantsTotal;
-
-  // Total Contributions
-  data.savingsTotal = data.savings +
-                      data.family +
-                      data.state529plan +
-                      data.workstudy;
-
-  // grants and savings
-  data.totalgrantsandsavings = data.savingsTotal + data.grantsTotal;
 
   // FEDERAL LOANS //
-  // Perkins Loan
 
-  data.perkinsMax = data.yearOneCosts - data.pell;
-  data.perkinsMax = enforceRange( data.perkinsMax, 0, data.perkinsUnderCap );
-  if ( data.undergrad !== true ) {
-    data.perkinsMax = enforceRange( data.perkinsMax, 0, data.perkinsGradCap );
-  }
-  data.perkins = enforceRange( data.perkins, 0, data.perkinsMax );
-
+  // calculate the perkins loan
+  perkins( data );
   // Subsidized Stafford Loan
-  if ( data.undergrad === false ) {
-    data.staffSubsidizedMax = 0;
-  } else if ( data.program === 'aa' || data.yearInCollege === 1 ) {
-    data.staffSubsidizedMax = data.yearOneCosts - data.pell - data.perkins;
-    data.staffSubsidizedMax = enforceRange(
-      data.staffSubsidizedMax, 0, data.subsidizedCapYearOne );
-  } else if ( data.yearInCollege === 2 ) {
-    data.staffSubsidizedMax = data.yearOneCosts - data.perkins - data.pell;
-    data.staffSubsidizedMax = enforceRange(
-      data.staffSubsidizedMax,
-      0,
-      data.subsidizedCapYearTwo - data.staffSubsidized
-    );
-  } else if ( data.yearInCollege === 3 ) {
-    data.staffSubsidizedMax = data.yearOneCosts - data.perkins - data.pell;
-    data.staffSubsidizedMax = enforceRange(
-      data.staffSubsidizedMax,
-      0,
-      data.subsidizedCapYearThree - data.staffSubsidized
-    );
-  }
-
-  data.staffSubsidized = enforceRange(
-    data.staffSubsidized,
-    0,
-    data.staffSubsidizedMax
-  );
+  subStafford( data );
 
   // unsubsidized loan max for independent students
   if ( data.undergrad === false ) {
@@ -464,7 +335,7 @@ function studentDebtCalculator( financials ) {
 
   // Home Equity Loans at graduation
   data.homeEquityTotal = data.homeEquity * data.homeEquityLoanRate / 12 *
-  (( data.programLength * ( data.programLength + 1 ) / 2 * 12 ) );
+  ( ( data.programLength * ( data.programLength + 1 ) / 2 * 12 ) );
 
   // Debt after 1 yr
   data.loanDebtYearOne = data.perkins +
