@@ -3,6 +3,7 @@
 var merge = require( './utils/merge' );
 var defaults = require( './default-values' );
 var rates = require( './rates' );
+var yearOneCost = require( './year-one-cost' );
 var scholarship = require( './scholarship' );
 var studentLoans = require( './loans/' );
 var calcDebt = require( './calc-debt.js' );
@@ -23,13 +24,8 @@ function studentDebtCalculator( financials ) {
   rates.inState( data );
   rates.unsubsidized( data );
 
-  // Start calculations
-  // Cost of First Year (schoolData.yearOneCosts)
-  data.yearOneCosts = data.tuitionFees +
-                      data.roomBoard +
-                      data.books +
-                      data.otherExpenses +
-                      data.transportation;
+  // add the value for the cost of the first year
+  yearOneCost( data );
 
   // calculate scholarships and grants
   scholarship( data );
