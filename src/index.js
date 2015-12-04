@@ -5,8 +5,8 @@ var enforceRange = require( './utils/enforce-range.js' );
 var defaults = require( './default-values' );
 var rates = require( './rates' );
 var scholarship = require( './scholarship' );
-var perkins = require( './loans/perkins' );
-var subStafford = require( './loans/subsidized-stafford' );
+var studentLoans = require('./loans/');
+var institution = require( './loans/institution' );
 var calcDebt = require( './calc-debt.js' );
 
 /**
@@ -36,220 +36,9 @@ function studentDebtCalculator( financials ) {
   // calculate scholarships and grants
   scholarship( data );
 
+  // calculate student loans
+  studentLoans( data );
 
-  // FEDERAL LOANS //
-
-  // calculate the perkins loan
-  perkins( data );
-  // Subsidized Stafford Loan
-  subStafford( data );
-
-  // unsubsidized loan max for independent students
-  if ( data.undergrad === false ) {
-    data.staffUnsubsidizedIndepMax = data.yearOneCosts -
-                                    data.pell -
-                                    data.perkins -
-                                    data.staffSubsidized;
-    if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapGrad ) {
-      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapGrad;
-    }
-    if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapGrad -
-      data.staffSubsidized ) {
-      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapGrad -
-                                       data.staffSubsidized;
-    }
-    if ( data.staffUnsubsidizedIndepMax < 0 ) {
-      data.staffUnsubsidizedIndepMax = 0;
-    }
-  } else if ( data.program === 'aa' || data.yearInCollege === 1 ) {
-    data.staffUnsubsidizedIndepMax = data.yearOneCosts -
-                                    data.pell -
-                                    data.perkins -
-                                    data.staffSubsidized;
-    if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearOne -
-       data.staffSubsidized ) {
-      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearOne;
-    }
-    if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearOne -
-      data.staffSubsidized ) {
-      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearOne -
-      data.staffSubsidized;
-    }
-    if ( data.staffUnsubsidizedIndepMax < 0 ) {
-      data.staffUnsubsidizedIndepMax = 0;
-    }
-  } else if ( data.yearInCollege === 2 ) {
-    data.staffUnsubsidizedIndepMax = data.yearOneCosts -
-                                    data.pell -
-                                    data.perkins -
-                                    data.staffSubsidized;
-    if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearTwo -
-      data.staffSubsidized ) {
-      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearTwo;
-    }
-    if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearTwo -
-      data.staffSubsidized ) {
-      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearTwo -
-      data.staffSubsidized;
-    }
-    if ( data.staffUnsubsidizedIndepMax < 0 ) {
-      data.staffUnsubsidizedIndepMax = 0;
-    }
-  } else if ( data.yearInCollege === 3 ) {
-    data.staffUnsubsidizedIndepMax = data.yearOneCosts -
-                                     data.pell -
-                                     data.perkins -
-                                     data.staffSubsidized;
-    if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearThree -
-      data.staffSubsidized ) {
-      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearThree;
-    }
-    if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearThree -
-      data.staffSubsidized ) {
-      data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearThree -
-      data.staffSubsidized;
-    }
-    if ( data.staffUnsubsidizedIndepMax < 0 ) {
-      data.staffUnsubsidizedIndepMax = 0;
-    }
-  }
-  // unsubsidized loan max for dependent students
-  if ( data.undergrad === false ) {
-    data.staffUnsubsidizedDepMax = data.yearOneCosts -
-                                   data.pell -
-                                   data.perkins -
-                                   data.staffSubsidized;
-    if ( data.staffUnsubsidizedDepMax > data.unsubsidizedCapGrad -
-      data.staffSubsidized ) {
-      data.staffUnsubsidizedDepMax = data.unsubsidizedCapGrad -
-                                     data.staffSubsidized;
-    }
-    if ( data.staffUnsubsidizedDepMax < 0 ) {
-      data.staffUnsubsidizedDepMax = 0;
-    }
-  } else if ( data.program === 'aa' || data.yearInCollege === 1 ) {
-    data.staffUnsubsidizedDepMax = data.yearOneCosts -
-                                   data.pell -
-                                   data.perkins -
-                                   data.staffSubsidized;
-    if ( data.staffUnsubsidizedDepMax > data.unsubsidizedCapYearOne -
-      data.staffSubsidized ) {
-      data.staffUnsubsidizedDepMax = data.unsubsidizedCapYearOne -
-                                     data.staffSubsidized;
-    }
-    if ( data.staffUnsubsidizedDepMax < 0 ) {
-      data.staffUnsubsidizedDepMax = 0;
-    }
-  } else if ( data.yearInCollege === 2 ) {
-    data.staffUnsubsidizedDepMax = data.yearOneCosts -
-                                   data.pell -
-                                   data.perkins -
-                                   data.staffSubsidized;
-    if ( data.staffUnsubsidizedDepMax > data.unsubsidizedCapYearTwo -
-      data.staffSubsidized ) {
-      data.staffUnsubsidizedDepMax = data.unsubsidizedCapYearTwo -
-                                     data.staffSubsidized;
-    }
-    if ( data.staffUnsubsidizedDepMax < 0 ) {
-      data.staffUnsubsidizedDepMax = 0;
-    }
-  } else if ( data.yearInCollege === 3 ) {
-    data.staffUnsubsidizedDepMax = data.yearOneCosts -
-                                   data.pell -
-                                   data.perkins -
-                                   data.staffSubsidized;
-    if ( data.staffUnsubsidizedDepMax > data.unsubsidizedCapYearThree -
-      data.staffSubsidized ) {
-      data.staffUnsubsidizedDepMax = data.unsubsidizedCapYearThree -
-                                     data.staffSubsidized;
-    }
-    if ( data.staffUnsubsidizedDepMax < 0 ) {
-      data.staffUnsubsidizedDepMax = 0;
-    }
-  }
-
-  // Unsubsidized Stafford Loans
-  if ( data.depend === 'dependent' ) {
-    data.staffUnsubsidizedMax = data.staffUnsubsidizedDepMax;
-  } else {
-    data.staffUnsubsidizedMax = data.staffUnsubsidizedIndepMax;
-  }
-  data.staffUnsubsidizedMax = enforceRange(
-    data.staffUnsubsidizedMax, 0, false );
-  data.staffUnsubsidized = enforceRange(
-    data.staffUnsubsidized, 0, data.staffUnsubsidizedMax );
-
-  // Gradplus
-  if ( data.undergrad === true ) {
-    data.gradplusMax = 0;
-  } else {
-    data.gradplusMax = data.firstYearNetCost -
-                      data.perkins -
-                      data.staffSubsidized -
-                      data.staffUnsubsidized;
-  }
-  data.gradplusMax = enforceRange( data.gradplusMax, 0, false );
-  data.gradplus = enforceRange( data.gradplus, 0, data.gradplusMax );
-
-  // Federal Total Loan
-  data.federalTotal = data.perkins +
-                      data.staffSubsidized +
-                      data.staffUnsubsidized +
-                      data.gradplus;
-
-  // PRIVATE LOANS //
-  // Institution Loans
-  data.institutionalLoanMax = data.firstYearNetCost -
-                              data.perkins -
-                              data.staffSubsidized -
-                              data.staffUnsubsidized -
-                              data.parentplus -
-                              data.gradplus -
-                              data.homeEquity;
-
-  // maximum cannot be less than 0
-  data.institutionalLoanMax = enforceRange(
-    data.institutionalLoanMax, 0, false );
-
-  // enforce institutional loan limits
-  data.institutionalLoan = enforceRange(
-    data.institutionalLoan,
-    0,
-    data.institutionalLoanMax
-  );
-
-  // Other Loans
-  data.privateLoanMax = data.firstYearNetCost -
-                        data.perkins -
-                        data.staffSubsidized -
-                        data.staffUnsubsidized -
-                        data.institutionalLoan -
-                        data.gradplus;
-
-  // maximum cannot be less than 0
-  data.privateLoanMax = enforceRange( data.privateLoanMax, 0, false );
-
-  // enforce "other private" loan limits
-  data.privateLoan = enforceRange( data.privateLoan, 0, data.privateLoanMax );
-
-  // Private Loan Total
-  data.privateTotal = data.privateLoan + data.institutionalLoan;
-
-  // gap
-  data.gap = data.firstYearNetCost -
-             data.perkins -
-             data.staffSubsidized -
-             data.staffUnsubsidized -
-             data.workstudy -
-             data.savings -
-             data.family -
-             data.state529plan -
-             data.privateLoan -
-             data.institutionalLoan -
-             data.parentplus -
-             data.homeEquity;
-
-  // ===Loan Calculation===
   // Borrowing Total
   data.borrowingtotal = data.privateTotal + data.federalTotal;
 
@@ -374,4 +163,5 @@ function studentDebtCalculator( financials ) {
   return data;
 
 }
+
 module.exports = studentDebtCalculator;
