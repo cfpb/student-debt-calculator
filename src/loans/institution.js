@@ -1,6 +1,6 @@
 'use strict';
 
-var enforceRange = require('../utils/enforce-range');
+var enforceRange = require( '../utils/enforce-range' );
 
  /**
   * calculate institution loans and enforece range

@@ -1,12 +1,10 @@
 'use strict';
 
 var merge = require( './utils/merge' );
-var enforceRange = require( './utils/enforce-range.js' );
 var defaults = require( './default-values' );
 var rates = require( './rates' );
 var scholarship = require( './scholarship' );
-var studentLoans = require('./loans/');
-var institution = require( './loans/institution' );
+var studentLoans = require( './loans/' );
 var calcDebt = require( './calc-debt.js' );
 
 /**

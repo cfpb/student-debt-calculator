@@ -1,6 +1,6 @@
 'use strict';
 
-var enforceRange = require('../utils/enforce-range');
+var enforceRange = require( '../utils/enforce-range' );
 
  /**
   * calculate grad plus loans
@@ -22,8 +22,9 @@ function gradPlus( data ) {
                     data.staffSubsidized -
                     data.staffUnsubsidized;
   data.gradplusMax = enforceRange( data.gradplusMax, 0, false );
-  // currently a data.gradplus value must be assigned
-  // if data.gradplus is less than the max the value is 0 due to the enforced range
+  // data.gradplus value must be assigned
+  // if data.gradplus is less than the max
+  // the value is 0 due to the enforced range
   data.gradplus = enforceRange( data.gradplus, 0, data.gradplusMax );
 
   return data;

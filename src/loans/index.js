@@ -7,12 +7,10 @@ var gradPlus = require( './grad-plus' );
 var institution = require( './institution' );
 var privateLoans = require( './private' );
 
-var enforceRange = require('../utils/enforce-range');
-
  /**
   * calculate total student loans
   * @param { object } data - our data object
-  * @returns { object } the data object with perkins data added
+  * @returns { object } the data object with student loan data
   */
 function studentLoans( data ) {
 
@@ -30,7 +28,11 @@ function studentLoans( data ) {
   return data;
 }
 
-
+/**
+ * calculate overall loan totals
+ * @param { object } data - our data object
+ * @returns { object } the data object totals for federal and gap
+ */
 function loanTotals( data ) {
 
   // Federal Total Loan
@@ -52,6 +54,8 @@ function loanTotals( data ) {
              data.institutionalLoan -
              data.parentplus -
              data.homeEquity;
+
+  return data;
 }
 
 module.exports = studentLoans;
