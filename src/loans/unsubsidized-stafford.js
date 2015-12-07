@@ -94,50 +94,41 @@ unSubMax.independent = function( data ) {
 * @returns { object } the data object with unsub max data     added
 */
 unSubMax.dependent = function( data ) {
+
+  data.staffUnsubsidizedDepMax = data.yearOneCosts -
+                                 data.pell -
+                                 data.perkins -
+                                 data.staffSubsidized;
+
+  if ( data.staffUnsubsidizedDepMax < 0 ) {
+    data.staffUnsubsidizedDepMax = 0;
+    return data;
+  }
+
   if ( data.undergrad === false ) {
-    data.staffUnsubsidizedDepMax = data.yearOneCosts -
-                                   data.pell -
-                                   data.perkins -
-                                   data.staffSubsidized;
     if ( data.staffUnsubsidizedDepMax > data.unsubsidizedCapGrad -
       data.staffSubsidized ) {
       data.staffUnsubsidizedDepMax = data.unsubsidizedCapGrad -
                                      data.staffSubsidized;
     }
   } else if ( data.program === 'aa' || data.yearInCollege === 1 ) {
-    data.staffUnsubsidizedDepMax = data.yearOneCosts -
-                                   data.pell -
-                                   data.perkins -
-                                   data.staffSubsidized;
     if ( data.staffUnsubsidizedDepMax > data.unsubsidizedCapYearOne -
       data.staffSubsidized ) {
       data.staffUnsubsidizedDepMax = data.unsubsidizedCapYearOne -
                                      data.staffSubsidized;
     }
   } else if ( data.yearInCollege === 2 ) {
-    data.staffUnsubsidizedDepMax = data.yearOneCosts -
-                                   data.pell -
-                                   data.perkins -
-                                   data.staffSubsidized;
     if ( data.staffUnsubsidizedDepMax > data.unsubsidizedCapYearTwo -
       data.staffSubsidized ) {
       data.staffUnsubsidizedDepMax = data.unsubsidizedCapYearTwo -
                                      data.staffSubsidized;
     }
   } else if ( data.yearInCollege === 3 ) {
-    data.staffUnsubsidizedDepMax = data.yearOneCosts -
-                                   data.pell -
-                                   data.perkins -
-                                   data.staffSubsidized;
     if ( data.staffUnsubsidizedDepMax > data.unsubsidizedCapYearThree -
       data.staffSubsidized ) {
       data.staffUnsubsidizedDepMax = data.unsubsidizedCapYearThree -
                                      data.staffSubsidized;
     }
-  }
-
-  if ( data.staffUnsubsidizedDepMax < 0 ) {
-    data.staffUnsubsidizedDepMax = 0;
   }
 
   return data;
