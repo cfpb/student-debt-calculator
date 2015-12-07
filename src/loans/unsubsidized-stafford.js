@@ -35,11 +35,12 @@ function unSubStafford( data ) {
 * @returns { object } the data object with unsub max data added
 */
 unSubMax.independent = function( data ) {
+  data.staffUnsubsidizedIndepMax = data.yearOneCosts -
+                                   data.pell -
+                                   data.perkins -
+                                   data.staffSubsidized;
+
   if ( data.undergrad === false ) {
-    data.staffUnsubsidizedIndepMax = data.yearOneCosts -
-                                    data.pell -
-                                    data.perkins -
-                                    data.staffSubsidized;
     if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapGrad ) {
       data.staffUnsubsidizedIndepMax = data.unsubsidizedCapGrad;
     }
@@ -48,14 +49,7 @@ unSubMax.independent = function( data ) {
       data.staffUnsubsidizedIndepMax = data.unsubsidizedCapGrad -
                                        data.staffSubsidized;
     }
-    if ( data.staffUnsubsidizedIndepMax < 0 ) {
-      data.staffUnsubsidizedIndepMax = 0;
-    }
   } else if ( data.program === 'aa' || data.yearInCollege === 1 ) {
-    data.staffUnsubsidizedIndepMax = data.yearOneCosts -
-                                    data.pell -
-                                    data.perkins -
-                                    data.staffSubsidized;
     if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearOne -
        data.staffSubsidized ) {
       data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearOne;
@@ -65,14 +59,7 @@ unSubMax.independent = function( data ) {
       data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearOne -
       data.staffSubsidized;
     }
-    if ( data.staffUnsubsidizedIndepMax < 0 ) {
-      data.staffUnsubsidizedIndepMax = 0;
-    }
   } else if ( data.yearInCollege === 2 ) {
-    data.staffUnsubsidizedIndepMax = data.yearOneCosts -
-                                    data.pell -
-                                    data.perkins -
-                                    data.staffSubsidized;
     if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearTwo -
       data.staffSubsidized ) {
       data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearTwo;
@@ -82,14 +69,7 @@ unSubMax.independent = function( data ) {
       data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearTwo -
       data.staffSubsidized;
     }
-    if ( data.staffUnsubsidizedIndepMax < 0 ) {
-      data.staffUnsubsidizedIndepMax = 0;
-    }
   } else if ( data.yearInCollege === 3 ) {
-    data.staffUnsubsidizedIndepMax = data.yearOneCosts -
-                                     data.pell -
-                                     data.perkins -
-                                     data.staffSubsidized;
     if ( data.staffUnsubsidizedIndepMax > data.unsubsidizedCapIndepYearThree -
       data.staffSubsidized ) {
       data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearThree;
@@ -99,9 +79,10 @@ unSubMax.independent = function( data ) {
       data.staffUnsubsidizedIndepMax = data.unsubsidizedCapIndepYearThree -
       data.staffSubsidized;
     }
-    if ( data.staffUnsubsidizedIndepMax < 0 ) {
-      data.staffUnsubsidizedIndepMax = 0;
-    }
+  }
+
+  if ( data.staffUnsubsidizedIndepMax < 0 ) {
+    data.staffUnsubsidizedIndepMax = 0;
   }
 
   return data;
@@ -123,9 +104,6 @@ unSubMax.dependent = function( data ) {
       data.staffUnsubsidizedDepMax = data.unsubsidizedCapGrad -
                                      data.staffSubsidized;
     }
-    if ( data.staffUnsubsidizedDepMax < 0 ) {
-      data.staffUnsubsidizedDepMax = 0;
-    }
   } else if ( data.program === 'aa' || data.yearInCollege === 1 ) {
     data.staffUnsubsidizedDepMax = data.yearOneCosts -
                                    data.pell -
@@ -135,9 +113,6 @@ unSubMax.dependent = function( data ) {
       data.staffSubsidized ) {
       data.staffUnsubsidizedDepMax = data.unsubsidizedCapYearOne -
                                      data.staffSubsidized;
-    }
-    if ( data.staffUnsubsidizedDepMax < 0 ) {
-      data.staffUnsubsidizedDepMax = 0;
     }
   } else if ( data.yearInCollege === 2 ) {
     data.staffUnsubsidizedDepMax = data.yearOneCosts -
@@ -149,9 +124,6 @@ unSubMax.dependent = function( data ) {
       data.staffUnsubsidizedDepMax = data.unsubsidizedCapYearTwo -
                                      data.staffSubsidized;
     }
-    if ( data.staffUnsubsidizedDepMax < 0 ) {
-      data.staffUnsubsidizedDepMax = 0;
-    }
   } else if ( data.yearInCollege === 3 ) {
     data.staffUnsubsidizedDepMax = data.yearOneCosts -
                                    data.pell -
@@ -162,9 +134,10 @@ unSubMax.dependent = function( data ) {
       data.staffUnsubsidizedDepMax = data.unsubsidizedCapYearThree -
                                      data.staffSubsidized;
     }
-    if ( data.staffUnsubsidizedDepMax < 0 ) {
-      data.staffUnsubsidizedDepMax = 0;
-    }
+  }
+
+  if ( data.staffUnsubsidizedDepMax < 0 ) {
+    data.staffUnsubsidizedDepMax = 0;
   }
 
   return data;
