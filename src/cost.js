@@ -7,6 +7,13 @@
   */
 function cost( data ) {
 
+  // cost of attendance
+  data.costOfAttendance = data.tuitionFees +
+                        data.roomBoard +
+                        data.books +
+                        data.otherExpenses +
+                        data.transportation;
+
   // Borrowing Total
   data.borrowingtotal = data.privateTotal + data.federalTotal;
 
