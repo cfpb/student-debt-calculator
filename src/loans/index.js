@@ -39,6 +39,7 @@ function loanTotals( data ) {
   data.federalTotal = data.perkins +
                       data.staffSubsidized +
                       data.staffUnsubsidized +
+                      data.directPlus +
                       data.gradplus;
 
   // gap
