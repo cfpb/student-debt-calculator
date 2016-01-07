@@ -11,7 +11,6 @@ describe( 'calculates costs', function() {
     data.grantsTotal = 4000;
     data.savingsTotal = 2000;
     cost( data );
-    console.log(data.remainingcost);
     expect( data.remainingcost ).to.equal( 0 );
   });
 

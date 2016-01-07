@@ -14,5 +14,13 @@ describe( 'calculates debt totals', function() {
     expect( data.overborrowing ).to.equal( 2000 );
   });
 
-
+  it ( 'handles multiple private loans', function() {
+    data.privateLoanMulti = [
+        { 'amount': 2000, 'rate': .079 },
+        { 'amount': 3000, 'rate': .061 },
+        { 'amount': 4000, 'rate': .041 }
+      ];
+    debtTotal( data );
+    expect( data.privateLoanTotal ).to.equal( 9896 + 14196 + 17968 );
+  });
 });
