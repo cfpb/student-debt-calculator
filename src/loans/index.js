@@ -35,6 +35,9 @@ function studentLoans( data ) {
  */
 function loanTotals( data ) {
 
+  // Private Loan Total
+  data.privateTotal = data.privateLoan + data.institutionalLoan;
+
   // Federal Total Loan
   data.federalTotal = data.perkins +
                       data.staffSubsidized +

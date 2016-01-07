@@ -15,7 +15,9 @@ function cost( data ) {
                         data.transportation;
 
   // Borrowing Total
-  data.borrowingtotal = data.privateTotal + data.federalTotal;
+  data.borrowingtotal = data.privateLoan +
+                        data.institutionalLoan +
+                        data.federalTotal;
 
   // Out of Pocket Total
   data.totalOutOfPocket = data.grantsTotal + data.savingsTotal;
