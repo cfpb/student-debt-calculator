@@ -9,27 +9,8 @@ var enforceRange = require( '../utils/enforce-range' );
   */
 function institution( data ) {
 
-  data.institutionalLoanMax = data.firstYearNetCost -
-                              data.perkins -
-                              data.staffSubsidized -
-                              data.staffUnsubsidized -
-                              data.parentplus -
-                              data.gradplus -
-                              data.homeEquity;
-
-  // maximum cannot be less than 0
-  data.institutionalLoanMax = enforceRange(
-    data.institutionalLoanMax,
-    0,
-    false
-  );
-
   // enforce institutional loan limits
-  data.institutionalLoan = enforceRange(
-    data.institutionalLoan,
-    0,
-    data.institutionalLoanMax
-  );
+  data.institutionalLoan = enforceRange( data.institutionalLoan, 0, false );
 
   return data;
 }
