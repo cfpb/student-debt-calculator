@@ -8,6 +8,7 @@ var calcDebt = require( './calc-debt.js' );
   * @returns { object } the data object with total debt
   */
 function debtTotal( data ) {
+  var multiLength = data.privateLoanMulti.length;
 
   // Borrowing over cost of attendance
   data.overborrowing = 0;
@@ -60,8 +61,20 @@ function debtTotal( data ) {
   data.parentplusTotal = data.parentplusWithFee * data.programLength;
 
   // Private Loan debt at graduation
-  data.privateLoanTotal = calcDebt( data.privateLoan,
-    data.privateLoanRate, data.programLength, data.deferPeriod );
+  if ( multiLength > 0 ) {
+    // Multiple Private Loans:
+    data.privateLoanTotal = 0;
+    for ( var x = 0; x < multiLength; x++ ) {
+      var loan = data.privateLoanMulti[x],
+          debt = calcDebt( loan.amount,
+            loan.rate, data.programLength, data.deferPeriod );
+      data.privateLoanTotal += debt;
+    }
+  } else {
+    // Single Private Loan:
+    data.privateLoanTotal = calcDebt( data.privateLoan,
+      data.privateLoanRate, data.programLength, data.deferPeriod );
+  }
 
   // Institutional Loan debt at graduation
   data.institutionalLoanTotal = calcDebt( data.institutionalLoan,

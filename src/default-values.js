@@ -18,6 +18,7 @@ module.exports = {
   staffSubsidized: 0,
   staffUnsubsidized: 0,
   privateLoan: 0,
+  privateLoanMulti: [],
   institutionalLoan: 0,
   parentplus: 0,
   gradplus: 0,

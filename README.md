@@ -88,6 +88,7 @@ These values are deducted from cost of attendance.
 |-----|-----|-----|-----|
 |`financials.institutionalLoanRate` | number | Loan rate on institutional loan, expressed as a decimal | 0.079 |
 |`financials.privateLoan` | number | Amount of private loan | 0 |
+|`financials.privateLoanMulti`| Array | Used for multiple private loans. This array should contain objects, with each object having two properties - `amount` for the amount of the loan, and `rate` for the loan's rate expressed as a decimal. Example: `[ { 'amount': 3000, 'rate': 0.061 }, { 'amount': 3600, 'rate': 0.059 } ]` __Important note:__ If `privateLoanMulti` is not empty, then the values of `privateLoanMulti` are used and the value of `privateLoan` is ignored! | `[]` (empty array) |
 |`financials.homeEquity` | number | Amount of home equity loan | 0 |
 
 #### Loan rates

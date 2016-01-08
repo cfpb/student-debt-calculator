@@ -35,6 +35,7 @@ describe( 'overall debt calculations', function() {
     parentplusrate: 0.0721,
     plusOriginationFee: 1.04292,
     homeEquityLoanRate: 0.079,
+    privateLoanMulti: []
   };
 
   it( '...calculates private loans.', function() {
