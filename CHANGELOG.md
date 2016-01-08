@@ -1,6 +1,11 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 0.1.0 2016-01-08
+- added handling for multiple private loans array (data.privateLoanMulti)
+- added test for multiple private loans
+- removed maximums for institutional and private loans based on "left to pay"
+
 ## 0.5.0 2015-12-01
 
 ### Added
