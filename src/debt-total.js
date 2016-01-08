@@ -61,8 +61,8 @@ function debtTotal( data ) {
   data.parentplusTotal = data.parentplusWithFee * data.programLength;
 
   // Private Loan debt at graduation
-  // Multiple Private Loans:
   if ( multiLength > 0 ) {
+    // Multiple Private Loans:
     data.privateLoanTotal = 0;
     for ( var x = 0; x < multiLength; x++ ) {
       var loan = data.privateLoanMulti[x],
@@ -70,10 +70,8 @@ function debtTotal( data ) {
             loan.rate, data.programLength, data.deferPeriod );
       data.privateLoanTotal += debt;
     }
-  }
-
-  // Single Private Loan:
-  else {
+  } else {
+    // Single Private Loan:
     data.privateLoanTotal = calcDebt( data.privateLoan,
       data.privateLoanRate, data.programLength, data.deferPeriod );
   }
