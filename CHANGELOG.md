@@ -1,6 +1,9 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 0.1.1 2016-01-08
+- added deferPeriod to privateLoanMulti (each private loan can have an individual deferral period)
+
 ## 0.1.0 2016-01-08
 - added handling for multiple private loans array (data.privateLoanMulti)
 - added test for multiple private loans
