@@ -38,6 +38,13 @@ function loanTotals( data ) {
   // Private Loan Total
   data.privateTotal = data.privateLoan + data.institutionalLoan;
 
+  if ( data.privateLoanMulti.length > 0 ) {
+    data.privateTotal = 0;
+    for ( var x = 0; x < data.privateLoanMulti.length; x++ ) {
+      data.privateTotal += data.privateLoanMulti[x]['amount'];
+    }
+  }
+
   // Federal Total Loan
   data.federalTotal = data.perkins +
                       data.staffSubsidized +

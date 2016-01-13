@@ -1,7 +1,10 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
-## 0.1.1 2016-01-08
+## 0.1.2 2016-01-13
+- fixed bug with totals of multiple private loans
+
+## 0.1.1 2016-01-13
 - added deferPeriod to privateLoanMulti (each private loan can have an individual deferral period)
 
 ## 0.1.0 2016-01-08

@@ -22,5 +22,5 @@ describe( 'calculates debt totals', function() {
       ];
     debtTotal( data );
     expect( data.privateLoanTotal ).to.equal( 9896 + 14196 + 17968 );
-  });
+    });
 });
