@@ -18,7 +18,8 @@ function scholarships( data ) {
   data.pell = enforceRange( data.pell, 0, data.pellMax );
 
   // Total Grants
-  data.grantsTotal = data.pell + data.scholarships;
+  data.grantsTotal = data.pell + data.scholarships +
+                     data.GIBill + data.militaryTuitionAssistance;
 
   // First Year Net Cost
   data.firstYearNetCost = data.yearOneCosts - data.grantsTotal;

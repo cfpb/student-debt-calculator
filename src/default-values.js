@@ -5,12 +5,16 @@
  * this houses all of the default values that could be supplied
  */
 module.exports = {
+  // Costs of attendance
   tuitionFees: 0,
   roomBoard: 0,
   books: 0,
   otherExpenses: 0,
   transportation: 0,
+  // Scholarships and grants
   scholarships: 0,
+  GIBill: 0,
+  militaryTuitionAssistance: 0,
   pell: 0,
   perkins: 0,
   savings: 0,
