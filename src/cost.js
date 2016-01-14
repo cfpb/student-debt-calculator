@@ -15,20 +15,18 @@ function cost( data ) {
                         data.transportation;
 
   // Borrowing Total
-  data.borrowingtotal = data.privateLoan +
-                        data.institutionalLoan +
-                        data.federalTotal;
+  data.borrowingTotal = data.privateTotal + data.federalTotal;
 
   // Out of Pocket Total
-  data.totalOutOfPocket = data.grantsTotal + data.savingsTotal;
+  data.grantsSavingsTotal = data.grantsTotal + data.savingsTotal;
 
   // Money for College Total
-  data.moneyforcollege = data.totalOutOfPocket + data.borrowingtotal;
+  data.moneyForCollege = data.grantsSavingsTotal + data.borrowingTotal;
 
-  // remainingcost -- "Left to Pay"
-  data.remainingcost = data.firstYearNetCost - data.totalOutOfPocket;
-  if ( data.remainingcost < 0 ) {
-    data.remainingcost = 0;
+  // remainingCost -- "Left to Pay"
+  data.remainingCost = data.firstYearNetCost - data.grantsSavingsTotal;
+  if ( data.remainingCost < 0 ) {
+    data.remainingCost = 0;
   }
 
   return data;

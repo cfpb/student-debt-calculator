@@ -8,8 +8,8 @@ describe( 'calculates debt totals', function() {
 
   it( 'accomodates for overborrowing', function() {
     data.yearOneCosts = 20000;
-    data.outofpockettotal = 10000;
-    data.borrowingtotal = 12000;
+    data.grantsSavingsTotal = 10000;
+    data.borrowingTotal = 12000;
     debtTotal( data );
     expect( data.overborrowing ).to.equal( 2000 );
   });
@@ -21,6 +21,6 @@ describe( 'calculates debt totals', function() {
         { 'amount': 4000, 'rate': .041, 'deferPeriod': 6 }
       ];
     debtTotal( data );
-    expect( data.privateLoanTotal ).to.equal( 9896 + 14196 + 17968 );
+    expect( data.privateLoanDebt ).to.equal( 9896 + 14196 + 17968 );
     });
 });
