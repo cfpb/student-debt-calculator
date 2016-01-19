@@ -13,6 +13,6 @@ describe( 'student loan functions', function() {
         { 'amount': 4000, 'rate': .041, 'deferPeriod': 6 }
       ];
     loans( data );
-    expect( data.privateTotal ).to.equal( 9000 );
+    expect( data.privateLoanTotal ).to.equal( 9000 );
   });
 });

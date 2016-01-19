@@ -15,8 +15,8 @@ describe( 'overall debt calculations', function() {
     savings: 0,
     family: 0,
     perkins: 0,
-    staffSubsidized: 0,
-    staffUnsubsidized: 0,
+    directSubsidized: 0,
+    directUnsubsidized: 0,
     institutionalLoan: 0,
     privateLoan: 13750,
     undergrad: true,
@@ -60,34 +60,35 @@ describe( 'overall debt calculations', function() {
     expect( debtCalc( financials ).totalDebt ).to.equal( 22000 );
   });
 
-  it( '...calculates Stafford subsidized loans.', function() {
+  it( '...calculates Direct subsidized loans.', function() {
     financials.perkins = 0;
-    financials.staffSubsidized = 3500;
+    financials.directSubsidized = 3500;
     expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 14150 );
   });
 
-  it( '...enforces Stafford subsidized loan limit.', function() {
+  it( '...enforces Direct subsidized loan limit.', function() {
     financials.perkins = 0;
-    financials.staffSubsidized = 999999;
+    financials.directSubsidized = 999999;
+    debtCalc( financials );
     expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 14150 );
   });
 
-  it( '...calculates Stafford unsubsidized loans.', function() {
-    financials.staffSubsidized = 0;
-    financials.staffUnsubsidized = 9500;
+  it( '...calculates Direct unsubsidized loans.', function() {
+    financials.directSubsidized = 0;
+    financials.directUnsubsidized = 9500;
     expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 43777 );
   });
 
-  it( '...enforces Stafford unsubsidized loan limit.', function() {
-    financials.staffSubsidized = 0;
-    financials.staffUnsubsidized = 999999;
+  it( '...enforces Direct unsubsidized loan limit.', function() {
+    financials.directSubsidized = 0;
+    financials.directUnsubsidized = 999999;
     expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 43777 );
   });
 
   it( '...properly calculates multiple loans.', function() {
     financials.perkins = 1000;
-    financials.staffSubsidized = 2000;
-    financials.staffUnsubsidized = 3000;
+    financials.directSubsidized = 2000;
+    financials.directUnsubsidized = 3000;
     financials.institutionalLoan = 1500;
     financials.privateLoan = 2500;
     expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 45702 );

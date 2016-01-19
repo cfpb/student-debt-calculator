@@ -19,8 +19,8 @@ function gradPlus( data ) {
   // calculate the grad plus max and range for grad students
   data.gradplusMax = data.firstYearNetCost -
                     data.perkins -
-                    data.staffSubsidized -
-                    data.staffUnsubsidized;
+                    data.directSubsidized -
+                    data.directUnsubsidized;
   data.gradplusMax = enforceRange( data.gradplusMax, 0, false );
   // data.gradplus value must be assigned
   // if data.gradplus is less than the max

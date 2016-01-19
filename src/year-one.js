@@ -24,8 +24,8 @@ yearOne.cost = function( data ) {
  */
 yearOne.debt = function( data ) {
   data.loanDebtYearOne = data.perkins +
-                        data.staffSubsidized +
-                        data.staffUnsubsidized +
+                        data.directSubsidized +
+                        data.directUnsubsidized +
                         data.gradplus +
                         data.privateLoan +
                         data.institutionalLoan +

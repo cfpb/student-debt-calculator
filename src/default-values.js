@@ -20,8 +20,8 @@ module.exports = {
   family: 0,
   // federal loans
   perkins: 0,
-  staffSubsidized: 0,
-  staffUnsubsidized: 0,
+  directSubsidized: 0,
+  directUnsubsidized: 0,
   parentplus: 0,
   gradplus: 0,
   // private loans
@@ -40,11 +40,11 @@ module.exports = {
   // Perkins loan settings
   perkinsUnderCap: 5500,
   perkinsGradCap: 8000,
-  // Stafford loans settings
-  staffSubsidizedMax: 0,
-  staffUnsubsidizedIndepMax: 0,
-  staffUnsubsidizedDepMax: 0,
-  staffUnsubsidizedWithFee: 0,
+  // Direct loans settings
+  directSubsidizedMax: 0,
+  directUnsubsidizedIndepMax: 0,
+  directUnsubsidizedDepMax: 0,
+  directUnsubsidizedWithFee: 0,
   // Length of program, in years
   programLength: 4,
   // Program is undergrad
