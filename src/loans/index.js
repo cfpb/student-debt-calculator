@@ -35,15 +35,16 @@ function studentLoans( data ) {
  */
 function loanTotals( data ) {
 
-  // Private Loan Total
-  data.privateTotal = data.privateLoan + data.institutionalLoan;
 
   if ( data.privateLoanMulti.length > 0 ) {
-    data.privateTotal = 0;
+    data.privateLoan = 0;
     for ( var x = 0; x < data.privateLoanMulti.length; x++ ) {
-      data.privateTotal += data.privateLoanMulti[x]['amount'];
+      data.privateLoan += data.privateLoanMulti[x]['amount'];
     }
   }
+
+  // Private Loan Total
+  data.privateTotal = data.privateLoan + data.institutionalLoan;
 
   // Federal Total Loan
   data.federalTotal = data.perkins +
