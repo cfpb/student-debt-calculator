@@ -1,6 +1,9 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 1.0.2 2016-01-20
+- Change to remainingCost calculation
+
 ## 1.0.1 2016-01-20
 - Fixed incorrect calculations of totals
 - Removed old reference to totalgrantsandsavings (now grantsSavingsTotal)
