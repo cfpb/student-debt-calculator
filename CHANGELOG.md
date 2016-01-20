@@ -1,7 +1,11 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
-## 1.0.0
+## 1.0.1 2016-01-20
+- Fixed incorrect calculations of totals
+- Removed old reference to totalgrantsandsavings (now grantsSavingsTotal)
+
+## 1.0.0 2016-01-20
 - Changes to many variable names (reason for version change)
 - Added GIBill and militaryTuitionAssist as parameters, included them in grantsTotal
 - Fix for private loan total
