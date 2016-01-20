@@ -1,6 +1,13 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 1.0.0
+- Changes to many variable names (reason for version change)
+- Added GIBill and militaryTuitionAssist as parameters, included them in grantsTotal
+- Fix for private loan total
+- added test for multiple private loan totals
+- References to Stafford loan (staff) updated to Direct loan
+
 ## 0.1.2 2016-01-13
 - fixed bug with totals of multiple private loans
 
