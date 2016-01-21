@@ -3,11 +3,11 @@
 var enforceRange = require( '../utils/enforce-range' );
 
  /**
-  * calculate subsidized Stafford loans
+  * calculate subsidized Direct loans
   * @param { object } data - our data object
   * @returns { object } the data object with perkins data added
   */
-function subStafford( data ) {
+function subDirect( data ) {
   var year = data.yearInCollege;
 
   // aa programs are calculated the same as year 1
@@ -16,16 +16,16 @@ function subStafford( data ) {
   }
 
   if ( data.undergrad === false ) {
-    data.staffSubsidizedMax = 0;
+    data.directSubsidizedMax = 0;
   } else {
-    data.staffSubsidizedMax = data.yearOneCosts - data.pell - data.perkins;
-    data.staffSubsidizedMax = calculateMaxRange( year, data );
+    data.directSubsidizedMax = data.yearOneCosts - data.pell - data.perkins;
+    data.directSubsidizedMax = calculateMaxRange( year, data );
   }
 
-  data.staffSubsidized = enforceRange(
-    data.staffSubsidized,
+  data.directSubsidized = enforceRange(
+    data.directSubsidized,
     0,
-    data.staffSubsidizedMax
+    data.directSubsidizedMax
   );
 
   return data;
@@ -38,22 +38,22 @@ function subStafford( data ) {
  * @returns { number } range enforced number
  */
 function calculateMaxRange( year, data ) {
-  var range = data.staffSubsidizedMax;
+  var range = data.directSubsidizedMax;
   if ( year === 1 ) {
     range = data.subsidizedCapYearOne;
   }
   if ( year === 2 ) {
-    range = data.subsidizedCapYearTwo - data.staffSubsidized;
+    range = data.subsidizedCapYearTwo - data.directSubsidized;
   }
   if ( year === 3 ) {
-    range = data.subsidizedCapYearThree - data.staffSubsidized;
+    range = data.subsidizedCapYearThree - data.directSubsidized;
   }
   return enforceRange(
-    data.staffSubsidizedMax,
+    data.directSubsidizedMax,
     0,
     range
   );
 
 }
 
-module.exports = subStafford;
+module.exports = subDirect;

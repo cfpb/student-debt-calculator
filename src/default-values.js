@@ -5,46 +5,53 @@
  * this houses all of the default values that could be supplied
  */
 module.exports = {
+  // Costs of attendance
   tuitionFees: 0,
   roomBoard: 0,
   books: 0,
   otherExpenses: 0,
   transportation: 0,
+  // Scholarships, grants, and personal contributions
   scholarships: 0,
+  GIBill: 0,
+  militaryTuitionAssistance: 0,
   pell: 0,
-  perkins: 0,
   savings: 0,
   family: 0,
-  staffSubsidized: 0,
-  staffUnsubsidized: 0,
+  // federal loans
+  perkins: 0,
+  directSubsidized: 0,
+  directUnsubsidized: 0,
+  parentplus: 0,
+  gradplus: 0,
+  // private loans
   privateLoan: 0,
   privateLoanMulti: [],
   institutionalLoan: 0,
-  parentplus: 0,
-  gradplus: 0,
   state529plan: 0,
   workstudy: 0,
   homeEquity: 0,
-  programLength: 4,
   // Loan rate defaults
   institutionalLoanRate: 0.079,
   privateLoanRate: 0.079,
   // Pell grant settings
   pellMax: 0,
   pellCap: 5730,
+  // Perkins loan settings
+  perkinsUnderCap: 5500,
+  perkinsGradCap: 8000,
+  // Direct loans settings
+  directSubsidizedMax: 0,
+  directUnsubsidizedIndepMax: 0,
+  directUnsubsidizedDepMax: 0,
+  directUnsubsidizedWithFee: 0,
+  // Length of program, in years
+  programLength: 4,
   // Program is undergrad
   undergrad: true,
   // placeholders
   yearOneCosts: 0,
   yearInCollege: 1,
-  // Perkins loan settings
-  perkinsUnderCap: 5500,
-  perkinsGradCap: 8000,
-  // Stafford loans settings
-  staffSubsidizedMax: 0,
-  staffUnsubsidizedIndepMax: 0,
-  staffUnsubsidizedDepMax: 0,
-  staffUnsubsidizedWithFee: 0,
   //
   repaymentTerm: 10,
   // ???

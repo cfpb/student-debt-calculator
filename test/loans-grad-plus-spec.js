@@ -17,8 +17,8 @@ describe( 'sets Grad PLUS loan values', function() {
     data.undergrad = false;
     data.firstYearNetCost = 10000;
     data.perkins = 1000;
-    data.staffSubsidized = 1000;
-    data.staffUnsubsidized = 0;
+    data.directSubsidized = 1000;
+    data.directUnsubsidized = 0;
     data.gradplus = 9000;
     gradPlus( data );
     expect( data.gradplusMax ).to.equal( 8000 );

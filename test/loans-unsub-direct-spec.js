@@ -1,4 +1,4 @@
-var unSubStafford = require( '../src/loans/unsubsidized-stafford' );
+var unsubDirect = require( '../src/loans/direct-unsubsidized' );
 var enforceRange = require('../src/utils/enforce-range');
 var data = require( '../src/default-values' );
 
@@ -19,9 +19,9 @@ describe( 'sets unsubsidized Stafford loan values', function() {
     data.yearOneCosts = 50000;
     data.pell = 2000;
     data.perkins = 2000;
-    data.staffSubsidized = 2000;
-    unSubStafford( data );
-    expect( data.staffUnsubsidizedIndepMax ).to.equal( 18500 );
+    data.directSubsidized = 2000;
+    unsubDirect( data );
+    expect( data.directUnsubsidizedIndepMax ).to.equal( 18500 );
   });
 
 
@@ -29,9 +29,9 @@ describe( 'sets unsubsidized Stafford loan values', function() {
     data.yearOneCosts = 15000;
     data.pell = 2000;
     data.perkins = 2000;
-    data.staffSubsidized = 15000;
-    unSubStafford( data );
-    expect( data.staffUnsubsidizedIndepMax ).to.equal( 0 );
+    data.directSubsidized = 15000;
+    unsubDirect( data );
+    expect( data.directUnsubsidizedIndepMax ).to.equal( 0 );
   });
 
   it( 'sets the year two max', function() {
@@ -40,9 +40,9 @@ describe( 'sets unsubsidized Stafford loan values', function() {
     data.yearOneCosts = 15000;
     data.pell = 2000;
     data.perkins = 2000;
-    data.staffSubsidized = 0;
-    unSubStafford( data );
-    expect( data.staffUnsubsidizedIndepMax ).to.equal( 10500 );
+    data.directSubsidized = 0;
+    unsubDirect( data );
+    expect( data.directUnsubsidizedIndepMax ).to.equal( 10500 );
   });
 
   it( 'sets the year two max minus stafford subsidized', function() {
@@ -51,9 +51,9 @@ describe( 'sets unsubsidized Stafford loan values', function() {
     data.yearOneCosts = 15000;
     data.pell = 2000;
     data.perkins = 2000;
-    data.staffSubsidized = 1000;
-    unSubStafford( data );
-    expect( data.staffUnsubsidizedIndepMax ).to.equal( 9500 );
+    data.directSubsidized = 1000;
+    unsubDirect( data );
+    expect( data.directUnsubsidizedIndepMax ).to.equal( 9500 );
   });
 
   it( 'sets the year three max', function() {
@@ -62,9 +62,9 @@ describe( 'sets unsubsidized Stafford loan values', function() {
     data.yearOneCosts = 20000;
     data.pell = 2000;
     data.perkins = 2000;
-    data.staffSubsidized = 0;
-    unSubStafford( data );
-    expect( data.staffUnsubsidizedIndepMax ).to.equal( 12500 );
+    data.directSubsidized = 0;
+    unsubDirect( data );
+    expect( data.directUnsubsidizedIndepMax ).to.equal( 12500 );
   });
 
   it( 'sets the year three max minus stafford subsidized', function() {
@@ -73,9 +73,9 @@ describe( 'sets unsubsidized Stafford loan values', function() {
     data.yearOneCosts = 20000;
     data.pell = 2000;
     data.perkins = 2000;
-    data.staffSubsidized = 1000;
-    unSubStafford( data );
-    expect( data.staffUnsubsidizedIndepMax ).to.equal( 11500 );
+    data.directSubsidized = 1000;
+    unsubDirect( data );
+    expect( data.directUnsubsidizedIndepMax ).to.equal( 11500 );
   });
 
 
@@ -84,9 +84,9 @@ describe( 'sets unsubsidized Stafford loan values', function() {
     data.yearOneCosts = 20000;
     data.pell = 15000;
     data.perkins = 5000;
-    data.staffSubsidized = 1000;
-    unSubStafford( data );
-    expect( data.staffUnsubsidizedDepMax ).to.equal( 0 );
+    data.directSubsidized = 1000;
+    unsubDirect( data );
+    expect( data.directUnsubsidizedDepMax ).to.equal( 0 );
   });
 
   it( 'sets the the value for dependent when data.depend equal dependent', function() {
@@ -95,9 +95,9 @@ describe( 'sets unsubsidized Stafford loan values', function() {
     data.yearOneCosts = 20000;
     data.pell = 15000;
     data.perkins = 5000;
-    data.staffSubsidized = 1000;
-    unSubStafford( data );
-    expect( data.staffUnsubsidizedDepMax ).to.equal( 0 );
+    data.directSubsidized = 1000;
+    unsubDirect( data );
+    expect( data.directUnsubsidizedDepMax ).to.equal( 0 );
   });
 
 });
