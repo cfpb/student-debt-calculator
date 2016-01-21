@@ -44,11 +44,6 @@ describe( 'set scholarship and grant values', function() {
     expect( data.firstYearNetCost ).to.equal( 3600 );
   });
 
-  it( 'defaults to 0 total contributions', function() {
-    scholarship( data );
-    expect( data.savingsTotal ).to.equal( 0 );
-  });
-
   it( 'calculates total contributions', function() {
     data.undergrad = true;
     data.savings = 10000;

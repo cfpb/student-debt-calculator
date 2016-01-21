@@ -94,4 +94,10 @@ describe( 'overall debt calculations', function() {
     expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 45702 );
   });
 
+  it( '...properly calculates remainingCost.', function() {
+    financials.pell = 1000;
+    financials.family = 2000;
+    expect( Math.floor( debtCalc( financials ).remainingCost ) ).to.equal( 10750 );
+  });
+
 });
