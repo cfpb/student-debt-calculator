@@ -60,6 +60,6 @@ describe( 'set scholarship and grant values', function() {
   });
 
   it( 'calculates total grants and savings', function() {
-    expect( data.totalgrantsandsavings ).to.equal( 24800 );
+    expect( data.grantsSavingsTotal ).to.equal( 24800 );
   });
 });

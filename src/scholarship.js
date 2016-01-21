@@ -29,6 +29,10 @@ function scholarships( data ) {
                       data.family +
                       data.state529plan +
                       data.workstudy;
+
+  // Total grants and savings
+  data.grantsSavingsTotal = data.grantsTotal + data.savingsTotal;
+
   return data;
 }
 

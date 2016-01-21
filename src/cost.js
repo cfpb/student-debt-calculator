@@ -17,14 +17,11 @@ function cost( data ) {
   // Borrowing Total
   data.borrowingTotal = data.privateInstitutionalTotal + data.federalTotal;
 
-  // Total grants and savings
-  data.grantsSavingsTotal = data.grantsTotal + data.savingsTotal;
-
   // Money for College Total
   data.moneyForCollege = data.grantsSavingsTotal + data.borrowingTotal;
 
   // remainingCost -- "Left to Pay"
-  data.remainingCost = data.firstYearNetCost - data.moneyForCollege;
+  data.remainingCost = data.firstYearNetCost - data.grantsSavingsTotal;
   if ( data.remainingCost < 0 ) {
     data.remainingCost = 0;
   }
