@@ -22,9 +22,6 @@ function cost( data ) {
 
   // remainingCost -- "Left to Pay" is costofAttendance - grantsTotal - savingsTotal
   data.remainingCost = data.firstYearNetCost - data.savingsTotal;
-  if ( data.remainingCost < 0 ) {
-    data.remainingCost = 0;
-  }
 
   return data;
 }
