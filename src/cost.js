@@ -14,9 +14,6 @@ function cost( data ) {
                         data.otherExpenses +
                         data.transportation;
 
-  // Borrowing Total
-  data.borrowingTotal = data.privateInstitutionalTotal + data.federalTotal;
-
   // Money for College Total
   data.moneyForCollege = data.grantsSavingsTotal + data.borrowingTotal;
 
