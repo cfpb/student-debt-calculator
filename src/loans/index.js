@@ -53,7 +53,7 @@ function loanTotals( data ) {
                       data.directSubsidized +
                       data.directUnsubsidized +
                       data.directPlus +
-                      data.gradplus;
+                      data.gradPlus;
 
   // Borrowing Total
   data.borrowingTotal = data.privateInstitutionalTotal + data.federalTotal;

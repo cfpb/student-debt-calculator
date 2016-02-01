@@ -44,21 +44,21 @@ function debtTotal( data ) {
   );
 
   // Grad Plus with origination
-  data.gradplusWithFee = data.gradplus * data.plusOriginationFee;
+  data.gradPlusWithFee = data.gradPlus * data.plusOriginationFee;
 
   // Grad Plus debt at graduation
-  data.gradplusDebt = calcDebt(
-    data.gradplusWithFee,
-    data.gradplusRate,
+  data.gradPlusDebt = calcDebt(
+    data.gradPlusWithFee,
+    data.gradPlusRate,
     data.programLength,
     data.deferPeriod
   );
 
   // Parent Plus Loans with origination fees
-  data.parentplusWithFee = data.parentplus * data.plusOriginationFee;
+  data.parentPlusWithFee = data.parentPlus * data.plusOriginationFee;
 
   // Parent Plus Loans at graduation
-  data.parentplusDebt = data.parentplusWithFee * data.programLength;
+  data.parentPlusDebt = data.parentPlusWithFee * data.programLength;
 
   // Private Loan debt at graduation
   if ( multiLength > 0 ) {
@@ -88,8 +88,8 @@ function debtTotal( data ) {
   data.totalDebt = data.perkinsDebt +
                   data.directSubsidizedDebt +
                   data.directUnsubsidizedDebt +
-                  data.gradplusDebt +
-                  data.parentplusDebt +
+                  data.gradPlusDebt +
+                  data.parentPlusDebt +
                   data.privateLoanDebt +
                   data.institutionalLoanDebt +
                   data.homeEquityDebt;
