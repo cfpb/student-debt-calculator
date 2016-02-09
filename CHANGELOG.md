@@ -1,6 +1,9 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 2.1.0 2016-02-09
+- Added support for fees on multiple Private Loans (no legacy support for single private loan)
+
 ## 2.0.0 2016-02-01
 - changes to PLUS loan variable names
 
