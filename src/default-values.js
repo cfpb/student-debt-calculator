@@ -40,6 +40,7 @@ module.exports = {
   // Perkins loan settings
   perkinsUnderCap: 5500,
   perkinsGradCap: 8000,
+  perkinsRate: 0.05,
   // Direct loans settings
   directSubsidizedMax: 0,
   directUnsubsidizedIndepMax: 0,
@@ -66,9 +67,8 @@ module.exports = {
   unsubsidizedCapIndepYearTwo: 10500,
   unsubsidizedCapIndepYearThree: 12500,
   unsubsidizedCapGrad: 20500,
-  perkinsRate: 0.05,
   subsidizedRate: 0.0466,
-  unsubsidizedRate: 0,
+  unsubsidizedRate: 0.079,
   unsubsidizedRateUndergrad: 0.0466,
   unsubsidizedRateGrad: 0.0621,
   DLOriginationFee: 1.01073,

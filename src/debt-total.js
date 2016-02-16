@@ -68,7 +68,7 @@ function debtTotal( data ) {
       var loan = data.privateLoanMulti[x],
           amount = loan.amount,
           debt = 0;
-      if ( typeof( loan.fees ) !== 'undefined' ) {
+      if ( typeof loan.fees !== 'undefined' ) {
         amount = loan.amount + ( loan.amount * loan.fees );
       }
       debt = calcDebt( amount, loan.rate, data.programLength, loan.deferPeriod );
