@@ -17,7 +17,7 @@ function payment( data ) {
   if ( data.privateLoanMulti.length !== 0 ) {
     for ( var x = 0; x < data.privateLoanMulti.length; x++ ) {
       var privLoan = data.privateLoanMulti[x],
-          total = privLoan.amount * privLoan.fees;
+          total = privLoan.amount + privLoan.amount * privLoan.fees;
       data.loanMonthly += total * ( privLoan.rate / 12 ) / ( 1 - Math.pow( 1 + privLoan.rate / 12, -data.repaymentTerm * 12 ) );
     }
   } else {
