@@ -9,8 +9,8 @@ describe( 'sets Grad PLUS loan values', function() {
   it( 'sets the grad plus values for undergrad students', function() {
     data.undergrad = true;
     gradPlus( data );
-    expect( data.gradplusMax ).to.equal( 0 );
-    expect( data.gradplus ).to.equal( 0 );
+    expect( data.gradPlusMax ).to.equal( 0 );
+    expect( data.gradPlus ).to.equal( 0 );
   });
 
   it( 'sets the grad plus values for grad students', function() {
@@ -19,10 +19,10 @@ describe( 'sets Grad PLUS loan values', function() {
     data.perkins = 1000;
     data.directSubsidized = 1000;
     data.directUnsubsidized = 0;
-    data.gradplus = 9000;
+    data.gradPlus = 9000;
     gradPlus( data );
-    expect( data.gradplusMax ).to.equal( 8000 );
-    expect( data.gradplus ).to.equal( 8000 );
+    expect( data.gradPlusMax ).to.equal( 8000 );
+    expect( data.gradPlus ).to.equal( 8000 );
   });
 
 

@@ -8,9 +8,9 @@ describe( 'calculates costs', function() {
 
   it( 'calculates the remaining cost', function() {
     data.firstYearNetCost = 4000;
-    data.grantsSavingsTotal = 4000;
+    data.savingsTotal = 2000;
     cost( data );
-    expect( data.remainingCost ).to.equal( 0 );
+    expect( data.remainingCost ).to.equal( 2000 );
   });
 
 

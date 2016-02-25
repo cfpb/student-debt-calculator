@@ -32,8 +32,8 @@ var financials = {
   unsubsidizedRateUndergrad: 0.0466,
   unsubsidizedRateGrad: 0.0621,
   DLOriginationFee: 1.01073,
-  gradplusrate: 0.0721,
-  parentplusrate: 0.0721,
+  gradPlusRate: 0.0721,
+  parentPlusRate: 0.0721,
   plusOriginationFee: 1.04292,
   homeEquityLoanRate: 0.079,
 };

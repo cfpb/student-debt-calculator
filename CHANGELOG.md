@@ -1,6 +1,22 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 2.1.0 2016-02-09
+- Added support for fees on multiple Private Loans (no legacy support for single private loan)
+
+## 2.0.0 2016-02-01
+- changes to PLUS loan variable names
+
+## 1.0.6 2016-01-28
+- remainingCost can now be negative
+- gap calculation fixed
+
+## 1.0.5 2016-01-21
+- Fix for calculations
+
+## 1.0.3 2016-01-21
+- Fix for calculations
+
 ## 1.0.2 2016-01-20
 - Change to remainingCost calculation
 

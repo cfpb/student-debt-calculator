@@ -21,8 +21,8 @@ describe( 'overall debt calculations', function() {
     privateLoan: 13750,
     undergrad: true,
     // specify grant & loan data for testing use
-    institutionalLoanRateDefault: 0.079,
-    privateLoanRateDefault: 0.079,
+    institutionalLoanRate: 0.079,
+    privateLoanRate: 0.079,
     pellCap: 5730,
     perkinsRate: 0.05,
     perkinsUnderCap: 5500,
@@ -31,11 +31,12 @@ describe( 'overall debt calculations', function() {
     unsubsidizedRateUndergrad: 0.0466,
     unsubsidizedRateGrad: 0.0621,
     DLOriginationFee: 1.01073,
-    gradplusrate: 0.0721,
-    parentplusrate: 0.0721,
+    gradPlusRate: 0.0721,
+    parentPlusRate: 0.0721,
     plusOriginationFee: 1.04292,
     homeEquityLoanRate: 0.079,
-    privateLoanMulti: []
+    privateLoanMulti: [],
+    programLength: 4
   };
 
   it( '...calculates private loans.', function() {
@@ -43,6 +44,7 @@ describe( 'overall debt calculations', function() {
   });
 
   it( '...calculates institutional loans.', function() {
+    console.log( financials );
     financials.privateLoan = 0;
     financials.institutionalLoan = 13750;
     expect( debtCalc( financials ).totalDebt ).to.equal( 68035 );
@@ -92,6 +94,12 @@ describe( 'overall debt calculations', function() {
     financials.institutionalLoan = 1500;
     financials.privateLoan = 2500;
     expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 45702 );
+  });
+
+  it( '...properly calculates remainingCost.', function() {
+    financials.pell = 1000;
+    financials.family = 2000;
+    expect( Math.floor( debtCalc( financials ).remainingCost ) ).to.equal( 10750 );
   });
 
 });

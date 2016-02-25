@@ -80,7 +80,7 @@ These values are deducted from cost of attendance.
 |`financials.perkins` | number | Amount of federal Perkins loan | 0 |
 |`financials.staffSubsidized` | number | Amount of federal Stafford subsidized loan | 0 |
 |`financials.staffUnsubsidized` | number | Amount of federal Stafford unsubsidized loan | 0 |
-|`financials.gradplus` | number | Amount of GradPlus loan | 0 |
+|`financials.gradPlus` | number | Amount of GradPlus loan | 0 |
 
 #### Private Loans
 
@@ -102,8 +102,8 @@ These values are deducted from cost of attendance.
 |`financials.unsubsidizedRateUndergrad` | number | Loan rate for Stafford unsubsidized undergratuate loans | 0.0466
 |`financials.unsubsidizedRateGrad` | number | Loan rate for Stafford unsubsidized gratuate loans| 0.0621
 |`financials.DLOriginationFee` | number | Origination fee for Stafford loans | 1.01073
-|`financials.gradplusRate` | number | Loan rate for Gradplus loan | 0.0721
-|`financials.parentplusrate` | number | Loan rate for Parentplus loan | 0.0721
+|`financials.gradPlusRate` | number | Loan rate for GradPLUS loan | 0.0721
+|`financials.parentPlusRate` | number | Loan rate for ParentPLUS loan | 0.0721
 |`financials.plusOriginationFee` | number | Origination fee for Plus loans | 1.04292
 |`financials.homeEquityLoanRate` | number | Loan rate for home equity loan | 0.079
 

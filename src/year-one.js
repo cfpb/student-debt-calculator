@@ -26,10 +26,10 @@ yearOne.debt = function( data ) {
   data.loanDebtYearOne = data.perkins +
                         data.directSubsidized +
                         data.directUnsubsidized +
-                        data.gradplus +
+                        data.gradPlus +
                         data.privateLoan +
                         data.institutionalLoan +
-                        data.parentplus +
+                        data.parentPlus +
                         data.homeEquity;
 
   return data.loanDebtYearOne;

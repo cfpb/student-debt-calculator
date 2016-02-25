@@ -14,17 +14,11 @@ function cost( data ) {
                         data.otherExpenses +
                         data.transportation;
 
-  // Borrowing Total
-  data.borrowingTotal = data.privateInstitutionalTotal + data.federalTotal;
-
   // Money for College Total
   data.moneyForCollege = data.grantsSavingsTotal + data.borrowingTotal;
 
-  // remainingCost -- "Left to Pay"
-  data.remainingCost = data.firstYearNetCost - data.grantsSavingsTotal;
-  if ( data.remainingCost < 0 ) {
-    data.remainingCost = 0;
-  }
+  // remainingCost -- "Left to Pay" is costofAttendance - grantsTotal - savingsTotal
+  data.remainingCost = data.firstYearNetCost - data.savingsTotal;
 
   return data;
 }

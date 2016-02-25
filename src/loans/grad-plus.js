@@ -11,21 +11,21 @@ function gradPlus( data ) {
 
   // if undergrad, students aren't eligable for grad plus
   if ( data.undergrad === true ) {
-    data.gradplusMax = 0;
-    data.gradplus = 0;
+    data.gradPlusMax = 0;
+    data.gradPlus = 0;
     return data;
   }
 
   // calculate the grad plus max and range for grad students
-  data.gradplusMax = data.firstYearNetCost -
+  data.gradPlusMax = data.firstYearNetCost -
                     data.perkins -
                     data.directSubsidized -
                     data.directUnsubsidized;
-  data.gradplusMax = enforceRange( data.gradplusMax, 0, false );
-  // data.gradplus value must be assigned
-  // if data.gradplus is less than the max
+  data.gradPlusMax = enforceRange( data.gradPlusMax, 0, false );
+  // data.gradPlus value must be assigned
+  // if data.gradPlus is less than the max
   // the value is 0 due to the enforced range
-  data.gradplus = enforceRange( data.gradplus, 0, data.gradplusMax );
+  data.gradPlus = enforceRange( data.gradPlus, 0, data.gradPlusMax );
 
   return data;
 }

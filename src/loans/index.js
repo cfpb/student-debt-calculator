@@ -53,21 +53,15 @@ function loanTotals( data ) {
                       data.directSubsidized +
                       data.directUnsubsidized +
                       data.directPlus +
-                      data.gradplus;
+                      data.gradPlus;
+
+  // Borrowing Total
+  data.borrowingTotal = data.privateInstitutionalTotal + data.federalTotal;
 
   // gap
-  data.gap = data.firstYearNetCost -
-             data.perkins -
-             data.directSubsidized -
-             data.directUnsubsidized -
-             data.workstudy -
-             data.savings -
-             data.family -
-             data.state529plan -
-             data.privateLoan -
-             data.institutionalLoan -
-             data.parentplus -
-             data.homeEquity;
+  data.gap = data.yearOneCosts -
+             data.grantsSavingsTotal -
+             data.borrowingTotal;
 
   return data;
 }
