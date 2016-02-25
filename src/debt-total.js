@@ -72,6 +72,7 @@ function debtTotal( data ) {
         amount = loan.amount + ( loan.amount * loan.fees );
       }
       debt = calcDebt( amount, loan.rate, data.programLength, loan.deferPeriod );
+      data.privateLoanMulti[x].totalDebt = debt;
       data.privateLoanDebt += debt;
     }
   } else {

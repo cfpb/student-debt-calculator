@@ -21,8 +21,8 @@ describe( 'overall debt calculations', function() {
     privateLoan: 13750,
     undergrad: true,
     // specify grant & loan data for testing use
-    institutionalLoanRateDefault: 0.079,
-    privateLoanRateDefault: 0.079,
+    institutionalLoanRate: 0.079,
+    privateLoanRate: 0.079,
     pellCap: 5730,
     perkinsRate: 0.05,
     perkinsUnderCap: 5500,
@@ -35,7 +35,8 @@ describe( 'overall debt calculations', function() {
     parentPlusRate: 0.0721,
     plusOriginationFee: 1.04292,
     homeEquityLoanRate: 0.079,
-    privateLoanMulti: []
+    privateLoanMulti: [],
+    programLength: 4
   };
 
   it( '...calculates private loans.', function() {
@@ -43,6 +44,7 @@ describe( 'overall debt calculations', function() {
   });
 
   it( '...calculates institutional loans.', function() {
+    console.log( financials );
     financials.privateLoan = 0;
     financials.institutionalLoan = 13750;
     expect( debtCalc( financials ).totalDebt ).to.equal( 68035 );

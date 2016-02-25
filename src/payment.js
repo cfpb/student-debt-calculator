@@ -16,9 +16,8 @@ function payment( data ) {
   // Private Loan handler
   if ( data.privateLoanMulti.length !== 0 ) {
     for ( var x = 0; x < data.privateLoanMulti.length; x++ ) {
-      var privLoan = data.privateLoanMulti[x],
-          total = privLoan.amount * privLoan.fees;
-      data.loanMonthly += total * ( privLoan.rate / 12 ) / ( 1 - Math.pow( 1 + privLoan.rate / 12, -data.repaymentTerm * 12 ) );
+      var privLoan = data.privateLoanMulti[x];
+      data.loanMonthly += privLoan.totalDebt * ( privLoan.rate / 12 ) / ( 1 - Math.pow( 1 + privLoan.rate / 12, -data.repaymentTerm * 12 ) );
     }
   } else {
     data.loanMonthly += data.privateLoanTotal * ( data.privateLoanRate / 12 ) / ( 1 - Math.pow( 1 + data.privateLoanRate / 12, -data.repaymentTerm * 12 ) );
