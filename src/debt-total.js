@@ -82,8 +82,7 @@ function debtTotal( data ) {
   }
 
   // Institutional Loan debt at graduation
-  data.institutionalLoanDebt = calcDebt( data.institutionalLoan,
-    data.institutionalLoanRate, data.programLength, data.deferPeriod );
+  data.institutionalLoanDebt = data.institutionalLoan * data.programLength;
 
   // Home Equity Loans at graduation
   data.homeEquityDebt = data.homeEquity * data.homeEquityLoanRate / 12 *

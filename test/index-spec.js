@@ -47,7 +47,7 @@ describe( 'overall debt calculations', function() {
     console.log( financials );
     financials.privateLoan = 0;
     financials.institutionalLoan = 13750;
-    expect( debtCalc( financials ).totalDebt ).to.equal( 68035 );
+    expect( debtCalc( financials ).totalDebt ).to.equal( 55000 );
   });
 
   it( '...calculates Perkins loans.', function() {
@@ -93,7 +93,7 @@ describe( 'overall debt calculations', function() {
     financials.directUnsubsidized = 3000;
     financials.institutionalLoan = 1500;
     financials.privateLoan = 2500;
-    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 45702 );
+    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 44280 );
   });
 
   it( '...properly calculates remainingCost.', function() {

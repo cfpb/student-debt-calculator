@@ -1,6 +1,18 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 2.2.2 2016-02-19
+- Further fix to private loan monthly payments and lifetime oan value
+
+## 2.2.1 2016-02-18
+- Fix for private loan total debt bug
+
+## 2.2.0 2016-02-18
+- Institutional loans no longer accrue debt during program
+
+## 2.1.1 2016-02-16
+- Fix for monthly loan payment and lifetime loan value,
+
 ## 2.1.0 2016-02-09
 - Added support for fees on multiple Private Loans (no legacy support for single private loan)
 

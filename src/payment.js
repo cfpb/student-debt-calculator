@@ -20,7 +20,7 @@ function payment( data ) {
       data.loanMonthly += privLoan.totalDebt * ( privLoan.rate / 12 ) / ( 1 - Math.pow( 1 + privLoan.rate / 12, -data.repaymentTerm * 12 ) );
     }
   } else {
-    data.loanMonthly += data.privateLoanTotal * ( data.privateLoanRate / 12 ) / ( 1 - Math.pow( 1 + data.privateLoanRate / 12, -data.repaymentTerm * 12 ) );
+    data.loanMonthly += data.privateLoanDebt * ( data.privateLoanRate / 12 ) / ( 1 - Math.pow( 1 + data.privateLoanRate / 12, -data.repaymentTerm * 12 ) );
   }
 
   // loanMonthlyparent
