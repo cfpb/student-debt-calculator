@@ -14,10 +14,14 @@ function scholarships( data ) {
     data.pellMax = data.pellCap;
   }
   // enforce limits on Pell grants
-  if ( data.pellMax > data.yearOneCosts ) {
+  if ( data.pell > data.yearOneCosts ) {
     data.errors.pellOverCosts = 'The Pell grant exceeds the cost of attendance.';
   }
   data.pellMax = enforceRange( data.pellMax, 0, data.yearOneCosts );
+  
+  if ( data.pell > data.pellMax ) {
+    data.errors.pellOverMax = 'The Pell grant exceeds the Pell maximum.';
+  }
   data.pell = enforceRange( data.pell, 0, data.pellMax );
 
   // Total Grants
