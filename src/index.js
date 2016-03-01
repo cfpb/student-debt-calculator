@@ -22,6 +22,9 @@ function studentDebtCalculator( financials ) {
   // merge financials into defaults to create data
   data = merge( defaults, financials );
 
+  // reset errors
+  data.errors = {};
+
   // set rate values
   rates.inState( data );
   rates.unsubsidized( data );

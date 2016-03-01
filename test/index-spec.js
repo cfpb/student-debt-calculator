@@ -44,7 +44,6 @@ describe( 'overall debt calculations', function() {
   });
 
   it( '...calculates institutional loans.', function() {
-    console.log( financials );
     financials.privateLoan = 0;
     financials.institutionalLoan = 13750;
     expect( debtCalc( financials ).totalDebt ).to.equal( 55000 );
