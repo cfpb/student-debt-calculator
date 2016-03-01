@@ -16,7 +16,7 @@ describe( 'sets subsidized Stafford loan values', function() {
   it( 'sets the subsidized max for undergrad students in year 2', function() {
     data.undergrad = true;
     data.yearInCollege = 2;
-    var expectedMax = data.yearOneCosts - data.perkins - data.pell;
+    var expectedMax = data.subsidizedCapYearTwo - data.directSubsidized;
     subDirect( data );
     expect( data.directSubsidizedMax ).to.equal( expectedMax );
   });
@@ -24,7 +24,7 @@ describe( 'sets subsidized Stafford loan values', function() {
   it( 'sets the subsidized max for undergrad students in year 3', function() {
     data.undergrad = true;
     data.yearInCollege = 3;
-    var expectedMax = data.yearOneCosts - data.perkins - data.pell;
+    var expectedMax = data.subsidizedCapYearThree - data.directSubsidized;
     subDirect( data );
     expect( data.directSubsidizedMax ).to.equal( expectedMax );
   });

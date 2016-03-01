@@ -11,6 +11,7 @@ describe( 'overall debt calculations', function() {
     transportation: 500,
     otherExpenses: 250,
     scholarships: 0,
+    militaryTuitionAssistance: 0,
     pell: 0,
     savings: 0,
     family: 0,

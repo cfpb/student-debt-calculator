@@ -37,6 +37,8 @@ module.exports = {
   // Pell grant settings
   pellMax: 0,
   pellCap: 5730,
+  // Military Tuition Assistance settings
+  militaryAssistanceCap: 4500,
   // Perkins loan settings
   perkinsUnderCap: 5500,
   perkinsGradCap: 8000,

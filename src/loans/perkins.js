@@ -17,7 +17,7 @@ function perkins( data ) {
     data.perkinsMax = enforceRange( data.perkinsMax, 0, data.perkinsGradCap );
   }
   if ( data.perkins > data.perkinsMax ) {
-    data.errors.perkinsOverMax = 'Perkins loan exceeded federal limit of ' + data.perkinsMax + '.';
+    data.errors.perkinsOverCap = 'Perkins loan exceeded federal limit of ' + data.perkinsMax + '.';
   }
   data.perkins = enforceRange( data.perkins, 0, data.perkinsMax );
 

@@ -10,6 +10,10 @@ var unsubMax = {};
  * @returns { object } the data object with perkins data added
  */
 function unsubDirect( data ) {
+  var costMax = data.yearOneCosts -
+                 data.pell -
+                 data.perkins -
+                 data.directSubsidized;
   // unsubsidized loan max for independent students
   unsubMax.independent( data );
   // unsubsidized loan max for dependent students
@@ -23,6 +27,16 @@ function unsubDirect( data ) {
 
   data.directUnsubsidizedMax = enforceRange(
     data.directUnsubsidizedMax, 0, false );
+
+  // error handling
+  if ( data.directUnsubsidized > costMax ) {
+    data.errors.unsubsidizedOverCost = 'Direct unsubsidized loans exceed cost of attendance.';
+  }
+  if ( data.directUnsubsidized > data.directUnsubsidizedMax ) {
+    data.errors.unsubsidizedOverCap = 'Direct unsubsidized loans exceed federal limit of ' +
+      data.directUnsubsidizedMax + '.';
+  }
+
   data.directUnsubsidized = enforceRange(
     data.directUnsubsidized, 0, data.directUnsubsidizedMax );
 
