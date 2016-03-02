@@ -18,9 +18,9 @@ function scholarships( data ) {
     data.errors.pellOverCosts = 'The Pell grant exceeds the cost of attendance.';
   }
   data.pellMax = enforceRange( data.pellMax, 0, data.yearOneCosts );
-  
+
   if ( data.pell > data.pellMax ) {
-    data.errors.pellOverCap = 'The Pell grant exceeds the federal limit of ' + 
+    data.errors.pellOverCap = 'The Pell grant exceeds the federal limit of ' +
     data.pellCap + '.';
   }
   data.pell = enforceRange( data.pell, 0, data.pellMax );
@@ -29,7 +29,7 @@ function scholarships( data ) {
   if ( data.militaryTuitionAssistance > data.militaryAssistanceCap ) {
     data.errors.mtaOverCap =
       'Military Tuition Assistance exceeds the federal limit of ' +
-      data.militaryAssistanceCap + '.'
+      data.militaryAssistanceCap + '.';
   }
   data.militaryTuitionAssistance = enforceRange(
     data.militaryTuitionAssistance, 0, data.militaryAssistanceCap );

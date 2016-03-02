@@ -28,7 +28,6 @@ function subDirect( data ) {
   if ( data.directSubsidized > data.yearOneCosts - data.pell - data.perkins ) {
     data.errors.subsidizedOverCost = 'Direct subsidized loans exceed cost of attendance.';
   }
-  console.log( data.directSubsidizedMax );
   if ( data.directSubsidized > data.directSubsidizedMax ) {
     data.errors.subsidizedOverCap = 'Direct subsidized loans exceed federal limit of ' +
       data.directSubsidizedMax + '.';
