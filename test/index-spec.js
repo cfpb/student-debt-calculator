@@ -11,6 +11,7 @@ describe( 'overall debt calculations', function() {
     transportation: 500,
     otherExpenses: 250,
     scholarships: 0,
+    militaryTuitionAssistance: 0,
     pell: 0,
     savings: 0,
     family: 0,
@@ -44,7 +45,6 @@ describe( 'overall debt calculations', function() {
   });
 
   it( '...calculates institutional loans.', function() {
-    console.log( financials );
     financials.privateLoan = 0;
     financials.institutionalLoan = 13750;
     expect( debtCalc( financials ).totalDebt ).to.equal( 55000 );

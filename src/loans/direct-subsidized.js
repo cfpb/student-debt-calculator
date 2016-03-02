@@ -18,14 +18,31 @@ function subDirect( data ) {
   if ( data.undergrad === false ) {
     data.directSubsidizedMax = 0;
   } else {
-    data.directSubsidizedMax = data.yearOneCosts - data.pell - data.perkins;
     data.directSubsidizedMax = calculateMaxRange( year, data );
+  }
+
+  // Error handling
+  if ( data.directSubsidized > 0 && data.undergrad === false ) {
+    data.errors.subsidizedNoGrad = 'Direct subsidized loans are available only to undergraduate students.';
+  }
+  if ( data.directSubsidized > data.yearOneCosts - data.pell - data.perkins ) {
+    data.errors.subsidizedOverCost = 'Direct subsidized loans exceed cost of attendance.';
+  }
+  if ( data.directSubsidized > data.directSubsidizedMax ) {
+    data.errors.subsidizedOverCap = 'Direct subsidized loans exceed federal limit of ' +
+      data.directSubsidizedMax + '.';
   }
 
   data.directSubsidized = enforceRange(
     data.directSubsidized,
     0,
     data.directSubsidizedMax
+  );
+
+  data.directSubsidized = enforceRange(
+    data.directSubsidized,
+    0,
+    data.yearOneCosts - data.pell - data.perkins
   );
 
   return data;
@@ -38,7 +55,7 @@ function subDirect( data ) {
  * @returns { number } range enforced number
  */
 function calculateMaxRange( year, data ) {
-  var range = data.directSubsidizedMax;
+  var range = 0;
   if ( year === 1 ) {
     range = data.subsidizedCapYearOne;
   }
@@ -48,12 +65,7 @@ function calculateMaxRange( year, data ) {
   if ( year === 3 ) {
     range = data.subsidizedCapYearThree - data.directSubsidized;
   }
-  return enforceRange(
-    data.directSubsidizedMax,
-    0,
-    range
-  );
-
+  return range;
 }
 
 module.exports = subDirect;
