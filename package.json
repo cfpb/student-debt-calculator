@@ -1,6 +1,6 @@
 {
   "name": "student-debt-calc",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Student debt calculator",
   "main": "src/index.js",
   "scripts": {
@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/cfpb/student-debt-calc#readme",
   "dependencies": {
-    "extend": "^3.0.0"
+    "extend": "^3.0.0",
+    "nyc": "^4.0.1"
   },
   "devDependencies": {
     "chai": "^3.2.0",

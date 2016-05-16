@@ -1,7 +1,8 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
-## Unreleased
+## 2.4.0
+- Added the tenYear and twentyYear properties to the returned object
 - Added error handling for various loan and grant limits
 
 ## 2.2.2 2016-02-19
