@@ -64,6 +64,6 @@ var payment = {
     return data;
   }
 
-}
+};
 
 module.exports = payment.payment;
