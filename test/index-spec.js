@@ -65,26 +65,26 @@ describe( 'overall debt calculations', function() {
   it( '...calculates Direct subsidized loans.', function() {
     financials.perkins = 0;
     financials.directSubsidized = 3500;
-    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 14150 );
+    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 14000 );
   });
 
   it( '...enforces Direct subsidized loan limit.', function() {
     financials.perkins = 0;
     financials.directSubsidized = 999999;
     debtCalc( financials );
-    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 14150 );
+    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 14000 );
   });
 
   it( '...calculates Direct unsubsidized loans.', function() {
     financials.directSubsidized = 0;
     financials.directUnsubsidized = 9500;
-    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 43777 );
+    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 43312 );
   });
 
   it( '...enforces Direct unsubsidized loan limit.', function() {
     financials.directSubsidized = 0;
     financials.directUnsubsidized = 999999;
-    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 43777 );
+    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 43312 );
   });
 
   it( '...properly calculates multiple loans.', function() {
@@ -93,7 +93,7 @@ describe( 'overall debt calculations', function() {
     financials.directUnsubsidized = 3000;
     financials.institutionalLoan = 1500;
     financials.privateLoan = 2500;
-    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 44280 );
+    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 44047 );
   });
 
   it( '...properly calculates remainingCost.', function() {
