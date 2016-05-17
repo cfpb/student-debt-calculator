@@ -59,6 +59,7 @@ module.exports = {
   repaymentTerm: 10,
   // ???
   yrben: 0,
+  // Federal Student Loan Borrowing Caps
   subsidizedCapYearOne: 3500,
   subsidizedCapYearTwo: 4500,
   subsidizedCapYearThree: 5500,
@@ -69,13 +70,14 @@ module.exports = {
   unsubsidizedCapIndepYearTwo: 10500,
   unsubsidizedCapIndepYearThree: 12500,
   unsubsidizedCapGrad: 20500,
-  subsidizedRate: 0.0466,
-  unsubsidizedRate: 0.079,
-  unsubsidizedRateUndergrad: 0.0466,
-  unsubsidizedRateGrad: 0.0621,
+  // Student Loan Interest Rates
+  subsidizedRate: 0.0376,
+  unsubsidizedRate: 0.0376,
+  unsubsidizedRateUndergrad: 0.0376,
+  unsubsidizedRateGrad: 0.0531,
   DLOriginationFee: 1.01073,
-  gradPlusRate: 0.0721,
-  parentPlusrate: 0.0721,
+  gradPlusRate: 0.0631,
+  parentPlusrate: 0.0631,
   plusOriginationFee: 1.04292,
   homeEquityLoanRate: 0.079,
   deferPeriod: 6,
