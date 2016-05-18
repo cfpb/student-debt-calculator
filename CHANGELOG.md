@@ -1,9 +1,10 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
-## Unreleased
+## 2.3.1 2016-05-17
 - Updated federal interest rates
 - Added error handling for various loan and grant limits
+- Changed federal loan calculations to remove fees from loan total
 
 ## 2.2.2 2016-02-19
 - Further fix to private loan monthly payments and lifetime oan value
