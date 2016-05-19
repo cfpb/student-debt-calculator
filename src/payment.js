@@ -52,14 +52,14 @@ var payment = {
     // Calculate 10 year values
     data.tenYear = {};
     data.tenYear.loanMonthly = payment.calculateMonthly( data, 10 );
-    data.tenYear.loanLifetime = 
+    data.tenYear.loanLifetime =
       payment.calculateLifetime( data.tenYear.loanMonthly, 10 );
     data.tenYear.loanMonthlyparent = payment.calculateParentMonthly( data, 10 );
 
     // Calculate 25 year values
     data.twentyFiveYear = {};
     data.twentyFiveYear.loanMonthly = payment.calculateMonthly( data, 25 );
-    data.twentyFiveYear.loanLifetime = 
+    data.twentyFiveYear.loanLifetime =
       payment.calculateLifetime( data.twentyFiveYear.loanMonthly, 25 );
     data.twentyFiveYear.loanMonthlyparent = payment.calculateParentMonthly( data, 25 );
 
