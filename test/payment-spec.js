@@ -22,13 +22,17 @@ describe( 'payment calculator', function() {
 
     payment( data );
     expect( Math.round( data.loanLifetime ) ).to.equal( 2546 );
+    expect( Math.round( data.tenYear.loanLifetime ) ).to.equal( 2546 );
+    expect( Math.round( data.twentyFiveYear.loanLifetime ) ).to.equal( 3508 );
 
-    data.directSubsidizedDebt = 4000 * 1.01073;
+    data.directSubsidizedDebt = 4000;
     data.subsidizedRate = 0.0466;
     payment( data );
-    expect( Math.round( data.loanLifetime ) ).to.equal( 7611 );
+    expect( Math.round( data.loanLifetime ) ).to.equal( 7557 );
+    expect( Math.round( data.tenYear.loanLifetime ) ).to.equal( 7557 );
+    expect( Math.round( data.twentyFiveYear.loanLifetime ) ).to.equal( 10287 );
 
-    data.directUnsubsidizedWithFee = 3000 * 1.01073;
+    data.directUnsubsidizedWithFee = 1500;
     data.unsubsidizedRate = 0.0466;
     data.deferPeriod = 6;
     data.directUnsubsidizedDebt = calcDebt(
@@ -38,7 +42,9 @@ describe( 'payment calculator', function() {
       data.deferPeriod
     );
     payment( data );
-    expect( Math.round( data.loanLifetime ) ).to.equal( 15918 );
+    expect( Math.round( data.loanLifetime ) ).to.equal( 11666 );
+    expect( Math.round( data.tenYear.loanLifetime ) ).to.equal( 11666 );
+    expect( Math.round( data.twentyFiveYear.loanLifetime ) ).to.equal( 15845 );
 
     data.institutionalLoan = 1500;
     data.institutionalLoanRate = 0.079;
@@ -49,15 +55,15 @@ describe( 'payment calculator', function() {
       data.deferPeriod
     );   
     payment( data );
-    expect( Math.round( data.loanLifetime ) ).to.equal( 20953 );
+    expect( Math.round( data.loanLifetime ) ).to.equal( 16702 );
+    expect( Math.round( data.tenYear.loanLifetime ) ).to.equal( 16702 );
+    expect( Math.round( data.twentyFiveYear.loanLifetime ) ).to.equal( 23820 );
 
-    data.perkinsDebt = 0;
-    data.directSubsidizedDebt = 0;
-    data.directUnsubsidizedDebt = 0;
-    data.institutionalLoanDebt = 0;
     data.privateLoanMulti = [ { amount: 5000, fees: 0, rate: 0.079, deferPeriod: 0, totalDebt: 11580 } ];
     payment( data );
-    expect( Math.round( data.loanLifetime ) ).to.equal( 16786 );
+    expect( Math.round( data.loanLifetime ) ).to.equal( 33489 );
+    expect( Math.round( data.tenYear.loanLifetime ) ).to.equal( 33489 );
+    expect( Math.round( data.twentyFiveYear.loanLifetime ) ).to.equal( 50404 );
   });
 
 
