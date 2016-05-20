@@ -35,33 +35,33 @@ var payment = {
   },
 
   calculateParentMonthly: function( data, repaymentTerm ) {
-    // loanMonthlyparent
-    var loanMonthlyparent = data.parentPlus * ( data.parentPlusRate / 12 ) /
+    // loanMonthlyParent
+    var loanMonthlyParent = data.parentPlus * ( data.parentPlusRate / 12 ) /
         Math.pow( 1 - ( 1 + data.parentPlusRate / 12 ), -repaymentTerm * 12 ) +
         data.homeEquity * ( data.homeEquityLoanRate / 12 ) /
         Math.pow( 1 - ( 1 + data.homeEquityLoanRate / 12 ), -repaymentTerm * 12 );
-    return loanMonthlyparent;
+    return loanMonthlyParent;
   },
 
   payment: function( data ) {
     // Calculate based on data.repaymentTerm field (legacy support)
     data.loanMonthly = payment.calculateMonthly( data, data.repaymentTerm );
     data.loanLifetime = payment.calculateLifetime( data.loanMonthly, data.repaymentTerm );
-    data.loanMonthlyparent = payment.calculateParentMonthly( data, data.repaymentTerm );
+    data.loanMonthlyParent = payment.calculateParentMonthly( data, data.repaymentTerm );
 
     // Calculate 10 year values
     data.tenYear = {};
     data.tenYear.loanMonthly = payment.calculateMonthly( data, 10 );
     data.tenYear.loanLifetime =
       payment.calculateLifetime( data.tenYear.loanMonthly, 10 );
-    data.tenYear.loanMonthlyparent = payment.calculateParentMonthly( data, 10 );
+    data.tenYear.loanMonthlyParent = payment.calculateParentMonthly( data, 10 );
 
     // Calculate 25 year values
     data.twentyFiveYear = {};
     data.twentyFiveYear.loanMonthly = payment.calculateMonthly( data, 25 );
     data.twentyFiveYear.loanLifetime =
       payment.calculateLifetime( data.twentyFiveYear.loanMonthly, 25 );
-    data.twentyFiveYear.loanMonthlyparent = payment.calculateParentMonthly( data, 25 );
+    data.twentyFiveYear.loanMonthlyParent = payment.calculateParentMonthly( data, 25 );
 
     return data;
   }
