@@ -122,30 +122,61 @@ These properties give the calculator caps and maximums on certain values.
 |`financials.perkinsUnderCap` | number | Cap on undergratuate Perkins loans | 5500 |
 |`financials.perkinsGradCap` | number | Cap on graduate Perkins loans | 8000 |
 
+### Outputs
+These properties are added to the returned Object and would generally be
+considered the "outputs" for the package. 
+
+| Property | Type | Description |
+|-----|-----|-----|
+|`financials.firstYearNetCost`| number | The cost of attendance minus grants and scholarships |
+|`financials.moneyForCollege`| number | The total of grants, scholarships, and loans |
+|`financials.remainingCost`| number | The costs of attendance minus all grants, scholarships, and loans |
+|`financials.moneyForCollege`| number | The total of grants, scholarships, and loans |
+|`financials.loanMonthly`| number | The monthly loan payment based on the loans specified and `financials.repaymentTerm`|
+|`financials.loanLifetime`| number | The lifetime cost of the loans based on the loans specified and `financials.repaymentTerm`|
+
+#### tenYear and twentyFiveYear properties
+To make it easy to compare the difference between 10 and 25 year loan repayment terms,
+the Object returned by the package has two additional properties - `financials.tenYear`
+and `financials.twentyFiveYear`. These properties are Objects themselves with their own
+`loanLifetime` and associated values:
+
+| Property | Type | Description |
+|-----|-----|-----|
+|`financials.tenYear.loanMonthly`| number | The monthly loan payment with a 10 year repayment term |
+|`financials.tenYear.loanLifetime`| number | The lifetime cost of the loans with a 10 year repayment term |
+|`financials.twentyFiveYear.loanMonthly`| number | The monthly loan payment with a 25 year repayment term|
+|`financials.twentyFiveYear.loanLifetime`| number | The lifetime cost of the loan with a 25 year repayment term|
+
 ### Calculations, Caps, and Errors
-When applied to the "financials" Object, the package first establishes some constants and determines
-which values should be used for a variety of numbers - for instance, based on whether the program
-is undergraduate or graduate, what the limits of some federal loans are.
 
-The package then establishes scholarships and grants, checking against caps, and calculates the
-`firstYearNetCost` property based on those values (applying the grants and scholarships against the
-cost of attendance).
+When applied to the "financials" Object, the package first establishes some
+constants and determines which values should be used for a variety of numbers
+- for instance, based on whether the program is undergraduate or graduate,
+what the limits of some federal loans are.
 
-Then, the package applies loans to the remaining cost, ensuring these values are below the 
-limits for federal loans.
+The package then establishes scholarships and grants, checking against caps,
+and calculates the `firstYearNetCost` property based on those values (applying
+the grants and scholarships against the cost of attendance).
 
-After grants, scholarships, and loans are applied, the package determines the total money for college
-(`moneyForCollege` property) and the amount left to pay (`remainingCost` property).
+Then, the package applies loans to the remaining cost, ensuring these values
+are below the  limits for federal loans.
 
-Finally, the package calculates the debt at graduation (properties such as `perkinsDebt` or 
-`privateLoanDebt`), the cost of the loans over the repayment term (`loanLifetime` property) and
-the monthly payment of the loans ('loanMonthly' property)
+After grants, scholarships, and loans are applied, the package determines the
+total money for college (`moneyForCollege` property) and the amount left to
+pay (`remainingCost` property).
 
-Along the way, the package also records and corrects "errors" - for instance, when the inputs
-exceed federal limits or the cost of attendance (in which case the values for these inputs are
-changed to equal the limit). These errors can be found in the `errors` property,
-which is an Object itself. The following table illustrates the "error codes" which are used as
-keys in the `errors` Object:
+Finally, the package calculates the debt at graduation (properties such as
+`perkinsDebt` or `privateLoanDebt`), the cost of the loans over the repayment
+term (`loanLifetime` property) and the monthly payment of the loans
+('loanMonthly' property)
+
+Along the way, the package also records and corrects "errors" - for instance,
+when the inputs exceed federal limits or the cost of attendance (in which case
+the values for these inputs are changed to equal the limit). These errors can
+be found in the `errors` property, which is an Object itself. The following
+table illustrates the "error codes" which are used as keys in the `errors`
+Object:
 
 | `errors` Object key | Error |
 |-----|-----|

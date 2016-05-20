@@ -1,6 +1,9 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 2.4.0 2016-05-18
+- Added the tenYear and twentyFiveYear properties to the returned object
+
 ## 2.3.1 2016-05-17
 - Updated federal interest rates
 - Added error handling for various loan and grant limits
