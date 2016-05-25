@@ -47,7 +47,8 @@ describe( 'set scholarship and grant values', function() {
   it( 'calculates total contributions', function() {
     data.undergrad = true;
     data.savings = 10000;
-    data.family = 4400;
+    data.family = 2400;
+    data.parentPlus = 2000;
     data.state529plan = 2000;
     data.workstudy = 2000;
     scholarship( data );

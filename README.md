@@ -81,6 +81,7 @@ These values are deducted from cost of attendance.
 |`financials.workstudy` | number | Value of work-study | 0 |
 |`financials.savings` | number | Total personal savings to be spent to reduce annual cost of attendance | 0 |
 |`financials.family` | number | Total family contributions to be spent to reduce annual cost of attendance | 0 |
+|`financials.parentPlus` | number | Federal Parent PLUS loan amount (the interest for this loan is not added to student loan totals, but is calculated as a monthly payment in outputs as `financials.loanMonthlyParent`) | 0 |
 
 #### Federal Loans
 
@@ -134,6 +135,7 @@ considered the "outputs" for the package.
 |`financials.moneyForCollege`| number | The total of grants, scholarships, and loans |
 |`financials.loanMonthly`| number | The monthly loan payment based on the loans specified and `financials.repaymentTerm`|
 |`financials.loanLifetime`| number | The lifetime cost of the loans based on the loans specified and `financials.repaymentTerm`|
+|`financials.loanMonthlyParent`| number | The monthly loan payment of the federal Parent PLUS loan.|
 
 #### tenYear and twentyFiveYear properties
 To make it easy to compare the difference between 10 and 25 year loan repayment terms,
