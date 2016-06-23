@@ -30,7 +30,7 @@ yearOne.debt = function( data ) {
                         data.privateLoan +
                         data.institutionalLoan +
                         data.parentPlus +
-                        data.homeEquity + 
+                        data.homeEquity +
                         data.tuitionRepay;
 
   return data.loanDebtYearOne;
