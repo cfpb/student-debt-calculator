@@ -31,6 +31,10 @@ module.exports = {
   state529plan: 0,
   workstudy: 0,
   homeEquity: 0,
+  // tuition repayment plans
+  tuitionRepay: 0,
+  tuitionRepayRate: 0,
+  tuitionRepayTerm: 1,
   // Loan rate defaults
   institutionalLoanRate: 0.079,
   privateLoanRate: 0.079,

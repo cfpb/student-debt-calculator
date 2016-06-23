@@ -1,6 +1,7 @@
 'use strict';
 
 var calcDebt = require( './calc-debt.js' );
+var tuitionRepayCalc = require( './loans/tuition-repayment.js' );
 
  /**
   * calculate total debt
@@ -74,15 +75,17 @@ function debtTotal( data ) {
   data.homeEquityDebt = data.homeEquity * data.homeEquityLoanRate / 12 *
   ( ( data.programLength * ( data.programLength + 1 ) / 2 * 12 ) );
 
+  // Tuition Repayment plan at graduation (not added to total)
+  data.tuitionRepayDebt = tuitionRepayCalc.calculateDebtAtGrad( data );
+
   // Total debt at graduation
   data.totalDebt = data.perkinsDebt +
-                  data.directSubsidizedDebt +
-                  data.directUnsubsidizedDebt +
-                  data.gradPlusDebt +
-                  data.parentPlusDebt +
-                  data.privateLoanDebt +
-                  data.institutionalLoanDebt +
-                  data.homeEquityDebt;
+    data.directSubsidizedDebt +
+    data.directUnsubsidizedDebt +
+    data.gradPlusDebt +
+    data.privateLoanDebt +
+    data.institutionalLoanDebt +
+    data.homeEquityDebt;
 
   return data;
 }

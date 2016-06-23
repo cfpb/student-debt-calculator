@@ -1,6 +1,6 @@
 {
   "name": "student-debt-calc",
-  "version": "2.4.2",
+  "version": "2.5.0",
   "description": "Student debt calculator",
   "main": "src/index.js",
   "scripts": {
@@ -22,9 +22,9 @@
   },
   "devDependencies": {
     "chai": "3.3.0",
-    "eslint": "1.10.2",
+    "eslint": "2.13.1",
     "mocha": "2.3.3",
     "nyc": "4.0.1",
-    "snyk": "^1.14.3"
+    "snyk": "1.15.2"
   }
 }
