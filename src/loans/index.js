@@ -46,7 +46,8 @@ function loanTotals( data ) {
 
   // Private and Institutional Loan Total
   data.privateInstitutionalTotal = data.privateLoanTotal +
-                                   data.institutionalLoan;
+                                   data.institutionalLoan +
+                                   data.tuitionRepay;
 
   // Federal Total Loan
   data.federalTotal = data.perkins +
