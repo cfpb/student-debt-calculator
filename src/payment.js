@@ -1,5 +1,7 @@
 'use strict';
 
+var tuitionRepayCalc = require( './loans/tuition-repayment.js' );
+
  /**
   * calculate payments
   * @param { object } data - the data object
@@ -62,6 +64,8 @@ var payment = {
     data.twentyFiveYear.loanLifetime =
       payment.calculateLifetime( data.twentyFiveYear.loanMonthly, 25 );
     data.twentyFiveYear.loanMonthlyParent = payment.calculateParentMonthly( data, 25 );
+
+    data.tuitionRepayMonthly = tuitionRepayCalc.calculateMonthlyPayment( data );
 
     return data;
   }
