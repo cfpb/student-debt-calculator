@@ -3,6 +3,7 @@ We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
 ## 2.5.0 2016-06-20
 - Added tuition repayment plans
+- Removed Parent Plus loans from debt calculations (count as contribution only)
 
 ## 2.4.0 2016-05-18
 - Added the tenYear and twentyFiveYear properties to the returned object

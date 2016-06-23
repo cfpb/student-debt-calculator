@@ -83,7 +83,6 @@ function debtTotal( data ) {
     data.directSubsidizedDebt +
     data.directUnsubsidizedDebt +
     data.gradPlusDebt +
-    data.parentPlusDebt +
     data.privateLoanDebt +
     data.institutionalLoanDebt +
     data.homeEquityDebt;

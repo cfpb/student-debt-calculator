@@ -29,7 +29,6 @@ yearOne.debt = function( data ) {
                         data.gradPlus +
                         data.privateLoan +
                         data.institutionalLoan +
-                        data.parentPlus +
                         data.homeEquity +
                         data.tuitionRepay;
 
