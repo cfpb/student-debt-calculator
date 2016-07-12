@@ -1,3 +1,4 @@
 # Installation instructions
 
-Detailed instructions on how to install, configure, and get the project running.
+1) Make sure that Node.js is installed.
+2) Run `npm install`
