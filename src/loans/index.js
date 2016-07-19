@@ -22,7 +22,7 @@ function studentLoans( data ) {
   privateLoans( data );
   institution( data );
 
-  // calculate the total federal loans and gap
+  // calculate private loan totals, federal loans and gap
   loanTotals( data );
 
   return data;
@@ -46,8 +46,7 @@ function loanTotals( data ) {
 
   // Private and Institutional Loan Total
   data.privateInstitutionalTotal = data.privateLoanTotal +
-                                   data.institutionalLoan +
-                                   data.tuitionRepay;
+                                   data.institutionalLoan;
 
   // Federal Total Loan
   data.federalTotal = data.perkins +

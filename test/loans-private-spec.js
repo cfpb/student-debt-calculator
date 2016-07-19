@@ -1,10 +1,11 @@
-var loans = require( '../src/loans/' );
+var loans = require( '../src/loans/index.js' );
 var data = require( '../src/default-values' );
+var payment = require( '../src/payment' );
 
 var chai = require('chai');
 var expect = chai.expect;
 
-describe( 'student loan functions', function() {
+describe( 'private loan functions', function() {
 
   it ( 'totals multiple private loans', function() {
     data.privateLoanMulti = [
@@ -14,5 +15,6 @@ describe( 'student loan functions', function() {
       ];
     loans( data );
     expect( data.privateLoanTotal ).to.equal( 9000 );
-  });
+  } );
+
 });
