@@ -1,7 +1,7 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
-## 2.5.6 2016-06-20
+## 2.5.7 2016-07-26
 - Small fix in tests
 
 ## 2.5.5 2016-06-20
