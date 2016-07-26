@@ -15,7 +15,6 @@ var payment = {
 
     if ( rate === 0 ) {
       monthly = debt / ( term * 12 );
-      console.log( 'WAT', debt, term, monthly );
     } else {
       monthly = debt * ( rate / 12 ) /
         ( 1 - Math.pow( 1 + rate / 12, -1 * term * 12 ) );
