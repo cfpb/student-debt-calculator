@@ -21,6 +21,7 @@ describe( 'payment calculator', function() {
     data.privateLoanDebt = 0;
 
     payment( data );
+
     expect( Math.round( data.loanLifetime ) ).to.equal( 2546 );
     expect( Math.round( data.tenYear.loanLifetime ) ).to.equal( 2546 );
     expect( Math.round( data.twentyFiveYear.loanLifetime ) ).to.equal( 3508 );
@@ -64,6 +65,13 @@ describe( 'payment calculator', function() {
     expect( Math.round( data.loanLifetime ) ).to.equal( 33489 );
     expect( Math.round( data.tenYear.loanLifetime ) ).to.equal( 33489 );
     expect( Math.round( data.twentyFiveYear.loanLifetime ) ).to.equal( 50404 );
+
+    data.privateLoanMulti = [
+      { amount: 1000, rate: 0, deferPeriod: 0, totalDebt: 2000 }
+    ];
+    payment( data );
+    expect( Math.round( data.loanMonthly ) ).to.equal( 156 );
+
   });
 
 
