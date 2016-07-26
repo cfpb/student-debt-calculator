@@ -1,6 +1,6 @@
 {
   "name": "student-debt-calc",
-  "version": "2.5.4",
+  "version": "2.5.5",
   "dependencies": {
     "abbrev": {
       "version": "1.0.7",

@@ -1,6 +1,21 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 2.5.5 2016-06-20
+- Fix for interest rate of 0 for most loans
+
+## 2.5.4 2016-06-20
+- Removed tuition payment plans from privateInstitutionalTotal
+
+## 2.5.3 2016-06-20
+- Tuition payment plan removed from year one debt
+
+## 2.5.2 2016-06-20
+- Exposes specific tuition payment plan outputs
+
+## 2.5.1 2016-06-20
+- Removed tuition payment plans from privateInstitutionalTotal
+
 ## 2.5.0 2016-06-20
 - Added tuition repayment plans
 - Removed Parent Plus loans from debt calculations (count as contribution only)
