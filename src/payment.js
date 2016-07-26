@@ -42,7 +42,6 @@ var payment = {
     if ( data.privateLoanMulti.length !== 0 ) {
       for ( var x = 0; x < data.privateLoanMulti.length; x++ ) {
         var privLoan = data.privateLoanMulti[x];
-        console.log( privLoan, term, payment.calculateMonthly( privLoan.totalDebt, privLoan.rate, term ) );
         loanMonthly += payment.calculateMonthly( privLoan.totalDebt, privLoan.rate, term );
         // loanMonthly += privLoan.totalDebt * ( privLoan.rate / 12 ) / ( 1 - Math.pow( 1 + privLoan.rate / 12, -1 * repaymentTerm * 12 ) );
       }
