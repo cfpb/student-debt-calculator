@@ -18,7 +18,7 @@ function cost( data ) {
   data.moneyForCollege = data.grantsSavingsTotal + data.borrowingTotal;
 
   // remainingCost -- "Left to Pay" is costofAttendance - grantsTotal - savingsTotal
-  data.remainingCost = data.firstYearNetCost - data.savingsTotal;
+  data.remainingCost = data.costOfAttendance - data.grantsSavingsTotal;
 
   return data;
 }

@@ -13,11 +13,13 @@ function debtTotal( data ) {
 
   // Borrowing over cost of attendance
   data.overborrowing = 0;
-  if ( data.yearOneCosts < data.grantsSavingsTotal +
-    data.borrowingTotal ) {
+  if ( data.yearOneCosts < data.grantsSavingsTotal + data.borrowingTotal ) {
     data.overborrowing = data.borrowingTotal +
                          data.grantsSavingsTotal -
-                         data.yearOneCosts;
+                         data.costOfAttendance;
+    if ( data.overborrowing > data.borrowingTotal ) {
+      data.overborrowing = data.borrowingTotal;
+    }
   }
 
   // Estimated Debt Calculation
