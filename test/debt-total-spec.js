@@ -10,7 +10,6 @@ describe( 'calculates debt totals', function() {
     data.grantsSavingsTotal = 10000;
     data.borrowingTotal = 12000;
     debtTotal( data );
-    console.log( data.borrowingTotal, data.grantsSavingsTotal, data.costOfAttendance )
     expect( data.overborrowing ).to.equal( 8250 );
   });
 

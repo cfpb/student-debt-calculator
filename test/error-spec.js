@@ -18,6 +18,7 @@ describe( 'error reporting', function() {
     directSubsidized: 0,
     directUnsubsidized: 0,
     institutionalLoan: 0,
+    gradPlus: 0,
     privateLoan: 0,
     undergrad: true,
     // specify grant & loan data for testing use
@@ -69,7 +70,7 @@ describe( 'error reporting', function() {
   });
 
   it( '...reports an error when subsidized loans exceeds costs.', function() {
-    financials.perkins = 0;
+    financials.militaryTuitionAssistance = 0;
     financials.tuitionFees = 0;
     financials.directSubsidized = 99999;
     expect( debtCalc( financials ).errors ).property( 'subsidizedOverCost' );
@@ -89,5 +90,16 @@ describe( 'error reporting', function() {
   it( '...reports an error when unsubsidized loans exceeds federal limit.', function() {
     expect( debtCalc( financials ).errors ).property( 'unsubsidizedOverCost' );
   });
+
+  it( '...reports an error when gradPlus loans exceeds costs.', function() {
+    financials.militaryTuitionAssistance = 0;
+    financials.directUnsubsidized = 0;
+    financials.tuitionFees = 1;
+    financials.undergrad = false;
+    financials.gradPlus = 99999;
+    expect( debtCalc( financials ).errors ).property( 'gradPlusOverCost' );
+  });
+
+
 
 });

@@ -8,6 +8,11 @@ var enforceRange = require( '../utils/enforce-range' );
   * @returns { object } the data object with perkins data added
   */
 function gradPlus( data ) {
+  var costMax = data.yearOneCosts -
+                 data.pell -
+                 data.perkins -
+                 data.directSubsidized -
+                 data.directUnsubsidized;
 
   // if undergrad, students aren't eligable for grad plus
   if ( data.undergrad === true ) {
@@ -16,12 +21,17 @@ function gradPlus( data ) {
     return data;
   }
 
+  if ( data.gradPlus > costMax ) {
+    data.errors.gradPlusOverCost = 'Grad Plus loans exceed cost of attendance.';
+  }
+
   // calculate the grad plus max and range for grad students
   data.gradPlusMax = data.firstYearNetCost -
                     data.perkins -
                     data.directSubsidized -
                     data.directUnsubsidized;
   data.gradPlusMax = enforceRange( data.gradPlusMax, 0, false );
+
   // data.gradPlus value must be assigned
   // if data.gradPlus is less than the max
   // the value is 0 due to the enforced range
