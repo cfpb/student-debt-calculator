@@ -33,7 +33,7 @@ function gradPlus( data ) {
 
   if ( data.gradPlus > data.gradPlusMax ) {
     data.errors.gradPlusOverCap = 'Grad PLUS loans cannot exceed the cost of ' +
-      'attendance minus any other financial aid received.' ;
+      'attendance minus any other financial aid received.';
   }
 
   data.gradPlusMax = enforceRange( data.gradPlusMax, 0, false );
