@@ -30,6 +30,12 @@ function gradPlus( data ) {
                     data.perkins -
                     data.directSubsidized -
                     data.directUnsubsidized;
+
+  if ( data.gradPlus > data.gradPlusMax ) {
+    data.errors.gradPlusOverCap = 'Grad PLUS loans cannot exceed the cost of ' +
+      'attendance minus any other financial aid received.' ;
+  }
+
   data.gradPlusMax = enforceRange( data.gradPlusMax, 0, false );
 
   // data.gradPlus value must be assigned

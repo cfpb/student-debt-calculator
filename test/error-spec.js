@@ -100,6 +100,14 @@ describe( 'error reporting', function() {
     expect( debtCalc( financials ).errors ).property( 'gradPlusOverCost' );
   });
 
+  it( '...reports an error when gradPlus loans exceeds limit.', function() {
+    financials.militaryTuitionAssistance = 0;
+    financials.directUnsubsidized = 4000;
+    financials.tuitionFees = 12000;
+    financials.undergrad = false;
+    financials.gradPlus = 10000;
+    expect( debtCalc( financials ).errors ).property( 'gradPlusOverCap' );
+  });
 
 
 });
