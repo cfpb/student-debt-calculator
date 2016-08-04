@@ -7,11 +7,11 @@ var expect = chai.expect;
 describe( 'calculates debt totals', function() {
 
   it( 'accomodates for overborrowing', function() {
-    data.yearOneCosts = 20000;
     data.grantsSavingsTotal = 10000;
     data.borrowingTotal = 12000;
     debtTotal( data );
-    expect( data.overborrowing ).to.equal( 2000 );
+    console.log( data.borrowingTotal, data.grantsSavingsTotal, data.costOfAttendance )
+    expect( data.overborrowing ).to.equal( 8250 );
   });
 
   it ( 'handles multiple private loans', function() {

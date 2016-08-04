@@ -1,11 +1,13 @@
 {
   "name": "student-debt-calc",
-  "version": "2.5.7",
+  "version": "2.5.8",
   "description": "Student debt calculator",
   "main": "src/index.js",
   "scripts": {
     "test": "snyk test && eslint src && nyc mocha test",
-    "report": "nyc report --reporter=lcov"
+    "report": "nyc report --reporter=lcov",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -18,13 +20,15 @@
   },
   "homepage": "https://github.com/cfpb/student-debt-calc#readme",
   "dependencies": {
-    "extend": "3.0.0"
+    "extend": "3.0.0",
+    "istanbul": "0.3.22",
+    "snyk": "1.16.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
     "eslint": "2.13.1",
     "mocha": "2.5.3",
-    "nyc": "6.6.1",
-    "snyk": "1.16.0"
-  }
+    "nyc": "6.6.1"
+  },
+  "snyk": true
 }
