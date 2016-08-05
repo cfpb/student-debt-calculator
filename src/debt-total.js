@@ -24,17 +24,17 @@ function debtTotal( data ) {
 
   // Estimated Debt Calculation
   // Perkins debt at graduation
-  data.perkinsDebt = data.perkins * data.programLength;
+  data.perkinsDebt = data.perkins * Math.max( 1, data.programLength );
 
   // Subsidized debt at graduation
   data.directSubsidizedDebt = data.directSubsidized *
-                              data.programLength;
+                              Math.max( 1, data.programLength );
 
   // Unsubsidized debt at graduation
   data.directUnsubsidizedDebt = calcDebt(
     data.directUnsubsidized,
     data.unsubsidizedRate,
-    data.programLength,
+    Math.max( 1, data.programLength ),
     data.deferPeriod
   );
 
@@ -42,12 +42,12 @@ function debtTotal( data ) {
   data.gradPlusDebt = calcDebt(
     data.gradPlus,
     data.gradPlusRate,
-    data.programLength,
+    Math.max( 1, data.programLength ),
     data.deferPeriod
   );
 
   // Parent Plus Loans at graduation
-  data.parentPlusDebt = data.parentPlus * data.programLength;
+  data.parentPlusDebt = data.parentPlus * Math.max( 1, data.programLength );
 
   // Private Loan debt at graduation
   if ( multiLength > 0 ) {
@@ -60,22 +60,22 @@ function debtTotal( data ) {
       if ( typeof loan.fees !== 'undefined' ) {
         amount = loan.amount + ( loan.amount * loan.fees );
       }
-      debt = calcDebt( amount, loan.rate, data.programLength, loan.deferPeriod );
+      debt = calcDebt( amount, loan.rate, Math.max( 1, data.programLength ), loan.deferPeriod );
       data.privateLoanMulti[x].totalDebt = debt;
       data.privateLoanDebt += debt;
     }
   } else {
     // Single Private Loan:
     data.privateLoanDebt = calcDebt( data.privateLoan,
-      data.privateLoanRate, data.programLength, data.deferPeriod );
+      data.privateLoanRate, Math.max( 1, data.programLength ), data.deferPeriod );
   }
 
   // Institutional Loan debt at graduation
-  data.institutionalLoanDebt = data.institutionalLoan * data.programLength;
+  data.institutionalLoanDebt = data.institutionalLoan * Math.max( 1, data.programLength );
 
   // Home Equity Loans at graduation
   data.homeEquityDebt = data.homeEquity * data.homeEquityLoanRate / 12 *
-  ( ( data.programLength * ( data.programLength + 1 ) / 2 * 12 ) );
+  ( ( data.programLength * ( Math.max( 1, data.programLength ) + 1 ) / 2 * 12 ) );
 
   // Tuition Repayment plan at graduation (not added to total)
   data.tuitionRepayDebt = tuitionRepayCalc.calculateDebtAtGrad( data );

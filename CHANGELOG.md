@@ -1,6 +1,9 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 2.5.10 2016-08-04
+- Fix for 6 month programLength debt totals
+
 ## 2.5.9 2016-08-04
 - Adds error reporting for grad PLUS loans
 
