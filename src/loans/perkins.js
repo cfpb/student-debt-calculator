@@ -8,18 +8,22 @@ var enforceRange = require( '../utils/enforce-range' );
   * @returns { object } the data object with perkins data added
   */
 function perkins( data ) {
-  data.perkinsMax = data.yearOneCosts - data.pell;
-  if ( data.perkins > data.perkinsMax ) {
+  var costMax = data.yearOneCosts - data.pell,
+      perkinsCap = data.perkinsUnderCap;
+
+  if ( data.perkins > costMax ) {
     data.errors.perkinsOverCost = 'Perkins loan exceeded cost of attendance.';
+    data.perkins = enforceRange( data.perkins, 0, costMax );
   }
-  data.perkinsMax = enforceRange( data.perkinsMax, 0, data.perkinsUnderCap );
+
   if ( data.undergrad !== true ) {
-    data.perkinsMax = enforceRange( data.perkinsMax, 0, data.perkinsGradCap );
+    perkinsCap = data.perkinsGradCap;
   }
-  if ( data.perkins > data.perkinsMax ) {
-    data.errors.perkinsOverCap = 'Perkins loan exceeded federal limit of ' + data.perkinsMax + '.';
+
+  if ( data.perkins > perkinsCap ) {
+    data.errors.perkinsOverCap = 'Perkins loan exceeded federal limit of ' + data.perkinsCap + '.';
+    data.perkins = enforceRange( data.perkins, 0, perkinsCap );
   }
-  data.perkins = enforceRange( data.perkins, 0, data.perkinsMax );
 
   return data;
 }

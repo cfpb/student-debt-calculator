@@ -85,5 +85,6 @@ module.exports = {
   plusOriginationFee: 1.04292,
   homeEquityLoanRate: 0.079,
   deferPeriod: 6,
-  loanMonthly: 0
+  loanMonthly: 0,
+  errors: {}
 };
