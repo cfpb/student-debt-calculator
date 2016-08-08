@@ -7,13 +7,6 @@
   */
 function cost( data ) {
 
-  // cost of attendance
-  data.costOfAttendance = data.tuitionFees +
-                        data.roomBoard +
-                        data.books +
-                        data.otherExpenses +
-                        data.transportation;
-
   // Money for College Total
   data.moneyForCollege = data.grantsSavingsTotal + data.borrowingTotal;
 
