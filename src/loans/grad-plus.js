@@ -8,10 +8,8 @@ var enforceRange = require( '../utils/enforce-range' );
   * @returns { object } the data object with perkins data added
   */
 function gradPlus( data ) {
-  var costMax = data.yearOneCosts -
-                 data.pell -
+  var costMax = data.costOfAttendance -
                  data.perkins -
-                 data.directSubsidized -
                  data.directUnsubsidized;
 
   // if undergrad, students aren't eligable for grad plus
