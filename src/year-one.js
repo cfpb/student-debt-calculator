@@ -8,13 +8,13 @@ var yearOne = module.exports = {};
  * @returns { object } the data object with first year cost total
  */
 yearOne.cost = function( data ) {
-  data.yearOneCosts = data.tuitionFees +
+  data.costOfAttendance = data.tuitionFees +
                       data.roomBoard +
                       data.books +
                       data.otherExpenses +
                       data.transportation;
 
-  return data.yearOneCosts;
+  return data.costOfAttendance;
 };
 
 /**

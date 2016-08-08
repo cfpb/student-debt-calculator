@@ -59,7 +59,7 @@ function loanTotals( data ) {
   data.borrowingTotal = data.privateInstitutionalTotal + data.federalTotal;
 
   // gap
-  data.gap = data.yearOneCosts -
+  data.gap = data.costOfAttendance -
              data.grantsSavingsTotal -
              data.borrowingTotal;
 

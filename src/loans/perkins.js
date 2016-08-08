@@ -8,7 +8,7 @@ var enforceRange = require( '../utils/enforce-range' );
   * @returns { object } the data object with perkins data added
   */
 function perkins( data ) {
-  var costMax = data.yearOneCosts - data.pell,
+  var costMax = data.costOfAttendance - data.pell,
       perkinsCap = data.perkinsUnderCap;
 
   if ( data.perkins > costMax ) {

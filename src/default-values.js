@@ -57,7 +57,6 @@ module.exports = {
   // Program is undergrad
   undergrad: true,
   // placeholders
-  yearOneCosts: 0,
   yearInCollege: 1,
   //
   repaymentTerm: 10,

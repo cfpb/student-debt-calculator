@@ -10,7 +10,7 @@ var unsubMax = {};
  * @returns { object } the data object with perkins data added
  */
 function unsubDirect( data ) {
-  var costMax = data.yearOneCosts -
+  var costMax = data.costOfAttendance -
                  data.pell -
                  data.perkins -
                  data.directSubsidized;
@@ -49,7 +49,7 @@ function unsubDirect( data ) {
 * @returns { object } the data object with unsub max data added
 */
 unsubMax.independent = function( data ) {
-  data.directUnsubsidizedIndepMax = data.yearOneCosts -
+  data.directUnsubsidizedIndepMax = data.costOfAttendance -
                                    data.pell -
                                    data.perkins -
                                    data.directSubsidized;
@@ -109,7 +109,7 @@ unsubMax.independent = function( data ) {
 */
 unsubMax.dependent = function( data ) {
 
-  data.directUnsubsidizedDepMax = data.yearOneCosts -
+  data.directUnsubsidizedDepMax = data.costOfAttendance -
                                  data.pell -
                                  data.perkins -
                                  data.directSubsidized;

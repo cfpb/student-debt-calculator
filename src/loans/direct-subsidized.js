@@ -25,7 +25,7 @@ function subDirect( data ) {
   if ( data.directSubsidized > 0 && data.undergrad === false ) {
     data.errors.subsidizedNoGrad = 'Direct subsidized loans are available only to undergraduate students.';
   }
-  if ( data.directSubsidized > data.yearOneCosts - data.pell - data.perkins ) {
+  if ( data.directSubsidized > data.costOfAttendance - data.pell - data.perkins ) {
     data.errors.subsidizedOverCost = 'Direct subsidized loans exceed cost of attendance.';
   }
   if ( data.directSubsidized > data.directSubsidizedMax ) {
@@ -42,7 +42,7 @@ function subDirect( data ) {
   data.directSubsidized = enforceRange(
     data.directSubsidized,
     0,
-    data.yearOneCosts - data.pell - data.perkins
+    data.costOfAttendance - data.pell - data.perkins
   );
 
   return data;

@@ -7,7 +7,7 @@ var expect = chai.expect;
 describe( 'sets Perkins loan values', function() {
 
   it( 'sets the perkins max when costs minus pell are less than the perkins cap', function() {
-    data.yearOneCosts = 10000;
+    data.costOfAttendance = 10000;
     data.perkins = 5000;
     data.pell = 6000;
     perkins( data );
@@ -15,7 +15,7 @@ describe( 'sets Perkins loan values', function() {
   });
 
   it( 'sets the perkins to the capped value when costs minus pell are greater than the cap', function() {
-    data.yearOneCosts = 10000;
+    data.costOfAttendance = 10000;
     data.undergrad = true;  
     data.perkins = 9000;
     data.perkinsUnderCap = 5500;
@@ -29,7 +29,7 @@ describe( 'sets Perkins loan values', function() {
     data.undergrad = false;
     data.perkins = 999000;
     data.perkinsGradCap = 9000;
-    data.yearOneCosts = 20000;
+    data.costOfAttendance = 20000;
     data.pell = 0;
     perkins( data );
     expect( data.perkins ).to.equal( 9000 );
@@ -37,7 +37,7 @@ describe( 'sets Perkins loan values', function() {
 
   it( 'enforces range for the total perkins value', function() {
     data.undergrad = true;
-    data.yearOneCosts = 10000;
+    data.costOfAttendance = 10000;
     data.perkins = 5000;
     data.pell = 4000;
     expect( data.perkins ).to.equal( 5000 );

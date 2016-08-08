@@ -8,28 +8,28 @@ var expect = chai.expect;
 describe( 'set scholarship and grant values', function() {
   it( 'correctly sets the pell max when year one costs are less than the maximum pell grant', function() {
     data.undergrad = true;
-    data.yearOneCosts = 5000;
+    data.costOfAttendance = 5000;
     scholarship( data );
     expect( data.pellMax ).to.equal( 5000 );
   });
 
   it( 'correctly sets the pell max when year one costs are more than the maximum pell grant', function() {
     data.undergrad = true;
-    data.yearOneCosts = 10000;
+    data.costOfAttendance = 10000;
     scholarship( data );
     expect( data.pellMax ).to.equal( data.pellCap );
   });
 
   it( 'correctly sets the pell max for non undergrad programs', function() {
     data.undergrad = false;
-    data.yearOneCosts = 10000;
+    data.costOfAttendance = 10000;
     scholarship( data );
     expect( data.pellMax ).to.equal( 0 );
   });
 
   it( 'calculates the total grants', function() {
     data.undergrad = true;
-    data.yearOneCosts = 10000;
+    data.costOfAttendance = 10000;
     data.pell = 4400;
     data.scholarships = 2000;
     scholarship( data );
@@ -37,7 +37,7 @@ describe( 'set scholarship and grant values', function() {
   });
 
   it( 'calculates the first year net cost', function() {
-    data.yearOneCosts = 10000;
+    data.costOfAttendance = 10000;
     data.pell = 4400;
     data.scholarships = 2000;
     scholarship( data );

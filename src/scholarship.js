@@ -14,10 +14,10 @@ function scholarships( data ) {
     data.pellMax = data.pellCap;
   }
   // enforce limits on Pell grants
-  if ( data.pell > data.yearOneCosts ) {
+  if ( data.pell > data.costOfAttendance ) {
     data.errors.pellOverCosts = 'The Pell grant exceeds the cost of attendance.';
   }
-  data.pellMax = enforceRange( data.pellMax, 0, data.yearOneCosts );
+  data.pellMax = enforceRange( data.pellMax, 0, data.costOfAttendance );
 
   if ( data.pell > data.pellMax ) {
     data.errors.pellOverCap = 'The Pell grant exceeds the federal limit of ' +
@@ -39,7 +39,7 @@ function scholarships( data ) {
                      data.GIBill + data.militaryTuitionAssistance;
 
   // First Year Net Cost
-  data.firstYearNetCost = data.yearOneCosts - data.grantsTotal;
+  data.firstYearNetCost = data.costOfAttendance - data.grantsTotal;
 
   // Total Contributions
   data.savingsTotal = data.savings +

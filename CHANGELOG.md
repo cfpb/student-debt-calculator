@@ -1,6 +1,12 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 2.5.13 2016-08-08
+- Refactored and simplified Grad PLUS loan limit calculations
+
+## 2.5.12 2016-08-08
+- Fix for Grad PLUS loan limits
+
 ## 2.5.11 2016-08-08
 - Fix for Perkins loan caps
 
