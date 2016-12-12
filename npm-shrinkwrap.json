@@ -846,12 +846,12 @@
         "commander": {
           "version": "0.6.1",
           "from": "commander@0.6.1",
-          "resolved": "http://registry.npmjs.org/commander/-/commander-0.6.1.tgz"
+          "resolved": "https://registry.npmjs.org/commander/-/commander-0.6.1.tgz"
         },
         "mkdirp": {
           "version": "0.3.0",
           "from": "mkdirp@0.3.0",
-          "resolved": "http://registry.npmjs.org/mkdirp/-/mkdirp-0.3.0.tgz"
+          "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.0.tgz"
         }
       }
     },
