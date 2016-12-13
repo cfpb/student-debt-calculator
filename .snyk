@@ -1,0 +1,45 @@
+version: v1.5.2
+ignore: {}
+patch:
+  'npm:is-my-json-valid:20160118':
+    - gruntify-eslint > eslint > is-my-json-valid:
+        patched: '2016-12-13T17:01:55.911Z'
+    - eslint > is-my-json-valid:
+        patched: '2016-12-13T17:01:55.911Z'
+  'npm:minimatch:20160620':
+    - grunt > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - grunt > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - grunt > findup-sync > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - grunt-cli > findup-sync > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - eslint > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - eslint > file-entry-cache > flat-cache > del > globby > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - eslint > file-entry-cache > flat-cache > del > rimraf > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - eslint > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - nyc > istanbul > fileset > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - nyc > rimraf > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - nyc > spawn-wrap > rimraf > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - nyc > istanbul > fileset > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - nyc > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - gruntify-eslint > eslint > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - gruntify-eslint > eslint > file-entry-cache > flat-cache > del > globby > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - gruntify-eslint > eslint > file-entry-cache > flat-cache > del > rimraf > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - gruntify-eslint > eslint > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
+    - mocha > glob > minimatch:
+        patched: '2016-12-13T17:01:55.911Z'
