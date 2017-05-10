@@ -17,6 +17,7 @@ var tuitionRepayCalc = {
       subsidized = data.tuitionRepay * subsidizedTerm /
         data.tuitionRepayTerm;
     }
+
     return subsidized;
   },
 
@@ -54,10 +55,14 @@ var tuitionRepayCalc = {
     if ( unsubsidized === 0 ) {
       monthly = subsidized / data.tuitionRepayTerm;
     } else {
-      monthly = ( unsubsidized *
-        ( data.tuitionRepayRate / 12 ) /
-        ( 1 - Math.pow( 1 + data.tuitionRepayRate / 12, -1 * unsubTerm ) ) *
-        unsubTerm + subsidized ) / data.tuitionRepayTerm;
+      if ( data.tuitionRepayRate === 0 ) {
+        monthly = unsubsidized / unsubTerm;
+      } else {
+        monthly = ( unsubsidized *
+          ( data.tuitionRepayRate / 12 ) /
+          ( 1 - Math.pow( 1 + data.tuitionRepayRate / 12, -1 * unsubTerm ) ) *
+          unsubTerm + subsidized ) / data.tuitionRepayTerm;
+      }
     }
 
     // If something went wrong, return 0
