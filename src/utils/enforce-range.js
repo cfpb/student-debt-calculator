@@ -1,6 +1,6 @@
 'use strict';
 
- /**
+/**
   * enforces a range
   * @param { number } n - A number or string to be checked
   * @param { number } min - The minimum value to be enforced on n,

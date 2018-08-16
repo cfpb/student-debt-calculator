@@ -2,7 +2,7 @@
 
 var enforceRange = require( '../utils/enforce-range' );
 
- /**
+/**
   * calculate private loan totals
   * @param { object } data - our data object
   * @returns { object } the data object with perkins data added

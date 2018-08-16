@@ -3,7 +3,7 @@
 var calcDebt = require( './calc-debt.js' );
 var tuitionRepayCalc = require( './loans/tuition-repayment.js' );
 
- /**
+/**
   * calculate total debt
   * @param { object } data - the data object
   * @returns { object } the data object with total debt

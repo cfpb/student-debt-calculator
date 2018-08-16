@@ -2,7 +2,7 @@
 
 var enforceRange = require( '../utils/enforce-range' );
 
- /**
+/**
   * calculate grad plus loans
   * @param { object } data - our data object
   * @returns { object } the data object with perkins data added
@@ -19,7 +19,8 @@ function gradPlus( data ) {
   }
 
   if ( data.gradPlus > gradPlusMax ) {
-    data.errors.gradPlusOverCost = 'Grad PLUS loans cannot exceed the cost of ' +
+    data.errors.gradPlusOverCost =
+      'Grad PLUS loans cannot exceed the cost of ' +
       'attendance minus any other financial aid received.';
   }
   data.gradPlus = enforceRange( data.gradPlus, 0, gradPlusMax );

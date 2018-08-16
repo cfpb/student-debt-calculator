@@ -2,7 +2,7 @@
 
 var tuitionRepayCalc = require( './loans/tuition-repayment.js' );
 
- /**
+/**
   * calculate payments
   * @param { object } data - the data object
   * @returns { object } the data object with monthly and total payments
@@ -26,28 +26,27 @@ var payment = {
   calculateMonthlyTotal: function( data, term ) {
     // loanMonthly - "Monthly Payments"
     var loanMonthly =
-      payment.calculateMonthly( data.perkinsDebt, data.perkinsRate, term ) +
-      payment.calculateMonthly( data.directSubsidizedDebt, data.subsidizedRate, term ) +
-      payment.calculateMonthly( data.directUnsubsidizedDebt, data.unsubsidizedRate, term ) +
-      payment.calculateMonthly( data.gradPlusDebt, data.gradPlusRate, term ) +
-      payment.calculateMonthly( data.institutionalLoanDebt, data.institutionalLoanRate, term );
-
-      // data.perkinsDebt * ( data.perkinsRate / 12 ) / ( 1 - Math.pow( 1 + data.perkinsRate / 12, -1 * repaymentTerm * 12 ) ) +
-      // data.directSubsidizedDebt * ( data.subsidizedRate / 12 ) / ( 1 - Math.pow( 1 + data.subsidizedRate / 12, -1 * repaymentTerm * 12 ) ) +
-      // data.directUnsubsidizedDebt * ( data.unsubsidizedRate / 12 ) / ( 1 - Math.pow( 1 + data.unsubsidizedRate / 12, -1 * repaymentTerm * 12 ) ) +
-      // data.gradPlusDebt * ( data.gradPlusRate / 12 ) / ( 1 - Math.pow( 1 + data.gradPlusRate / 12, -1 * repaymentTerm * 12 ) ) +
-      // data.institutionalLoanDebt * ( data.institutionalLoanRate / 12 ) / ( 1 - Math.pow( 1 + data.institutionalLoanRate / 12, -1 * repaymentTerm * 12 ) );
+      payment.calculateMonthly(
+        data.perkinsDebt, data.perkinsRate, term ) +
+      payment.calculateMonthly(
+        data.directSubsidizedDebt, data.subsidizedRate, term ) +
+      payment.calculateMonthly(
+        data.directUnsubsidizedDebt, data.unsubsidizedRate, term ) +
+      payment.calculateMonthly(
+        data.gradPlusDebt, data.gradPlusRate, term ) +
+      payment.calculateMonthly(
+        data.institutionalLoanDebt, data.institutionalLoanRate, term );
 
     // Private Loan handler
     if ( data.privateLoanMulti.length !== 0 ) {
       for ( var x = 0; x < data.privateLoanMulti.length; x++ ) {
         var privLoan = data.privateLoanMulti[x];
-        loanMonthly += payment.calculateMonthly( privLoan.totalDebt, privLoan.rate, term );
-        // loanMonthly += privLoan.totalDebt * ( privLoan.rate / 12 ) / ( 1 - Math.pow( 1 + privLoan.rate / 12, -1 * repaymentTerm * 12 ) );
+        loanMonthly +=
+          payment.calculateMonthly( privLoan.totalDebt, privLoan.rate, term );
       }
     } else {
-      loanMonthly += payment.calculateMonthly( data.privateLoanDebt, data.privateLoanRate, term );
-//      loanMonthly += data.privateLoanDebt * ( data.privateLoanRate / 12 ) / ( 1 - Math.pow( 1 + data.privateLoanRate / 12, -1 * repaymentTerm * 12 ) );
+      loanMonthly +=
+        payment.calculateMonthly( data.privateLoanDebt, data.privateLoanRate, term );
     }
     return loanMonthly;
   },
@@ -69,9 +68,12 @@ var payment = {
 
   payment: function( data ) {
     // Calculate based on data.repaymentTerm field (legacy support)
-    data.loanMonthly = payment.calculateMonthlyTotal( data, data.repaymentTerm );
-    data.loanLifetime = payment.calculateLifetime( data.loanMonthly, data.repaymentTerm );
-    data.loanMonthlyParent = payment.calculateParentMonthly( data, data.repaymentTerm );
+    data.loanMonthly =
+      payment.calculateMonthlyTotal( data, data.repaymentTerm );
+    data.loanLifetime =
+      payment.calculateLifetime( data.loanMonthly, data.repaymentTerm );
+    data.loanMonthlyParent =
+      payment.calculateParentMonthly( data, data.repaymentTerm );
 
     // Calculate 10 year values
     data.tenYear = {};

@@ -2,7 +2,7 @@
 
 var enforceRange = require( './utils/enforce-range.js' );
 
- /**
+/**
   * calculate scholarships and grants
   * @param { object } data - the data object
   * @returns { object } the data object with scholarship and grant totals
@@ -15,7 +15,8 @@ function scholarships( data ) {
   }
   // enforce limits on Pell grants
   if ( data.pell > data.costOfAttendance ) {
-    data.errors.pellOverCosts = 'The Pell grant exceeds the cost of attendance.';
+    data.errors.pellOverCosts =
+      'The Pell grant exceeds the cost of attendance.';
   }
   data.pellMax = enforceRange( data.pellMax, 0, data.costOfAttendance );
 

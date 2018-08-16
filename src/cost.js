@@ -1,6 +1,6 @@
 'use strict';
 
- /**
+/**
   * calculate borrowing total and out of pocket costs
   * @param { object } data - the data object
   * @returns { object } the data object with cost

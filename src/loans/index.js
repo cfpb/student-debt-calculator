@@ -7,7 +7,7 @@ var gradPlus = require( './grad-plus' );
 var institution = require( './institution' );
 var privateLoans = require( './private' );
 
- /**
+/**
   * calculate total student loans
   * @param { object } data - our data object
   * @returns { object } the data object with student loan data
