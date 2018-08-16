@@ -4,7 +4,8 @@
   "description": "Student debt calculator",
   "main": "src/index.js",
   "scripts": {
-    "test": "snyk test && eslint src && nyc mocha test",
+    "test": "eslint src && nyc mocha test",
+    "snyk": "snyk test",
     "report": "nyc report --reporter=lcov",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect"
