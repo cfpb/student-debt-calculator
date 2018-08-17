@@ -2,7 +2,7 @@
 
 var enforceRange = require( '../utils/enforce-range' );
 
- /**
+/**
   * calculate subsidized Direct loans
   * @param { object } data - our data object
   * @returns { object } the data object with perkins data added

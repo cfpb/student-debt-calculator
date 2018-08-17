@@ -1,6 +1,6 @@
 'use strict';
 
- /**
+/**
   * @param { number } amount - the amount of debt borrowed
   * @param { number } rate - the rate at which the debt was borrowed
   * @param { number } programLength - the length of the program

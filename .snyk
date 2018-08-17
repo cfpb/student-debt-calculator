@@ -1,5 +1,7 @@
-version: v1.5.2
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.12.0
 ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
 patch:
   'npm:is-my-json-valid:20160118':
     - gruntify-eslint > eslint > is-my-json-valid:
@@ -9,12 +11,8 @@ patch:
   'npm:minimatch:20160620':
     - grunt > glob > minimatch:
         patched: '2016-12-13T17:01:55.911Z'
-      istanbul > fileset > glob > minimatch:
-        patched: '2016-12-13T17:08:55.346Z'
     - grunt > minimatch:
         patched: '2016-12-13T17:01:55.911Z'
-      istanbul > fileset > minimatch:
-        patched: '2016-12-13T17:08:55.346Z'
     - grunt > findup-sync > glob > minimatch:
         patched: '2016-12-13T17:01:55.911Z'
     - grunt-cli > findup-sync > glob > minimatch:
@@ -47,3 +45,7 @@ patch:
         patched: '2016-12-13T17:01:55.911Z'
     - mocha > glob > minimatch:
         patched: '2016-12-13T17:01:55.911Z'
+    - istanbul > fileset > glob > minimatch:
+        patched: '2016-12-13T17:08:55.346Z'
+    - istanbul > fileset > minimatch:
+        patched: '2016-12-13T17:08:55.346Z'

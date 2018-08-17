@@ -1,6 +1,7 @@
 'use strict';
 
 var tuitionRepayCalc = {
+
   /**
    * Calculates and returns the subsidized portion of the tuition
    * repayment plan
@@ -54,15 +55,13 @@ var tuitionRepayCalc = {
 
     if ( unsubsidized === 0 ) {
       monthly = subsidized / data.tuitionRepayTerm;
+    } else if ( data.tuitionRepayRate === 0 ) {
+      monthly = unsubsidized / unsubTerm;
     } else {
-      if ( data.tuitionRepayRate === 0 ) {
-        monthly = unsubsidized / unsubTerm;
-      } else {
-        monthly = ( unsubsidized *
-          ( data.tuitionRepayRate / 12 ) /
-          ( 1 - Math.pow( 1 + data.tuitionRepayRate / 12, -1 * unsubTerm ) ) *
-          unsubTerm + subsidized ) / data.tuitionRepayTerm;
-      }
+      monthly = ( unsubsidized *
+        ( data.tuitionRepayRate / 12 ) /
+        ( 1 - Math.pow( 1 + data.tuitionRepayRate / 12, -1 * unsubTerm ) ) *
+        unsubTerm + subsidized ) / data.tuitionRepayTerm;
     }
 
     // If something went wrong, return 0
@@ -77,7 +76,7 @@ var tuitionRepayCalc = {
     var debt = 0,
         subsidizedTerm = data.programLength * 12,
         unsubTerm = data.tuitionRepayTerm - subsidizedTerm,
-        subsidized = this.getSubsidizedPortion( data ),
+        // subsidized = this.getSubsidizedPortion( data ),
         unsubsidized = this.getUnsubsidizedPortion( data );
 
     // Add unsubsidized debt if applicable

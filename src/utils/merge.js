@@ -2,7 +2,7 @@
 
 var extend = require( 'extend' );
 
- /**
+/**
   * merges financial object with the default values
   * @param { object }  defaults - Our default values
   * @param { financials } financials - Our user defined values

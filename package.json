@@ -1,34 +1,35 @@
 {
   "name": "student-debt-calc",
-  "version": "2.6.3",
+  "version": "2.6.4",
   "description": "Student debt calculator",
   "main": "src/index.js",
   "scripts": {
-    "test": "snyk test && eslint src && nyc mocha test",
+    "test": "eslint src && nyc mocha test",
+    "snyk": "snyk test",
     "report": "nyc report --reporter=lcov",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cfpb/student-debt-calc.git"
+    "url": "https://github.com/cfpb/student-debt-calculator.git"
   },
   "author": "",
   "license": "SEE LICENSE IN TERMS.md (Public Domain / CC0)",
   "bugs": {
-    "url": "https://github.com/cfpb/student-debt-calc/issues"
+    "url": "https://github.com/cfpb/student-debt-calculator/issues"
   },
-  "homepage": "https://github.com/cfpb/student-debt-calc#readme",
+  "homepage": "https://github.com/cfpb/student-debt-calculator#readme",
   "dependencies": {
-    "extend": "3.0.0",
-    "istanbul": "0.3.22",
-    "snyk": "1.16.0"
+    "extend": "3.0.2",
+    "istanbul": "0.4.5",
+    "snyk": "1.91.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "eslint": "2.13.1",
-    "mocha": "2.5.3",
-    "nyc": "6.6.1"
+    "eslint": "5.3.0",
+    "mocha": "5.2.0",
+    "nyc": "13.0.1"
   },
   "snyk": true
 }

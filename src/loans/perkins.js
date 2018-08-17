@@ -2,7 +2,7 @@
 
 var enforceRange = require( '../utils/enforce-range' );
 
- /**
+/**
   * calculate perkins loans
   * @param { object } data - our data object
   * @returns { object } the data object with perkins data added
@@ -21,7 +21,8 @@ function perkins( data ) {
   }
 
   if ( data.perkins > perkinsCap ) {
-    data.errors.perkinsOverCap = 'Perkins loan exceeded federal limit of ' + data.perkinsCap + '.';
+    data.errors.perkinsOverCap =
+      'Perkins loan exceeded federal limit of ' + data.perkinsCap + '.';
     data.perkins = enforceRange( data.perkins, 0, perkinsCap );
   }
 
