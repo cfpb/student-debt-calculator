@@ -1,6 +1,19 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 2.6.5 2019-03-25
+- Remove unused istanbul dependency
+
+## 2.6.4 2018-08-17
+- Update dependencies
+- Fix linting issues
+
+## 2.6.3 2017-05-10
+- Fix bug in tuition repayment plan calculations with a 0% interest rate
+
+## 2.6.2 2016-12-13
+- Stop ignoring `.snyk` file for the sake of Travis
+
 ## 2.6.1 2016-12-12
 - Upgrade npm shrinkwrap endpoints to HTTPS
 
@@ -56,7 +69,7 @@ We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 - Changed federal loan calculations to remove fees from loan total
 
 ## 2.2.2 2016-02-19
-- Further fix to private loan monthly payments and lifetime oan value
+- Further fix to private loan monthly payments and lifetime loan value
 
 ## 2.2.1 2016-02-18
 - Fix for private loan total debt bug
