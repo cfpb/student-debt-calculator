@@ -51,6 +51,7 @@ module.exports = {
   directSubsidizedMax: 0,
   directUnsubsidizedIndepMax: 0,
   directUnsubsidizedDepMax: 0,
+  directUnsubsidizedGradMax: 0,
   directUnsubsidizedWithFee: 0,
   // Length of program, in years
   programLength: 4,

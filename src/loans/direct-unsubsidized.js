@@ -18,11 +18,14 @@ function unsubDirect( data ) {
   unsubMax.independent( data );
   // unsubsidized loan max for dependent students
   unsubMax.dependent( data );
-
+  
   if ( data.depend === 'dependent' ) {
     data.directUnsubsidizedMax = data.directUnsubsidizedDepMax;
-  } else {
+  } else if ( data.undergrad === true ) {
     data.directUnsubsidizedMax = data.directUnsubsidizedIndepMax;
+  } else {
+    // graduate student max
+    data.directUnsubsidizedMax = data.unsubsidizedCapGrad;
   }
 
   data.directUnsubsidizedMax = enforceRange(
