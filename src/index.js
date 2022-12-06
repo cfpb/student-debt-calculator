@@ -1,58 +1,54 @@
-'use strict';
-
-var merge = require( './utils/merge' );
-var defaults = require( './default-values' );
-var rates = require( './rates' );
-var yearOne = require( './year-one' );
-var scholarship = require( './scholarship' );
-var studentLoans = require( './loans/' );
-var cost = require( './cost' );
-var debtTotal = require( './debt-total' );
-var payment = require( './payment' );
+import merge from './utils/merge.js';
+import defaultValues from './default-values.js';
+import { ratesInState, ratesUnsubsidized } from './rates.js';
+import { yearOneCost, yearOneDebt } from './year-one.js';
+import scholarship from './scholarship.js';
+import studentLoans from './loans/index.js';
+import cost from './cost.js';
+import debtTotal from './debt-total.js';
+import { payment } from './payment.js';
 
 /**
  * calculate student debt
  * @param { object } financials - an object containing unique loan values
  * @returns { object } an with the overall cost of the loan
  */
-function studentDebtCalculator( financials ) {
-
+function studentDebtCalculator(financials) {
   var data = {};
 
-  // merge financials into defaults to create data
-  data = merge( defaults, financials );
+  // Merge financials into defaults to create data.
+  data = merge(defaultValues, financials);
 
   // reset errors
   data.errors = {};
 
   // set rate values
-  rates.inState( data );
-  rates.unsubsidized( data );
+  ratesInState(data);
+  ratesUnsubsidized(data);
 
   // add the value for the cost of the first year
-  yearOne.cost( data );
+  yearOneCost(data);
 
   // calculate scholarships and grants
-  scholarship( data );
+  scholarship(data);
 
   // calculate student loans
-  studentLoans( data );
+  studentLoans(data);
 
   // calculate the borrowing total, out of pocket total,
   // money for college, and remaining cost after expenses
-  cost( data );
+  cost(data);
 
   // calculate the year one debt
-  yearOne.debt( data );
+  yearOneDebt(data);
 
   // calculate costs and debt totals
-  debtTotal( data );
+  debtTotal(data);
 
   // calculate monthly and total overall payment
-  payment( data );
+  payment(data);
 
   return data;
-
 }
 
-module.exports = studentDebtCalculator;
+export default studentDebtCalculator;

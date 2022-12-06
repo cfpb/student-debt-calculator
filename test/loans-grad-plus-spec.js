@@ -1,27 +1,20 @@
-var gradPlus = require( '../src/loans/grad-plus' );
-var data = require( '../src/default-values' );
+import gradPlus from '../src/loans/grad-plus.js';
+import defaultValues from '../src/default-values.js';
 
-var chai = require('chai');
-var expect = chai.expect;
-
-describe( 'sets Grad PLUS loan values', function() {
-
-  it( 'sets the grad plus values for undergrad students', function() {
-    data.undergrad = true;
-    gradPlus( data );
-    expect( data.gradPlus ).to.equal( 0 );
+describe('sets Grad PLUS loan values', () => {
+  it('sets the grad plus values for undergrad students', () => {
+    defaultValues.undergrad = true;
+    gradPlus(defaultValues);
+    expect(defaultValues.gradPlus).toEqual(0);
   });
 
-  it( 'sets the grad plus values for grad students', function() {
-    data.undergrad = false;
-    data.costOfAttendance = 10000;
-    data.perkins = 1000;
-    data.directUnsubsidized = 1000;
-    data.gradPlus = 11000;
-    gradPlus( data );
-    expect( data.gradPlus ).to.equal( 8000 );
+  it('sets the grad plus values for grad students', () => {
+    defaultValues.undergrad = false;
+    defaultValues.costOfAttendance = 10000;
+    defaultValues.perkins = 1000;
+    defaultValues.directUnsubsidized = 1000;
+    defaultValues.gradPlus = 11000;
+    gradPlus(defaultValues);
+    expect(defaultValues.gradPlus).toEqual(8000);
   });
-
-
-
 });

@@ -1,17 +1,11 @@
-var cost = require( '../src/cost' );
-var data = require( '../src/default-values' );
+import cost from '../src/cost.js';
+import defaultValues from '../src/default-values.js';
 
-var chai = require('chai');
-var expect = chai.expect;
-
-describe( 'calculates costs', function() {
-
-  it( 'calculates the remaining cost', function() {
-    data.costOfAttendance = 13750;
-    data.grantsSavingsTotal = 2000;
-    cost( data );
-    expect( data.remainingCost ).to.equal( 11750 );
+describe('calculates costs', () => {
+  it('calculates the remaining cost', () => {
+    defaultValues.costOfAttendance = 13750;
+    defaultValues.grantsSavingsTotal = 2000;
+    cost(defaultValues);
+    expect(defaultValues.remainingCost).toEqual(11750);
   });
-
-
 });

@@ -1,35 +1,33 @@
-var debtTotal = require( '../src/debt-total' );
-var data = require( '../src/default-values' );
+import debtTotal from '../src/debt-total.js';
+import defaultValues from '../src/default-values.js';
 
-var chai = require('chai');
-var expect = chai.expect;
-
-describe( 'calculates debt totals', function() {
-
-  it( 'accomodates for overborrowing', function() {
-    data.grantsSavingsTotal = 10000;
-    data.borrowingTotal = 12000;
-    debtTotal( data );
-    expect( data.overborrowing ).to.equal( 8250 );
+describe('calculates debt totals', () => {
+  it('accomodates for overborrowing', () => {
+    defaultValues.grantsSavingsTotal = 10000;
+    defaultValues.borrowingTotal = 12000;
+    debtTotal(defaultValues);
+    expect(defaultValues.overborrowing).toEqual(8250);
   });
 
-  it ( 'handles multiple private loans', function() {
-    data.privateLoanMulti = [
-        { 'amount': 2000, 'rate': .079, 'deferPeriod': 6 },
-        { 'amount': 3000, 'rate': .061, 'deferPeriod': 6 },
-        { 'amount': 4000, 'rate': .041, 'deferPeriod': 6 }
-      ];
-    debtTotal( data );
-    expect( data.privateLoanDebt ).to.equal( 9896 + 14196 + 17968 );
-    });
+  it('handles multiple private loans', () => {
+    defaultValues.privateLoanMulti = [
+      { amount: 2000, rate: 0.079, deferPeriod: 6 },
+      { amount: 3000, rate: 0.061, deferPeriod: 6 },
+      { amount: 4000, rate: 0.041, deferPeriod: 6 },
+    ];
+    debtTotal(defaultValues);
+    expect(defaultValues.privateLoanDebt).toEqual(9896 + 14196 + 17968);
+  });
 
-  it ( 'handles multiple private loans with fees', function() {
-    data.privateLoanMulti = [
-        { 'amount': 2000, 'rate': .079, 'deferPeriod': 6, 'fees': .02 },
-        { 'amount': 3000, 'rate': .061, 'deferPeriod': 6, 'fees': .01 },
-        { 'amount': 4000, 'rate': .041, 'deferPeriod': 6, 'fees': .03 }
-      ];
-    debtTotal( data );
-    expect( data.privateLoanDebt ).to.equal( 10093.92 + 14337.96 + 18507.04 );
-    });
+  it('handles multiple private loans with fees', () => {
+    defaultValues.privateLoanMulti = [
+      { amount: 2000, rate: 0.079, deferPeriod: 6, fees: 0.02 },
+      { amount: 3000, rate: 0.061, deferPeriod: 6, fees: 0.01 },
+      { amount: 4000, rate: 0.041, deferPeriod: 6, fees: 0.03 },
+    ];
+    debtTotal(defaultValues);
+    expect(defaultValues.privateLoanDebt).toEqual(
+      10093.92 + 14337.96 + 18507.04
+    );
+  });
 });

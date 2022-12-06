@@ -1,10 +1,8 @@
-'use strict';
-
 /**
  * default value object
  * this houses all of the default values that could be supplied
  */
-module.exports = {
+const defaultValues = {
   // Costs of attendance
   tuitionFees: 0,
   roomBoard: 0,
@@ -86,5 +84,7 @@ module.exports = {
   homeEquityLoanRate: 0.079,
   deferPeriod: 6,
   loanMonthly: 0,
-  errors: {}
+  errors: {},
 };
+
+export default defaultValues;
