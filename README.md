@@ -15,7 +15,7 @@ The package runs on [node.js](http://nodejs.org/). It can be included in front-e
 ## Installation
 
 1. Install node.js
-2. Run `npm install student-debt-calc --save`
+2. Run `yarn add student-debt-calc`
 
 ## Usage
 
@@ -32,22 +32,22 @@ of calculations and corrections applied, and with properties updated with new va
 For instance, here is a sample of a "financials" Object that can be passed to the calculator:
 
 ```
-var financials = {
-    tuitionFees: 10000,
-    roomBoard: 2000,
-    books: 1000,
-    transportation: 500,
-    otherExpenses: 250,
-    scholarships: 0,
-    pell: 0,
-    savings: 0,
-    family: 0,
-    perkins: 0,
-    staffSubsidized: 0,
-    staffUnsubsidized: 0,
-    institutionalLoan: 0,
-    privateLoan: 13750,
-    undergrad: true
+const financials = {
+  tuitionFees: 10000,
+  roomBoard: 2000,
+  books: 1000,
+  transportation: 500,
+  otherExpenses: 250,
+  scholarships: 0,
+  pell: 0,
+  savings: 0,
+  family: 0,
+  perkins: 0,
+  staffSubsidized: 0,
+  staffUnsubsidized: 0,
+  institutionalLoan: 0,
+  privateLoan: 13750,
+  undergrad: true
 }
 ```
 
@@ -205,7 +205,7 @@ Object:
 Run tests with:
 
 ```
-npm test
+yarn test
 ```
 
 ## Getting help
