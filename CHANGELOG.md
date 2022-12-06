@@ -1,7 +1,7 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
-## 3.0.0 2022-12-06
+## 3.0.1 2022-12-06
 
 - Convert project to ESM modules.
 - Publish in CFPB scope.
