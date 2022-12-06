@@ -1,11 +1,8 @@
-var rates = require( '../src/rates' );
-var merge = require( '../src/utils/merge' );
-var defaults = require( '../src/default-values' );
+import { ratesInState, ratesUnsubsidized } from '../src/rates.js';
+import merge from '../src/utils/merge.js';
+import defaultValues from '../src/default-values.js';
 
-var chai = require('chai');
-var expect = chai.expect;
-
-var financials = {
+const financials = {
   tuitionFees: 10000,
   roomBoard: 2000,
   books: 1000,
@@ -38,57 +35,56 @@ var financials = {
   homeEquityLoanRate: 0.079,
 };
 
-var data = merge( defaults, financials );
+var data = merge(defaultValues, financials);
 
-describe( 'set in state loan rates', function() {
-  it( 'returns undefined when no in state tuition is specified', function() {
-    rates.inState( data );
-    expect( data.TFInState ).to.equal( undefined );
+describe('set in state loan rates', function () {
+  it('returns undefined when no in state tuition is specified', function () {
+    ratesInState(data);
+    expect(data.TFInState).toEqual(undefined);
   });
 
-  it( 'returns a value for TFInState when in state tuition is specified', function() {
-    data.tuitionUndergradInState = 10000
-    rates.inState( data );
-    expect( data.TFInState ).to.equal( 10000 );
+  it('returns a value for TFInState when in state tuition is specified', function () {
+    data.tuitionUndergradInState = 10000;
+    ratesInState(data);
+    expect(data.TFInState).toEqual(10000);
   });
 
-  it( 'returns a value for TFInState when in state tuition is specified', function() {
-    data.tuitionUndergradInState = 10000
-    rates.inState( data );
-    expect( data.TFInState ).to.equal( 10000 );
+  it('returns a value for TFInState when in state tuition is specified', function () {
+    data.tuitionUndergradInState = 10000;
+    ratesInState(data);
+    expect(data.TFInState).toEqual(10000);
   });
 
-  it( 'correctly sets TFInState for grad programs not under public control', function() {
-    data.program ='grad';
+  it('correctly sets TFInState for grad programs not under public control', function () {
+    data.program = 'grad';
     data.tuitiongradins = 60000;
     data.tuitionUndergradInState = 10000;
-    rates.inState( data );
-    expect( data.TFInState ).to.equal( 10000 );
+    ratesInState(data);
+    expect(data.TFInState).toEqual(10000);
   });
 
-  it( 'correctly sets TFInState for grad programs under public control', function() {
+  it('correctly sets TFInState for grad programs under public control', function () {
     data.control = 'public';
-    data.program ='grad';
+    data.program = 'grad';
     data.tuitiongradins = 10000;
-    rates.inState( data );
-    expect( data.TFInState ).to.equal( 10000 );
+    ratesInState(data);
+    expect(data.TFInState).toEqual(10000);
   });
 });
 
-describe( 'set unsubsidized loan rates', function() {
-  it( 'correctly sets unsubsidized loan rates for undergrad programs', function() {
+describe('set unsubsidized loan rates', function () {
+  it('correctly sets unsubsidized loan rates for undergrad programs', function () {
     data.undergrad = true;
-    rates.unsubsidized( data );
-    expect( data.unsubsidizedRate ).to.equal( 0.0466 );
+    ratesUnsubsidized(data);
+    expect(data.unsubsidizedRate).toEqual(0.0466);
   });
 
-  it( 'correctly sets unsubsidized loan rates for grad programs', function() {
+  it('correctly sets unsubsidized loan rates for grad programs', function () {
     data.undergrad = false;
-    rates.unsubsidized( data );
-    expect( data.unsubsidizedRate ).to.equal( 0.0621 );
+    ratesUnsubsidized(data);
+    expect(data.unsubsidizedRate).toEqual(0.0621);
   });
 });
-
 
 // unsubsidizedRateUndergrad: 0.0466,
 // unsubsidizedRateGrad: 0.0621,

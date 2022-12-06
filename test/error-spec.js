@@ -1,9 +1,6 @@
-var debtCalc = require('../src/index.js');
+import studentDebtCalculator from '../src/index.js';
 
-var chai = require('chai');
-var expect = chai.expect;
-
-describe( 'error reporting', function() {
+describe('error reporting', () => {
   var financials = {
     tuitionFees: 1,
     roomBoard: 0,
@@ -39,65 +36,76 @@ describe( 'error reporting', function() {
     plusOriginationFee: 1.04292,
     homeEquityLoanRate: 0.079,
     privateLoanMulti: [],
-    programLength: 4
+    programLength: 4,
   };
 
-  it( '...reports an error when Pell grants exceed costs.', function() {
-    expect( debtCalc( financials ).errors ).property( 'pellOverCosts' );
+  it('...reports an error when Pell grants exceed costs.', () => {
+    expect(studentDebtCalculator(financials).errors).property('pellOverCosts');
   });
 
-  it( '...reports an error when Pell grants exceed max.', function() {
+  it('...reports an error when Pell grants exceed max.', () => {
     financials.pell = 9999;
-    expect( debtCalc( financials ).errors ).property( 'pellOverCap' );
+    expect(studentDebtCalculator(financials).errors).property('pellOverCap');
   });
 
-  it( '...reports an error when Perkins loan exceeds costs.', function() {
+  it('...reports an error when Perkins loan exceeds costs.', () => {
     financials.pell = 0;
     financials.perkins = 2;
-    expect( debtCalc( financials ).errors ).property( 'perkinsOverCost' );
+    expect(studentDebtCalculator(financials).errors).property(
+      'perkinsOverCost'
+    );
   });
 
-  it( '...reports an error when Perkins loan exceeds federal limit.', function() {
+  it('...reports an error when Perkins loan exceeds federal limit.', () => {
     financials.tuitionFees = 99999;
     financials.perkins = 99999;
-    expect( debtCalc( financials ).errors ).property( 'perkinsOverCap' );
+    expect(studentDebtCalculator(financials).errors).property('perkinsOverCap');
   });
 
-  it( '...reports an error when military tuition assistance exceeds federal limit.', function() {
+  it('...reports an error when military tuition assistance exceeds federal limit.', () => {
     financials.perkins = 0;
     financials.militaryTuitionAssistance = 99999;
-    expect( debtCalc( financials ).errors ).property( 'mtaOverCap' );
+    expect(studentDebtCalculator(financials).errors).property('mtaOverCap');
   });
 
-  it( '...reports an error when subsidized loans exceeds costs.', function() {
+  it('...reports an error when subsidized loans exceeds costs.', () => {
     financials.militaryTuitionAssistance = 0;
     financials.tuitionFees = 0;
     financials.directSubsidized = 99999;
-    expect( debtCalc( financials ).errors ).property( 'subsidizedOverCost' );
+    expect(studentDebtCalculator(financials).errors).property(
+      'subsidizedOverCost'
+    );
   });
 
-  it( '...reports an error when subsidized loans exceeds federal limit.', function() {
+  it('...reports an error when subsidized loans exceeds federal limit.', () => {
     financials.yearInCollege = 1;
-    expect( debtCalc( financials ).errors ).property( 'subsidizedOverCap' );
+    expect(studentDebtCalculator(financials).errors).property(
+      'subsidizedOverCap'
+    );
   });
 
-  it( '...reports an error when unsubsidized loans exceeds costs.', function() {
+  it('...reports an error when unsubsidized loans exceeds costs.', () => {
     financials.directSubsidized = 0;
     financials.directUnsubsidized = 99999;
-    expect( debtCalc( financials ).errors ).property( 'unsubsidizedOverCost' );
+    expect(studentDebtCalculator(financials).errors).property(
+      'unsubsidizedOverCost'
+    );
   });
 
-  it( '...reports an error when unsubsidized loans exceeds federal limit.', function() {
-    expect( debtCalc( financials ).errors ).property( 'unsubsidizedOverCost' );
+  it('...reports an error when unsubsidized loans exceeds federal limit.', () => {
+    expect(studentDebtCalculator(financials).errors).property(
+      'unsubsidizedOverCost'
+    );
   });
 
-  it( '...reports an error when gradPlus loans exceeds costs.', function() {
+  it('...reports an error when gradPlus loans exceeds costs.', () => {
     financials.militaryTuitionAssistance = 0;
     financials.directUnsubsidized = 0;
     financials.tuitionFees = 1;
     financials.undergrad = false;
     financials.gradPlus = 99999;
-    expect( debtCalc( financials ).errors ).property( 'gradPlusOverCost' );
+    expect(studentDebtCalculator(financials).errors).property(
+      'gradPlusOverCost'
+    );
   });
-
 });

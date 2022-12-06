@@ -1,47 +1,41 @@
-var perkins = require( '../src/loans/perkins' );
-var data = require( '../src/default-values' );
+import perkins from '../src/loans/perkins.js';
+import defaultValues from '../src/default-values.js';
 
-var chai = require('chai');
-var expect = chai.expect;
-
-describe( 'sets Perkins loan values', function() {
-
-  it( 'sets the perkins max when costs minus pell are less than the perkins cap', function() {
-    data.costOfAttendance = 10000;
-    data.perkins = 5000;
-    data.pell = 6000;
-    perkins( data );
-    expect( data.perkins ).to.equal( 4000 );
+describe('sets Perkins loan values', () => {
+  it('sets the perkins max when costs minus pell are less than the perkins cap', () => {
+    defaultValues.costOfAttendance = 10000;
+    defaultValues.perkins = 5000;
+    defaultValues.pell = 6000;
+    perkins(defaultValues);
+    expect(defaultValues.perkins).toEqual(4000);
   });
 
-  it( 'sets the perkins to the capped value when costs minus pell are greater than the cap', function() {
-    data.costOfAttendance = 10000;
-    data.undergrad = true;  
-    data.perkins = 9000;
-    data.perkinsUnderCap = 5500;
-    data.pell = 4000;
-    perkins( data );
-    console.log( data.perkinsUnderCap );
-    expect( data.perkins ).to.equal( 5500 );
+  it('sets the perkins to the capped value when costs minus pell are greater than the cap', () => {
+    defaultValues.costOfAttendance = 10000;
+    defaultValues.undergrad = true;
+    defaultValues.perkins = 9000;
+    defaultValues.perkinsUnderCap = 5500;
+    defaultValues.pell = 4000;
+    perkins(defaultValues);
+    console.log(defaultValues.perkinsUnderCap);
+    expect(defaultValues.perkins).toEqual(5500);
   });
 
-  it( 'sets the perkins to the graduate capped value', function() {
-    data.undergrad = false;
-    data.perkins = 999000;
-    data.perkinsGradCap = 9000;
-    data.costOfAttendance = 20000;
-    data.pell = 0;
-    perkins( data );
-    expect( data.perkins ).to.equal( 9000 );
+  it('sets the perkins to the graduate capped value', () => {
+    defaultValues.undergrad = false;
+    defaultValues.perkins = 999000;
+    defaultValues.perkinsGradCap = 9000;
+    defaultValues.costOfAttendance = 20000;
+    defaultValues.pell = 0;
+    perkins(defaultValues);
+    expect(defaultValues.perkins).toEqual(9000);
   });
 
-  it( 'enforces range for the total perkins value', function() {
-    data.undergrad = true;
-    data.costOfAttendance = 10000;
-    data.perkins = 5000;
-    data.pell = 4000;
-    expect( data.perkins ).to.equal( 5000 );
+  it('enforces range for the total perkins value', () => {
+    defaultValues.undergrad = true;
+    defaultValues.costOfAttendance = 10000;
+    defaultValues.perkins = 5000;
+    defaultValues.pell = 4000;
+    expect(defaultValues.perkins).toEqual(5000);
   });
-
-
 });

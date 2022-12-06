@@ -4,11 +4,11 @@
   "description": "Student debt calculator",
   "main": "src/index.js",
   "scripts": {
-    "test": "eslint src && nyc mocha test",
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
     "snyk": "snyk test",
-    "report": "nyc report --reporter=lcov",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "lint": "eslint src && yarn prettier './**/*.{js,jsx,ts,tsx,md}' --write",
+    "snyk-protect": "snyk-protect",
+    "prepublish": "yarn snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -20,15 +20,13 @@
     "url": "https://github.com/cfpb/student-debt-calculator/issues"
   },
   "homepage": "https://github.com/cfpb/student-debt-calculator#readme",
-  "dependencies": {
-    "extend": "3.0.2"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "chai": "3.5.0",
-    "eslint": "5.3.0",
-    "mocha": "5.2.0",
-    "nyc": "13.0.1",
-    "snyk": "1.91.0"
+    "@snyk/protect": "1.1069.0",
+    "eslint": "8.29.0",
+    "jest-cli": "29.3.1",
+    "prettier": "2.8.0"
   },
-  "snyk": true
+  "snyk": true,
+  "type": "module"
 }

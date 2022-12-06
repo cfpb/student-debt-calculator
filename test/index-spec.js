@@ -1,9 +1,6 @@
-var debtCalc = require('../src/index.js');
+import studentDebtCalculator from '../src/index.js';
 
-var chai = require('chai');
-var expect = chai.expect;
-
-describe( 'overall debt calculations', function() {
+describe('overall debt calculations', () => {
   var financials = {
     tuitionFees: 10000,
     roomBoard: 2000,
@@ -37,69 +34,80 @@ describe( 'overall debt calculations', function() {
     plusOriginationFee: 1.04292,
     homeEquityLoanRate: 0.079,
     privateLoanMulti: [],
-    programLength: 4
+    programLength: 4,
   };
 
-  it( '...calculates private loans.', function() {
-    expect( debtCalc( financials ).totalDebt ).to.equal( 68035 );
+  it('...calculates private loans.', () => {
+    expect(studentDebtCalculator(financials).totalDebt).toEqual(68035);
   });
 
-  it( '...calculates institutional loans.', function() {
+  it('...calculates institutional loans.', () => {
     financials.privateLoan = 0;
     financials.institutionalLoan = 13750;
-    expect( debtCalc( financials ).totalDebt ).to.equal( 55000 );
+    expect(studentDebtCalculator(financials).totalDebt).toEqual(55000);
   });
 
-  it( '...calculates Perkins loans.', function() {
+  it('...calculates Perkins loans.', () => {
     financials.institutionalLoan = 0;
     financials.perkins = 5500;
-    expect( debtCalc( financials ).totalDebt ).to.equal( 22000 );
+    expect(studentDebtCalculator(financials).totalDebt).toEqual(22000);
   });
 
-  it( '...enforces Perkins loan limit.', function() {
+  it('...enforces Perkins loan limit.', () => {
     financials.institutionalLoan = 0;
     financials.perkins = 999999;
-    expect( debtCalc( financials ).totalDebt ).to.equal( 22000 );
+    expect(studentDebtCalculator(financials).totalDebt).toEqual(22000);
   });
 
-  it( '...calculates Direct subsidized loans.', function() {
+  it('...calculates Direct subsidized loans.', () => {
     financials.perkins = 0;
     financials.directSubsidized = 3500;
-    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 14000 );
+    expect(Math.floor(studentDebtCalculator(financials).totalDebt)).toEqual(
+      14000
+    );
   });
 
-  it( '...enforces Direct subsidized loan limit.', function() {
+  it('...enforces Direct subsidized loan limit.', () => {
     financials.perkins = 0;
     financials.directSubsidized = 999999;
-    debtCalc( financials );
-    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 14000 );
+    studentDebtCalculator(financials);
+    expect(Math.floor(studentDebtCalculator(financials).totalDebt)).toEqual(
+      14000
+    );
   });
 
-  it( '...calculates Direct unsubsidized loans.', function() {
+  it('...calculates Direct unsubsidized loans.', () => {
     financials.directSubsidized = 0;
     financials.directUnsubsidized = 9500;
-    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 43312 );
+    expect(Math.floor(studentDebtCalculator(financials).totalDebt)).toEqual(
+      43312
+    );
   });
 
-  it( '...enforces Direct unsubsidized loan limit.', function() {
+  it('...enforces Direct unsubsidized loan limit.', () => {
     financials.directSubsidized = 0;
     financials.directUnsubsidized = 999999;
-    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 43312 );
+    expect(Math.floor(studentDebtCalculator(financials).totalDebt)).toEqual(
+      43312
+    );
   });
 
-  it( '...properly calculates multiple loans.', function() {
+  it('...properly calculates multiple loans.', () => {
     financials.perkins = 1000;
     financials.directSubsidized = 2000;
     financials.directUnsubsidized = 3000;
     financials.institutionalLoan = 1500;
     financials.privateLoan = 2500;
-    expect( Math.floor( debtCalc( financials ).totalDebt ) ).to.equal( 44047 );
+    expect(Math.floor(studentDebtCalculator(financials).totalDebt)).toEqual(
+      44047
+    );
   });
 
-  it( '...properly calculates remainingCost.', function() {
+  it('...properly calculates remainingCost.', () => {
     financials.pell = 1000;
     financials.family = 2000;
-    expect( Math.floor( debtCalc( financials ).remainingCost ) ).to.equal( 10750 );
+    expect(Math.floor(studentDebtCalculator(financials).remainingCost)).toEqual(
+      10750
+    );
   });
-
 });
