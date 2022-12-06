@@ -1,6 +1,13 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 3.0.0 2022-12-06
+
+- Convert project to ESM modules.
+- Publish in CFPB scope.
+- Use jest for testing.
+- Add Prettier and linting command.
+
 ## 2.6.5 2019-03-25
 
 - Remove unused istanbul dependency

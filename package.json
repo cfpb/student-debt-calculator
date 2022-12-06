@@ -1,7 +1,10 @@
 {
-  "name": "student-debt-calc",
-  "version": "2.6.6",
+  "name": "@cfpb/student-debt-calculator",
+  "version": "3.0.0",
   "description": "Student debt calculator",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "src/index.js",
   "scripts": {
     "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
