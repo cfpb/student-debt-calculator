@@ -1,4 +1,4 @@
-import tuitionRepayCalc from './loans/tuition-rejs';
+import tuitionRepayCalc from './loans/tuition-repayment.js';
 
 function calculateMonthlyTotal(data, term) {
   // loanMonthly - "Monthly Payments"
