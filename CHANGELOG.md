@@ -1,6 +1,10 @@
 All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
+## 3.0.2 2022-12-08
+
+- Fix typo in module import name.
+
 ## 3.0.1 2022-12-06
 
 - Convert project to ESM modules.
